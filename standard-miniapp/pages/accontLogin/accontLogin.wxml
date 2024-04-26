@@ -1,0 +1,32 @@
+<!--pages/accontLogin/accontLogin.wxml-->
+<view class="accontLogin">
+  <image class="topbj" src="../../assets/imgs/login_bj.jpg" mode=""/>
+  <view class="login_info">
+    <view class="login_info_title">账号登录</view>
+    <view class="login_info_title_bottomline"></view>
+    <view class="login_btn_wrap">
+      <text class="iconfont icon-username login_icon"></text>
+      <input class="login_input" type="text" placeholder="请输入账号" bindinput='usernameInput'/>
+    </view>
+    <view class="login_btn_wrap">
+      <text class="iconfont icon-password login_icon"></text>
+      <input class="login_input" type="password" placeholder="请输入密码" bindinput='passwordInput'/>
+    </view>
+    <button class="loginbtn" bindtap="handleLogin">登录</button>
+  </view>
+  <!-- 弹出层 -->
+  <t-popup visible="{{ visible }}" bind:visible-change="onVisibleChange" placement="bottom">
+    <view class="login_popup">
+      <view class="login_popup_top">
+        请选择一个身份登录！
+        <button class="login_popup_top_btn" bindtap="confirmRole">确定</button>
+      </view>
+      <view class="login_identity">
+        <t-radio-group default-value="{{ roleValue }}" value="{{ roleValue }}" bind:change="onChangeRoleValue" borderless t-class="box">
+          <t-radio block="{{ false }}" label="企业管家" value="1" />
+          <t-radio block="{{ false }}" label="项目负责人" value="2" />
+        </t-radio-group>
+      </view>
+    </view>
+  </t-popup>
+</view>

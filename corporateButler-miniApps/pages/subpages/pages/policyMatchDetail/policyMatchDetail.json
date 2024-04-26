@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "public-title": "/publicTitle/publicTitle",
+    "t-popup": "tdesign-miniprogram/popup/popup",
+    "t-check-tag": "tdesign-miniprogram/check-tag/check-tag"
+  }
+}

@@ -1,0 +1,23 @@
+<!--pages/subPagesForEcharts/pages/oneKeyDirect/oneKeyDirect.wxml-->
+<view class="oneKeyDirect" style="padding-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px);">
+  <public-title titleClass="oneKeyDirect_title_class" title="一键直达记录" showback="true"></public-title>
+  <view class="oneKeyDirect_content">
+    <view class="oneKeyDirect_cards" wx:for="{{ oneKeyList }}" wx:key="index">
+      <view class="oneKeyDirect_itemcard {{ item.isTouchMove ? 'actives' : '' }}" bindtap="toProjectTrackOneKey" bindtouchstart="touchStart" bindtouchmove="touchMove" data-index="{{ index }}" data-id="{{ item.id }}" data-proid="{{ item.projectInfoId }}" data-overdue="{{ item.overdue }}" data-notice="{{ item.exitNotice }}">
+        <view class="oneKeyDirect_itemcard_title">{{ item.title }}</view>
+        <view class="oneKeyDirect_itemcard_content">直达领导：{{ item.leaderName }}</view>
+        <view class="oneKeyDirect_itemcard_content">一键直达时间：{{ item.createTime }}</view>
+        <view wx:if="{{ item.exitNotice }}" class="oneKeyDirect_itemcard_toproject" data-id="{{ item.id }}" data-proid="{{ item.projectInfoId }}" data-notice="{{ item.exitNotice }}">查看批示</view>
+      </view>
+      <view class="delete_btns" wx:if="{{ item.isTouchMove }}">
+        <view class="delete_btn_wrap" bindtap="toDelete" data-id="{{ item.id }}"><text class="iconfont icon-a-delete delete_icons"></text></view>
+      </view>
+    </view>
+    <t-divider wx:if="{{ oneKeyList.length > 0 }}" content="{{nomore ? '已经到底啦' : '上拉加载更多' }}" />
+    <view wx:else class="has_nodata">
+      <image class="nodata_img" src="/assets/imgs/nodata.png" mode=""/>
+      <view>暂无数据</view>
+    </view>
+    <view class="empty"></view>
+  </view>
+</view>

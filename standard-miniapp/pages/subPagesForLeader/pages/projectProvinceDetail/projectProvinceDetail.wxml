@@ -1,0 +1,80 @@
+<!--pages/subPagesForLeader/pages/projectProvinceDetail/projectProvinceDetail.wxml-->
+<view class="projectProvince" style="margin-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px);">
+  <public-title titleClass="matchDetail_title" title="{{ titleMap[provinceTpye] }}" showback="true"></public-title>
+	<view class="province_content">
+		<!-- 顶部搜索 -->
+		<view class="province_searchbox">
+			<view class="province_searchbox_labelwrap" bindtap="openShowDetail" data-desc="按照项目计划开始日期统计。">
+				<view class="titles_split"></view>数据统计维度<text class="iconfont icon-ldwen titles_icons"></text>
+			</view>
+			<view class="province_searchbox_timewrap">
+				<picker mode="date" value="{{ startDate }}" end="{{ toDay }}" bindchange="bindStartDateChange">{{ startDate }}
+				</picker>
+				<view class="province_timewraper_time_desc">至</view>
+				<picker mode="date" value="{{ endDate }}" end="{{ toDay }}" bindchange="bindEndDateChange">{{ endDate }}
+				</picker>
+				<view class="province_searchbox_timeicon"></view>
+			</view>
+		</view>
+		<!-- 折线图 -->
+		<view class="linecharts_wrap">
+			<ec-canvas id="echart_line" canvas-id="echart_line" ec="{{ec}}"></ec-canvas>
+		</view>
+		<!-- 项目信息 -->
+		<view class="project_infowrap">
+			<view class="project_infos">
+				<view class="project_info_item">
+					<view class="project_info_nums">{{ projectInfoData.startWorkPhaseNum || 0 }}</view>开工个数
+				</view>
+				<view class="project_info_item">
+					<view class="project_info_nums">{{ projectInfoData.endWorkingPhaseNum || 0 }}</view>竣工个数
+				</view>
+				<view class="project_info_item">
+					<view class="project_info_nums">{{ projectInfoData.completionPhaseNum || 0 }}</view>投产个数
+				</view>
+				<view class="project_info_item">
+					<view class="project_info_nums">{{ projectInfoData.achieveEffectPhaseNum || 0 }}</view>达效个数
+				</view>
+			</view>
+			<view class="project_infos">
+				<view class="project_info_item">
+					<view class="project_info_nums">{{ projectInfoData.startWorkPercentage || '0%' }}</view>开工率
+				</view>
+				<view class="project_info_item">
+					<view class="project_info_nums">{{ projectInfoData.endWorkPercentage || '0%' }}</view>竣工率
+				</view>
+				<view class="project_info_item">
+					<view class="project_info_nums">{{ projectInfoData.completionPercentage || '0%' }}</view>完成率
+				</view>
+			</view>
+		</view>
+		<!-- 清单进度条 -->
+		<view class="progress_wrap">
+			<view class="progress_wrap_title" bindtap="handleJumpStore">
+				<view class="titles_split"></view>项目清单
+				<view class="progress_icon"></view>
+			</view>
+			<view wx:for="{{ projectList }}" wx:key="index" class="progress_datas">
+				<view class="progress_items">
+					<view class="progress_label">{{ item.projectName }}</view>
+					<view class="progress_infos">
+						<text>完成投资率：{{ item.completionPercentage }}</text>
+						<text>{{ item.investment }} 万元</text>
+					</view>
+					<view class="progress_progress">
+						<progress percent="{{ item.percent }}" active stroke-width="8" border-radius="50" activeColor="#187FFF" backgroundColor="DCECFF"/>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="empty"></view>
+
+  <!-- 弹窗 -->
+  <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="center" close-on-overlay-click="{{false}}">
+    <view class="detail_wraper">
+      <view class="detail_text">{{ detailName }}</view>
+    </view>
+    <button class="detail_btn" bindtap="closeShowmore">关闭</button>
+  </t-popup>
+</view>

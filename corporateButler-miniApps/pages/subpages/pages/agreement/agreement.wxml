@@ -1,0 +1,83 @@
+<!--pages/subpages/pages/agreement/agreement.wxml-->
+<view class="agreement" style="margin-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px - 80rpx);">
+  <public-title titleClass="agreement_title_class" showback="true" title="用户协议及隐私协议"></public-title>
+	<view class="content">
+		<view class="article_title">《用户协议及隐私协议》</view>
+		<view>
+			<text class="article_empty"></text>
+			欢迎您使用惠企政策通小程序(以下简称“政策通”)，在您使用政策通提供的各项服务之前，请务必仔细阅读《用户协议及隐私协议》(以下简称“本协议”) 中的全部条款、规则及内容，确认对本协议全部条款、规则及内容均已知晓、理解并接受，并已同意将其作为确定双方权利义务的依据。如您使用政策通账号访问政策通或以其他方式使用或接受任何政策通服务，即视为您已阅读并与政策通达成协议，自愿接受本协议全部条款、规则及内容的约束。所有服务规则视为本条款不可分割的一部分，与本条款具有同等法律效力。
+		</view>
+		<view>
+			<text class="article_empty"></text>
+			本协议的订立双方为政策通(下称“政策通”或“我们”)与使用政策通相关服务的使用人 (下称“用户”或“您”)，本协议是您与政策通之间关于您使用政策通提供的各项服务所订立的服务条款及规则，与正式书面合同具有同等效力。
+		</view>
+		<view>
+			<text class="article_empty"></text>
+			政策通重视并依法保护用户的个人信息，我们将依照本协议及《隐私权政策》的规定收集、使用、储存和分享您的个人信息。 本协议对个人信息保护相关内容未作明确规定的，均应以《隐私权政策》的内容为准。
+		</view>
+		<view class="article_subtitle">
+			<text class="article_empty"></text>
+			1.用户登录及服务使用
+		</view>
+		<view>
+			<text class="article_empty"></text>
+			根把法律规定，政策通进获取实现小程序功能所必要的信息。为了保障用户可快速通过手机号一键登录，政策通将在获取您的明示同意后，收集您的微信名称、头像、手机号等信息。为了保障信息快速上传，政策通将在获取您的明示同意后，使用您的相册(仅写入)权限。为了保障信息快速上传，政策通将在获取您的明示同意后，访问您的摄像头。同时政策通将读取您的剪切板，用于政策检索等。
+		</view>
+		<view class="article_subtitle">
+			<text class="article_empty"></text>
+			2.您的权益
+		</view>
+		<view>
+			<text class="article_empty"></text>
+			2.1 关于收集您的位置信息、收集您的位置信息，您可以通过以下路径:小程序主页右上角“...”-“设置”-点击特定信息-点击“不允许”，撤回对政策通的授权。
+		</view>
+		<view>
+			<text class="article_empty"></text>
+			2.2 关于收集您的手机号、收集您的手机号、收集您选中的照片或视频信息、收集您选中的照片或视频信息、收集您选中的文件、收集您选中的文件，您可以通过以下路径:小程序主页右上角“.”-“设置”-“小程序已获取的信息”- 点击特定信息 - 点击“通知政策通删除”，政策通承诺收到通知后将删除信息。
+		</view>
+		<view>
+			<text class="article_empty"></text>
+			2.3 关于您的个人信息，您可以通过以下方式与政策通联系，行使查阅、复制、更正、删除等法定权利。
+		</view>
+		<view class="article_subtitle">
+			<text class="article_empty"></text>
+			3.政策通对信息的存储
+		</view>
+		<view>
+			<text class="article_empty"></text>
+			3.1 政策通承诺，除法律法规另有规定外，政策通对您的信息的保存期限应当为实现处理目的所必要的最短时间。
+		</view>
+		<view class="article_subtitle">
+			<text class="article_empty"></text>
+			4.信息的使用规则
+		</view>
+		<view>
+			<text class="article_empty"></text>
+			4.1 政策通将会在本指引所明示的用途内使用收集的信息
+		</view>
+		<view>
+			<text class="article_empty"></text>
+			4.2 如政策通使用您的信息超出本指引目的或合理范围，政策通必须在变更使用目的或范围前，再次告知并征得您的明示同意。
+		</view>
+		<view class="article_subtitle">
+			<text class="article_empty"></text>
+			5.信息对外提供
+		</view>
+		<view>
+			<text class="article_empty"></text>
+			5.1 政策通承诺，不会主动共享或转让您的信息至任何第三方，如存在确需共享或转让时，政策通将会征求您的同意。
+		</view>
+		<view>
+			<text class="article_empty"></text>
+			5.2 政策通承诺，不会对外公开披露您的信息，如必须公开披露时，政策通应会向您告知公开披露的目的、披露信息的类型及可能涉及的信息，并征得您的单独同意。
+		</view>
+		<view class="article_subtitle">
+			<text class="article_empty"></text>
+			6.投诉及建议
+		</view>
+		<view>
+			<text class="article_empty"></text>
+			您认为政策通未遵守上述约定，或有其他的投诉建议、或未成年人个人信息保护相关问题，可通过以下方式与政策通联系;或者向微信进行投诉。邮箱: lingdian@idataway.com
+		</view>
+	</view>
+</view>

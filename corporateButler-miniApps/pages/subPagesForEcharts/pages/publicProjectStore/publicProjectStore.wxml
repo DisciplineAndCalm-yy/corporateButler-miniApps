@@ -1,0 +1,88 @@
+<!--pages/subPagesForEcharts/pages/publicProjectStore/publicProjectStore.wxml-->
+<view class="publicProjectStore" style="margin-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px);">
+  <public-title titleClass="store_title_class" title="项目库"></public-title>
+  <t-sticky offset-top="{{ menuHeight + menuTop + 10 }}">
+    <view class="searchBox">
+      <t-input prefixIcon="search" type="text" placeholder="请输入关键字搜索" value="{{projectSearch}}" bindblur='searchTitle' />
+    </view>
+    <view class="selectBox">
+      <view class="selectBox_item {{ dropActiveMap[dropActive] }}">
+        <t-dropdown-menu>
+          <t-dropdown-item label="项目性质" options="{{projectType.options}}" value="{{projectType.value}}" bindchange="onDropProjectTypeChange"/>
+          <t-dropdown-item label="项目资金" options="{{projectMoney.options}}" value="{{projectMoney.value}}" bindchange="onDropProjectMoneyChange"/>
+          <t-dropdown-item label="项目领域" options="{{projectArea.options}}" value="{{projectArea.value}}" bindchange="onDropProjectAreaChange"/>
+        </t-dropdown-menu>
+      </view>
+    </view>
+    <!-- <view class="selectBox">
+      <view class="{{dropActive == 1 ? 'drop_active' : 'selectBox_item'}}">
+        <t-dropdown-menu>
+          <t-dropdown-item label="项目类型" options="{{projectType.options}}" multiple optionsColumns="3" value="{{projectType.value}}" bindchange="onDropProjectTypeChange" bindconfirm="onDropProjectTypeConfirm" />
+          <t-dropdown-item label="项目类型" options="{{projectType.options}}" value="{{projectType.value}}" bindchange="onDropProjectTypeChange"/>
+        </t-dropdown-menu>
+      </view>
+      <view class="{{dropActive == 2 ? 'drop_active' : 'selectBox_item'}}">
+        <t-dropdown-menu>
+          <t-dropdown-item label="项目资金" options="{{projectMoney.options}}" multiple optionsColumns="3" value="{{projectMoney.value}}" bindchange="onDropProjectMoneyChange" bindconfirm="onDropProjectMoneyConfirm"/>
+          <t-dropdown-item label="项目资金" options="{{projectMoney.options}}" value="{{projectMoney.value}}" bindchange="onDropProjectMoneyChange"/>
+        </t-dropdown-menu>
+      </view>
+      <view class="{{dropActive == 3 ? 'drop_active' : 'selectBox_item'}}">
+        <t-dropdown-menu>
+          <t-dropdown-item label="项目领域" options="{{projectArea.options}}" multiple optionsColumns="3" value="{{projectArea.value}}" bindchange="onDropProjectAreaChange" bindconfirm="onDropProjectAreaConfirm"/>
+          <t-dropdown-item label="项目领域" options="{{projectArea.options}}" value="{{projectArea.value}}" bindchange="onDropProjectAreaChange"/>
+        </t-dropdown-menu>
+      </view>
+    </view> -->
+  </t-sticky>
+  <view class="publicProjectStore_content">
+    <!-- <view class="projectitem_card" wx:for="{{ projectList }}" wx:key="index">
+      <view class="projectitem_card_title">{{ item.proName }}</view>
+      <view class="projectitem_card_content_wraps">
+        <view class="projectitem_card_content">计划总投资（万元）：<text class="projectitem_card_content_font">{{ item.expectTotalInvestment }}</text></view>
+        <view class="projectitem_card_content">责任单位：<text class="projectitem_card_content_font">{{ item.responsibleOrganization }}</text></view>
+        <view class="projectitem_card_content">项目单位：<text class="projectitem_card_content_font">{{ item.entName }}</text></view>
+      </view>
+      <view class="projectitem_card_btnwrap">
+        <view class="projectitem_card_btnwrap_btns interviewbtn btn-mr" bindtap="toProjectInterview" data-id="{{ item.id }}">项目走访</view>
+        <view class="projectitem_card_btnwrap_btns interviewbtn" bindtap="toProjectTrack" data-id="{{ item.id }}">项目追踪</view>
+      </view>
+    </view> -->
+    <view class="projectitem_card" wx:for="{{ projectList }}" wx:key="index">
+      <view class="project_titles"><text class="iconfont icon-xiaobiaoti project_subtitle"></text>{{ item.proName }}</view>
+      <view class="project_content">
+        <view class="project_item">
+          <text class="project_item_label">计划总投资（万元）：</text>
+          <text>{{ item.expectTotalInvestment }}</text>
+        </view>
+        <view class="project_item">
+          <text class="project_item_label">责任单位：</text>
+          <text>{{ item.responsibleOrganization }}</text>
+        </view>
+        <view class="project_item">
+          <text class="project_item_label">项目单位：</text>
+          <text>{{ item.entName }}</text>
+        </view>
+      </view>
+      <view class="project_btnwrap">
+        <view bindtap="toProjectInterview" data-id="{{ item.id }}">项目走访</view>
+        <view bindtap="toProjectTrack" data-id="{{ item.id }}">项目追踪</view>
+        <!-- <view bindtap="toShowMoreBtn" data-index="{{ index }}">更多</view> -->
+        <picker bindchange="bindPickerChange" value="{{ moreBtnValue }}" range="{{ moreBtnList }}">
+          <view bindtap="toShowMorePicker" data-id="{{ item.id }}">更多</view>
+        </picker>
+      </view>
+      <!-- <view wx:if="{{ moreBtnIndex == index }}" class="more_btnwrap">
+        <view bindtap="toProjectStatus">项目状态跟进</view>
+        <view bindtap="toProjectProgress">项目进展</view>
+      </view> -->
+    </view>
+    <t-divider wx:if="{{ projectList.length > 0 }}" content="{{nomore ? '已经到底啦' : '上拉加载更多' }}" />
+    <view wx:else class="has_nodata">
+      <image class="nodata_img" src="/assets/imgs/nodata.png" mode=""/>
+      <view>暂无数据</view>
+    </view>
+    <view class="empty"></view>
+  </view>
+  <tabbars></tabbars>
+</view>

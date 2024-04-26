@@ -1,0 +1,25 @@
+<!--pages/subPagesForEcharts/pages/publicAccont/publicAccont.wxml-->
+<view class="publicAccont" style="margin-top: {{ menuHeight + menuTop + 10 }}px; height: calc(100vh - {{ menuHeight + menuTop + 10 }}px);">
+  <public-title titleClass="publicAccont_title_class" title="账号管理" showback="true"></public-title>
+  <view class="publicAccont_content">
+    <view class="publicAccont_usercard">
+      <!-- <image class="user_avatar" src="../../assets/home_steward_card.png" mode=""/> -->
+      <view class="user_avatars">{{ userInfo.realname[0] }}</view>
+      <view class="user_resetpassword" bindtap="toResetPwd" data-id="1">重置密码<view class="user_reseticon"></view></view>
+    </view>
+    <view class="publicAccont_infocard">
+      <view class="publicAccont_infocard_item">
+        <text class="publicAccont_infocard_item_label">昵称</text>
+        <text>{{ userInfo.realname }}</text>
+      </view>
+      <view class="publicAccont_infocard_item">
+        <text class="publicAccont_infocard_item_label">账号</text>
+        <text>{{ userInfo.username }}</text>
+      </view>
+      <view class="publicAccont_infocard_item">
+        <text class="publicAccont_infocard_item_label">角色</text>
+        <text>{{ userInfo.roleList[0].roleName }}</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,312 @@
+/* pages/subpages/pages/completeEnterprise/completeEnterprise.wxss */
+/* 顶部滑动导航 */
+.completeEnterprise {
+  height: 100vh;
+  background-color: #f5f6fa;
+}
+.completeEnterprise_title_class {
+  background-color: #fff;
+}
+.completeEnterprise .complete_top_tabs {
+  width: calc(100% - 80rpx);
+  display: flex;
+  padding: 40rpx;
+}
+.complete_top_tabs_item {
+  display: flex;
+  align-items: center;
+}
+.complete_top_tabs_item_step {
+  width: 50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+  font-size: 26rpx;
+  background-color: #CEE2FF;
+  border-radius: 50%;
+}
+.complete_tabs_step_finsh {
+  background-color: #488ff8;
+}
+.complete_top_tabs_item_line {
+  width: calc((100vw - 330rpx)/8);
+  height: 4rpx; 
+  background-color: #CEE2FF;
+  border-radius: 20%;
+}
+.complete_tabs_line_finsh {
+  background-color: #488ff8;
+}
+.complete_top_tabs_item_dashed {
+  display: flex;
+  width: calc((100vw - 330rpx)/8);
+  height: 4rpx;
+  background-color: #CEE2FF;
+  overflow: hidden;
+}
+.complete_top_tabs_item_dashed_line {
+  margin-left: 4rpx;
+  margin-right: 4rpx;
+  width: 12rpx;
+  height: 4rpx;
+  background-color: #CEE2FF;
+  border-radius: 20%;
+}
+.complete_tabs_dashed_line_finsh {
+  background-color: #488ff8;
+}
+/* 企业信息卡片 */
+.complete_enterprise {
+  margin: 40rpx;
+  background-color: #fff;
+  padding: 30rpx 0;
+  border-radius: 40rpx;
+}
+/* 标题 */
+.complete_enterprise_title {
+  color: #333;
+  font-weight: 600;
+  font-size: 32rpx;
+  display: flex;
+  align-items: center;
+}
+.complete_enterprise_title_icons {
+  margin-left: 4rpx;
+  margin-right: 40rpx;
+  width: 8rpx;
+  height: 50rpx;
+  background: #0F7CEE;
+  border-radius: 0px 24rpx 24rpx 0px;
+}
+/* 内容 */
+.complete_enterprise_info_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx 30rpx 20rpx 40rpx;
+  border-bottom: 1px solid #F0F0F0;
+  font-size: 28rpx;
+  font-weight: 400;
+}
+.complete_enterprise_info_item:last-child {
+  border: none;
+}
+.red_point {
+  color: red;
+  margin-right: 4rpx;
+}
+.complete_enterprise_info_item_label {
+  color: #333;
+}
+.complete_enterprise_info_fill {
+  color: #999;
+  font-size: 28rpx;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  --td-switch-checked-color: #00A870;
+}
+.complete_enterprise_info_fill .t-switch__body {
+  margin-left: 10rpx;
+}
+.complete_enterprise_info_item_input {
+  color: #999;
+  text-align: right;
+  margin-right: 10rpx;
+}
+.complete_enterprise_info_item_picker .picker {
+  color: #999;
+  font-size: 28rpx;
+  font-weight: 400;
+  text-align: right;
+  margin-right: 10rpx;
+}
+.complete_enterprise_info_crumbs {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-bottom: 1px solid #F0F0F0;
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #333;
+}
+.complete_enterprise_info_crumbs_els {
+  padding: 20rpx 0 10rpx;
+}
+.crumbs_active {
+  color: #0F7CEE;
+  font-weight: 700;
+  border-bottom: 4rpx solid #0F7CEE;
+}
+.complete_enterprise_info_fill_checked {
+  padding: 6rpx 16rpx;
+  background-color: #FC3D3D;
+  border-radius: 40rpx;
+  color: #FFF;
+  font-weight: 400;
+  font-size: 24rpx;
+}
+.complete_enterprise_info_fill_checked_closeicon, .complete_enterprise_info_fill_checked_openicon {
+  position: relative;
+  width: 40rpx;
+  height: 40rpx;
+}
+.complete_enterprise_info_fill_checked_closeicon::after{
+  content: '';
+  width: 20rpx;
+  height: 20rpx;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-left: 4rpx solid #000;
+  border-bottom: 4rpx solid #000;
+  -webkit-transform: translate(0,-50%) rotate(-45deg);
+  transform: translate(0,-50%) rotate(-45deg);
+}
+.complete_enterprise_info_fill_checked_openicon::after{
+  content: '';
+  width: 20rpx;
+  height: 20rpx;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  border-left: 4rpx solid #000;
+  border-bottom: 4rpx solid #000;
+  -webkit-transform: translate(0, 0%) rotate(135deg);
+  transform: translate(0, 0%) rotate(135deg);
+}
+.info_moreinfo {
+  display: block;
+}
+.moreinfo_bg {
+  background-color: #F8FBFF;
+}
+/* 按钮 */
+.complete_enterprise_btns {
+  display: flex;
+  padding: 40rpx;
+}
+.complete_enterprise_btns_next, .complete_enterprise_btns_last {
+  flex: 1;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-weight: 700;
+  font-size: 28rpx;
+  border-radius: 20rpx;
+}
+.complete_enterprise_btns_last {
+  margin-right: 40rpx;
+  color: #187FFF;
+  border: 1px solid #187FFF;
+}
+.complete_enterprise_btns_next {
+  color: #fff;
+  background: #187FFF;
+}
+.entinfo_popup {
+  max-height: 40vh;
+  padding: 40rpx 40rpx 40rpx;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  background-color: #f6f6f6;
+}
+.entinfo_popup_card {
+  display: inline-block;
+  margin: 10rpx 10rpx;
+}
+.entinfo_popup_btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #f6f6f6;
+}
+.entinfo_popup_btns button{
+  width: 200rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #333;
+  background-color: #fff;
+}
+.entinfo_popup_btns .entinfo_popup_confirm_btn {
+  color: #fff;
+  background-color: #187FFF;
+}
+
+.entmodalWraper {
+  width: 80vw;
+  background-color: #fff;
+  border-radius: 40rpx;
+}
+.entmodalWraper_title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #333;
+  font-size: 32rpx;
+  font-weight: 700;
+  line-height: normal;
+  padding: 20rpx 40rpx;
+  border-bottom: 1px solid #F2F2F2;
+}
+.entmodalWraper_title_close {
+  width: 25rpx;
+  height: 25rpx;
+}
+.entmodalWraper_content {
+  padding: 40rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #333;
+  text-align: center;
+  font-size: 24rpx;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 26px;
+}
+.entmodalWraper_content_noticeimg {
+  width: 100rpx;
+  height: 100rpx;
+}
+.entmodalWraper_content_types {
+  margin-top: 50rpx;
+  color: #333;
+  text-align: center;
+  font-size: 26rpx;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 26px;
+}
+.entmodalWraper_content_types_font {
+  font-size: 32rpx;
+  color: #FE6668;
+}
+.entmodalWraper_content_item {
+  margin: 10rpx;
+}
+.entmodalWraper_content_item_fonts {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: #3F74F6;
+}
+.entmodalWraper_content_btns {
+  margin-top: 60rpx;
+  margin-bottom: 30rpx;
+  width: 200rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  color: #3F74F6;
+  font-size: 24rpx;
+  font-family: PingFang SC;
+  font-style: normal;
+  font-weight: 700;
+  border-radius: 10rpx;
+  background: #F4F9FF;
+}

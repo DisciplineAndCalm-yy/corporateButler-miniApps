@@ -1,0 +1,54 @@
+<!--pages/subpages/pages/myCollect/myCollect.wxml-->
+<view class="myCollect" style="margin-top: {{ menuHeight + menuTop + 10 }}px; height: calc(100vh - {{ menuHeight + menuTop + 10 }}px - 80rpx);">
+  <public-title titleClass="store_title_class" showback="true" title="我的收藏"></public-title>
+  <!-- 顶部搜索 -->
+  <view class="myCollect_filterwrap">
+    <view class="filterwrap_inputwrap">
+      <text class="iconfont icon-sousuo filterwrap_inputwrap_icon"></text>
+      <input type="text" placeholder="请搜索" bindblur="searchInput"/>
+    </view>
+    <text wx:if="{{ showpopup == '0' }}" class="iconfont icon-a-filter myCollect_filterwrap_icon" bindtap="changeShowpopup"></text>
+    <text wx:else class="myCollect_filterwrap_font" bindtap="searchCofirm">确定</text>
+  </view>
+  <!-- 内容 -->
+  <view class="myCollect_contentwrap" style="min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px - 240rpx);">
+    <view wx:for="{{ policyData }}" wx:key="index" class="myCollect_contentwrap_cards" bindtap="handleClick" data-id="{{ item.policyId }}">
+      <view class="cards_title">
+        <text class="iconfont icon-xiaobiaoti cards_title_icon"></text>
+        {{ item.policyTitle }}
+      </view>
+      <view class="cards_labels">
+        <!-- <view class="cards_labels_item">{{ item.policyLevel }}</view> -->
+        <!-- <view wx:for="{{ item.labelList }}" wx:key="index" class="cards_labels_item orange_item">{{ item }}</view> -->
+        <view wx:for="{{item.policyLabelList}}" wx:for-item="eles" wx:for-key="eleKeys" wx:key="eleKeys" class="cards_labels_item {{policyCss[eles.labelType]}}">{{eles.labelName}}</view>
+      </view>
+      <view class="cards_eles">
+          <text class="iconfont icon-daojishi eles_iconfont"></text>
+          <text class="cards_eles_label">发布日期：</text>
+          <text class="cards_eles_black">{{ item.publicityTime }}</text>
+        </view>
+        <view class="cards_eles">
+          <text class="iconfont icon-fabubumen eles_iconfont"></text>
+          <text class="cards_eles_label">发布部门：</text>
+          <text class="cards_eles_black">{{ item.publicityOrgCode }}</text>
+        </view>
+    </view>
+    <t-divider wx:if="{{ policyData.length > 0 }}" content="{{nomore ? '已经到底啦' : '上拉加载更多' }}" />
+    <view wx:else class="has_nodata">
+      <image class="nodata_img" src="/assets/imgs/nodata.png" mode=""/>
+      <view>暂无数据</view>
+    </view>
+    <view class="empty"></view>
+  </view>
+  <!-- 弹出层 -->
+  <view wx:if="{{ showpopup == '1' }}" class="filterpopup_new" bindtap="closePopup"></view>
+  <view wx:if="{{ showpopup == '1' }}" class="filterpopup">
+    <view class="filterpopup_tagswrap">
+      <view class="filterpopup_tagswrap_content">
+        <view class="tagswrap_card" wx:for="{{ tagsOption }}" wx:key="index">
+          <t-check-tag class="margin-16" size="large" variant="dark" content="{{ item.dictName }}" bind:change="handleTagCheck" data-itemindex="{{ index }}" checked="{{ item.checked }}" />
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

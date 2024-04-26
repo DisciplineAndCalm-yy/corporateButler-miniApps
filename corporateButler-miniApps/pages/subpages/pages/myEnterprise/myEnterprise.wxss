@@ -1,0 +1,131 @@
+/* pages/subpages/pages/myEnterprise/myEnterprise.wxss */
+.myEnterprise {
+  position: relative;
+  padding: 40rpx;
+  background-color: #f5f6fa;
+}
+.myEnterprise_title_class {
+  background-color: #fff;
+}
+/* 企业信息 */
+.myEnterprise_wraper {
+  padding: 40rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+}
+.myEnterprise_entinfo {
+  display: flex;
+}
+.myEnterprise_entinfo_icons {
+  width: 40rpx;
+  min-width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  font-size: 22rpx;
+  text-align: center;
+  color: #fff;
+  background: #3F74F6;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.myEnterprise_entinfo_entname {
+  font-weight: 700;
+  font-size: 28rpx;
+  color: #333333;
+  margin-bottom: 20rpx;
+}
+.myEnterprise_entinfo_entcode {
+  font-weight: 400;
+  font-size: 26rpx;
+  letter-spacing: -0.3px;
+  color: #999999;
+}
+.myEnterprise_entinfo_code {
+  font-weight: 700;
+  color: #333333;
+}
+.myEnterprise_wraper:not(:first-child) {
+  margin-top: 20rpx;
+}
+/* 企业card按钮组 */
+.myEnterprise_entbtns {
+  margin-top: 30rpx;
+  padding-top: 20rpx;
+  border-top: 1px solid #F2F2F2;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #3F74F6;
+}
+.myEnterprise_entbtns_delete {
+  color: #E33B3B;
+}
+/* 添加按钮 */
+.myEnterprise_addbtns {
+  position: fixed;
+  bottom: 20%;
+  right: 0;
+  padding: 20rpx 40rpx;
+  color: #fff;
+  font-weight: 400;
+  font-size: 28rpx;
+  background: rgba(63, 116, 246, 0.9);
+  border-radius: 31.6147px 0px 0px 31.6147px;
+  z-index: 99;
+}
+.myEnterprise_addicons {
+  margin-right: 10rpx;
+}
+/* 底部按钮组 */
+.bottom_btnswraper {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #fff;
+  font-weight: 400;
+  font-size: 30rpx;
+  z-index: 99;
+  background-color: #fff;
+  box-shadow: 0px 0px 12rpx 6rpx #ccc;
+}
+.bottom_myEnterprise_addbtn {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 50%;
+  padding: 40rpx;
+  text-align: center;
+  background-color: #3F74F6;
+  border-radius: 20rpx 0 0 20rpx;
+}
+.bottom_myEnterprise_remove {
+  width: calc(50% - 160rpx);
+  padding: 40rpx;
+  text-align: center;
+  color: #3F74F6;
+}
+/* 底部空元素 */
+.empty {
+  padding-bottom: calc(50rpx + env(safe-area-inset-bottom) / 2);
+}
+.has_nodata {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(153, 153, 153, 0.60);
+  font-family: PingFang SC;
+  font-size: 28rpx;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 6rpx;
+  padding: 40rpx 0;
+}
+.nodata_img {
+  width: 300rpx;
+  height: 300rpx;
+}

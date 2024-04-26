@@ -1,0 +1,168 @@
+<!--pages/subPagesForEcharts/pages/homeSteward/homeSteward.wxml-->
+<view class="homeSteward">
+  <!-- 顶部 -->
+  <view class="homeSteward_topcard">
+    <image class="homeSteward_topcard_imgs" src="../../assets/home_steward_bg.png"/>
+    <view class="homeSteward_clockinfo" style="top: {{ menuHeight + menuTop + 10 }}px">
+      <view class="homeSteward_clockinfos">
+        <view class="homeSteward_clockinfo_wrap">
+          <view class="homeSteward_clockinfo_title">Hi, {{ userInfo.realname }}</view>
+          <view>向往成功的桂冠，就别空费每一天。</view>
+        </view>
+        <view class="homeSteward_clockinfo_record" bindtap="toClockRecord"><text class="iconfont icon-clock-record homeSteward_clockinfo_record_icon"></text>打卡记录</view>
+      </view>
+      <view class="homeSteward_clock_wrap">
+        <view class="homeSteward_clock_wrap_top">
+          <view class="clock_wrap_item">
+            <view class="clock_wrap_item_fontwrap"><text class="iconfont icon-clock-day clock_icons clock_day"></text><text>{{ clockInfo.todayRecordNum }}</text></view>今日打卡数
+          </view>
+          <view class="clock_wrap_item">
+            <view class="clock_wrap_item_fontwrap"><text class="iconfont icon-clock-week clock_icons clock_week"></text><text>{{ clockInfo.weekRecordNum }}</text></view>本周打卡数
+          </view>
+          <view class="clock_wrap_item">
+            <view class="clock_wrap_item_fontwrap"><text class="iconfont icon-clock-month clock_icons clock_month"></text><text>{{ clockInfo.monthRecordNum }}</text></view>本月打卡数
+          </view>
+        </view>
+        <view class="homeSteward_clock_wrap_bottom">
+          <view class="clock_btmwrap_item">
+            <view class="clock_btmwrap_item_iconwrap clock_iconwrap"><text class="iconfont icon-clock-recordlist clock_recordlist"></text></view>
+            <view class="clock_btmwrap_item_fontwrap">
+              <view class="clock_btmwrap_item_font"><text>{{ clockInfo.recordNum }}</text></view>累计打卡数
+            </view>
+          </view>
+          <view class="clock_btmwrap_item">
+            <view class="clock_btmwrap_item_iconwrap enterprise_iconwrap"><text class="iconfont icon-clock-enterprise clock_enterprise"></text></view>
+            <view class="clock_btmwrap_item_fontwrap">
+              <view class="clock_btmwrap_item_font"><text>{{ clockInfo.entNum }}</text></view>服务企业数
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="homeSteward_toclock">
+        <view class="homeSteward_toclock_wrap">
+          <image class="homeSteward_toclock_wrap_icons" src="../../assets/clock_icons.png" mode=""/>
+          <view class="homeSteward_toclock_tipwrap">
+            <view class="homeSteward_toclock_tipwrap_tips">挂点企业打卡</view>
+            <view>用心记录你的工作</view>
+          </view>
+        </view>
+        <view class="homeSteward_toclck_clockbtn" bindtap="toClock">立即打卡</view>
+      </view>
+      <view class="checkline"></view>
+    </view>
+    <!-- <view class="homeSteward_topcard_hiwrap" style="top: {{ menuHeight + menuTop + 10 }}px">
+      <image class="homeSteward_topcard_hi" src="../../assets/home_steward_hi.png"/>
+      <view class="homeSteward_topcard_title">
+        <view class="homeSteward_topcard_title_hi">嗨～</view>
+        <view>欢迎使用淇心办</view>
+      </view>
+    </view>
+    <image class="homeSteward_topcard_cards" src="../../assets/home_steward_card.png"/> -->
+  </view>
+  <!-- 内容 -->
+  <view class="homeSteward_content" style="margin-top: calc({{ rectTop + 20 }}px - 30vh);">
+    <view class="homeSteward_publictitle">
+      <view class="homeSteward_publictitle_icon"></view>
+      <view class="homeSteward_publictitle_title">待办事项</view>
+    </view>
+    <scroll-view scroll-x class="homeSteward_entcardwrap">
+      <view wx:if="{{ appealEntList.length == 0 }}" class="noentcard">暂无待办事项</view>
+      <view wx:if="{{ appealEntList.length > 0 }}" wx:for="{{ appealEntList }}" wx:key="index" class="homeSteward_entcard_scroll" bindtap="toEntBeg" data-id="{{ item.enterpriseId }}">
+        <view class="homeSteward_entcard">
+          <view class="homeSteward_entcard_iconwrap">
+            <image class="homeSteward_entcard_iconwrap_icon" src="../../assets/home_steward_enticon.png"/>
+          </view>
+          <view class="homeSteward_entcard_entinfo">
+            <view class="homeSteward_entcard_entname">{{ item.enterprise }}</view>
+            <view class="homeSteward_entcard_things">{{ item.count }}<view class="homeSteward_entcard_things_icon"></view></view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+
+    <view class="homeSteward_publictitle">
+      <view class="homeSteward_publictitle_icon"></view>
+      <view class="homeSteward_publictitle_title">企业诉求预警</view>
+    </view>
+    <view class="homeSteward_entwarning">
+      <view class="homeSteward_entwarning_cardwrap" bindtap="toOverDateBeg" data-date="{{ appealWarning[0].name }}">
+        <view class="entwarning_card_icon">
+          <text class="iconfont icon-a-wenhao entwarning_card_icon_iconfont"></text>
+        </view>
+        <view class="entwarning_card_text">
+          <view class="entwarning_card_text_font">{{ appealWarning[0].value }}</view>
+          超{{ appealWarning[0].name }}天未解决
+        </view>
+      </view>
+      <view class="homeSteward_entwarning_cardwrap" bindtap="toOverDateBeg" data-date="{{ appealWarning[1].name }}">
+        <view class="entwarning_card_icon orangebg">
+          <text class="iconfont icon-a-wenhao entwarning_card_icon_iconfont"></text>
+        </view>
+        <view class="entwarning_card_text">
+          <view class="entwarning_card_text_font orangefont">{{ appealWarning[1].value }}</view>
+          超{{ appealWarning[1].name }}天未解决
+        </view>
+      </view>
+    </view>
+    <view class="homeSteward_publictitle">
+      <view class="homeSteward_publictitle_icon"></view>
+      <view class="homeSteward_publictitle_title">企业诉求统计</view>
+    </view>
+    <view class="homeSteward_begCharts">
+      <ec-canvas id="begCharts" canvas-id="begCharts" ec="{{begec}}"></ec-canvas>
+    </view>
+    <!-- <view class="homeSteward_publictitle">
+      <view class="homeSteward_publictitle_icon"></view>
+      <view class="homeSteward_publictitle_title">项目数量统计</view>
+    </view>
+    <view class="homeSteward_projectwrap">
+      <view class="projectwrap_cards">
+        <view class="projectwrap_cards_imgwrap">
+          <image class="projectwrap_cards_img1" src="../../assets/home_steward_icon1.png"/>
+        </view>
+        <view class="projectwrap_cards_fonts">12</view>
+        储备
+      </view>
+      <view class="projectwrap_splitline"></view>
+      <view class="projectwrap_cards">
+        <view class="projectwrap_cards_imgwrap bg_orange">
+          <image class="projectwrap_cards_img2" src="../../assets/home_steward_icon2.png"/>
+        </view>
+        <view class="projectwrap_cards_fonts font_orange">12</view>
+        在建
+      </view>
+      <view class="projectwrap_splitline"></view>
+      <view class="projectwrap_cards">
+        <view class="projectwrap_cards_imgwrap bg_green">
+          <image class="projectwrap_cards_img3" src="../../assets/home_steward_icon3.png"/>
+        </view>
+        <view class="projectwrap_cards_fonts font_green">12</view>
+        竣工
+      </view>
+    </view>
+    <view class="homeSteward_publictitle">
+      <view class="homeSteward_publictitle_icon"></view>
+      <view class="homeSteward_publictitle_title">项目投资金额进展</view>
+    </view>
+    <view class="homeSteward_projectmoney">
+      <view class="projectmoney_cards">
+        <view class="projectmoney_cards_label">数据更新时间：</view>
+        2023年3月28日
+      </view>
+      <view class="projectmoney_spitline"></view>
+      <view class="projectmoney_cards">
+        <view class="projectmoney_cards_label">项目名称:
+          <picker style="display: inline-block;" bindchange="bindPickerChange" value="{{ projectNameIndex }}" range="{{ projectNameList }}">
+            <view class="projectmoney_changebtn">切换</view>
+          </picker>
+        </view>
+        {{ projectNameList[projectNameIndex] }}
+      </view>
+    </view>
+    <view class="homeSteward_projectmoney_charts">
+      <ec-canvas id="moneyCharts" canvas-id="moneyCharts" ec="{{moneyec}}"></ec-canvas>
+    </view> -->
+  </view>
+  <!-- 自定义tabbar -->
+  <tabbars></tabbars>
+</view>

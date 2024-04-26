@@ -1,0 +1,183 @@
+  .tip-area {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .5);
+  }
+  
+  .dialog-content{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .tip-content {
+    background: #fff;
+    width: 90vw;
+    border-radius: 20rpx 20rpx 0 0;
+    box-sizing: border-box;
+    font-size: 30rpx;
+    color: black;
+    border-bottom: .5rpx solid #e8e8e9;
+  }
+  .tip-title {
+    box-sizing: border-box;
+    border-radius: 20rpx 20rpx 0 0;
+    padding: 20rpx;
+    width: 100%;
+    border-bottom: 1px solid #e8e8e9;
+  }
+  .tip-container {
+    padding: 20rpx 30rpx;
+  }
+  .tip-flex {
+    display: flex;
+  }
+  .textarea-wrapper {
+    width: 380rpx;
+    height: 180rpx;
+    border: 1px solid #e0e0e0;
+    border-radius: 6rpx;
+  }
+  textarea  {
+    width: 380rpx;
+    height: 180rpx;
+    padding: 8rpx 16rpx;
+    box-sizing: border-box;
+  }
+  .label {
+    flex: 1;
+    font-size: 28rpx;
+    text-align: right;
+  }
+  .required {
+      color: #e21616;
+  }
+  .label-name {
+      color: #333333;
+  }
+  .btn-content{
+    width: 100%;
+    height: 120rpx;
+    display: flex;
+    padding: 0 50rpx;
+    box-sizing: border-box;
+    border-radius: 0 0 20rpx 20rpx;
+    background: white;
+    font-size: 32rpx;
+  }
+  .btn-left, .btn-right {
+    width: 122rpx;
+    height: 50rpx;
+    border-radius: 6rpx;
+    margin-top: 25rpx;
+    color: #fff;
+    box-sizing: border-box;
+    text-align: center;
+    font-weight: 400;
+    font-size: 28rpx;
+    line-height: 50rpx;
+    background-color: #0F7CEE;
+  }
+  .back {
+    color: #999;
+    background-color: #fff; 
+  }
+
+.uploader .upload-wrapper {
+  width: 384rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.uploader .upload-wrapper .wrap {
+  position: relative;
+}
+.uploader .upload-wrapper .delete-image {
+    position: absolute;
+    top: 30rpx;
+    right: 10rpx;
+    width: 20rpx;
+    height: 20rpx;
+    z-index: 10;
+    background-repeat: no-repeat;
+}
+.uploader .upload-wrapper::after {
+    content: '';
+    width: 172rpx;
+}
+.uploader .upload-wrapper .upload-push-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 170rpx;
+    height: 170rpx;
+    margin-top: 24rpx;
+    border: 1px solid #e0e0e0;
+    border-radius: 3px;
+}
+.uploader .upload-wrapper .upload-push-item image { 
+    width: 38rpx;
+    height: 38rpx;
+}
+.uploader .upload-wrapper .upload-item { 
+    width: 172rpx;
+    margin-top: 24rpx;
+    position: relative;
+}
+.uploader .upload-wrapper .upload-item .img .img-box {
+    width: 172rpx;
+    height: 172rpx;
+    border-radius: 3px;
+    overflow: hidden;
+}
+.uploader .upload-wrapper .upload-item .file .file-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 172rpx;
+    height: 172rpx;
+    background: #e6f0ff;
+    border-radius: 3px;
+}
+.uploader .upload-wrapper .upload-item .file-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 172rpx;
+    height: 172rpx;
+    background: #e6f0ff;
+    border-radius: 3px;
+}
+.uploader .upload-wrapper .upload-item .file-box image {
+    width: 172rpx;
+    height: 172rpx;
+}
+.uploader .upload-wrapper .upload-item .file img {
+    width: 50rpx;
+    height: 50rpx;
+}
+.uploader .upload-wrapper .upload-item .name {
+    margin-top: 12rpx;
+    text-align: center;
+    font-weight: 600;
+    font-size: 28rpx;
+    color: #6caafe;
+}
+.radio {
+  margin: 30rpx 0;
+}
+.checkbox-title {
+  margin-bottom: 10rpx;
+}
+.weui-cell {
+  display: flex;
+  margin-bottom: 10rpx;
+}

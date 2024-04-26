@@ -1,0 +1,55 @@
+<!--pages/mine/mine.wxml-->
+<view class="container" style="margin-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px)">
+    <public-title titleClass="message_title_class" title="挂点企业诉求" showback="true"></public-title>
+    <t-sticky offset-top="{{ menuHeight + menuTop + 10 }}">
+      <view class="filter-wrapper">
+        <view class="search-wrapper">
+          <image src="../../assets/search.png" alt="" />
+            <!-- bindinput="handleSearch" -->
+          <input
+            type="text"
+            placeholder="搜索"
+            adjust-position="true"
+            data-tag="name"
+            confirm-type='search'
+            bindconfirm="search"
+            value="{{params.name}}"
+          />
+        </view>
+        <view class="status-tab-wrapper">
+          <view
+            wx:for="{{appealTitle}}"
+            wx:key="index"
+            data-index="{{item.value}}"
+            data-tag="state"
+            class="{{params.state == item.value ? 'active' : ''}} status-tab-item"
+            bindtap="changeStatusTabl"
+          >
+            <view class="status-name">{{item.name}}</view>
+            <view class="status-number">({{item.count}})</view>
+          </view>
+        </view>
+      </view>
+    </t-sticky>
+    <view class="order-list-wrapper">
+      <view
+        class="order-item-wrapper"
+        wx:for="{{appealList}}"
+        wx:key="index"
+        data-id="{{item}}"
+        bindtap="goDetail"
+      >
+      <view class="basic-info">
+          <view class="info">
+            <view class="info-time">
+              <span class="info-answer info-type" wx:if="{{item.type == '疑难解答'}}">疑难解答</span>
+              <span class="info-question info-type" wx:if="{{item.type == '问题反馈'}}">诉求反馈</span>
+              <span class="createTime">{{ item.createTime }}</span>
+            </view>
+             <view class="info-title">{{ index + 1 }}.{{ item.enterprise }}</view>
+          </view>
+        </view>
+      </view>
+      <t-divider content="{{nomore ? '已经到底啦' : '上拉加载更多' }}" />
+    </view>
+</view>

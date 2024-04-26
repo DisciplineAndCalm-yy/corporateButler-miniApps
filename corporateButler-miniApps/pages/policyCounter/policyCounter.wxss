@@ -1,0 +1,55 @@
+/* pages/policyCounter/policyCounter.wxss */
+.policyCounter {
+  height: 100vh;
+  position: relative;
+}
+.policyCounter .counter_bj {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.policyCounter .title {
+  position: relative;
+  color: #fff;
+  text-align: center;
+  font-size: 18px;
+}
+.policyCounter .counter_wrap {
+  position: absolute;
+  top: 33%;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.counter_wrap .counter_input {
+  width: 45%;
+  height: 80rpx;
+  padding: 0rpx 30rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  color: #3f74f6;
+  font-weight: bolder;
+}
+.counter_views {
+  width: 45%;
+  height: 80rpx;
+  padding: 0rpx 30rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  color: #3f74f6;
+  font-weight: bolder;
+  display: flex;
+  align-items: center;
+}
+.counter_wrap .counter_btn {
+  margin-left: 40rpx;
+  width: 30%;
+  height: 80rpx;
+  line-height: 80rpx;
+  text-align: center;
+  border-radius: 20rpx;
+  color: #fff;
+  background: linear-gradient(30deg, #3779ff 0%, #689eff 70%);
+}

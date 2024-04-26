@@ -1,0 +1,174 @@
+<!--pages/subPagesForLeader/pages/publicProjectStore/publicProjectStore.wxml-->
+<view class="publicProjectStore" style="margin-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px);">
+  <public-title titleClass="store_title_class" title="项目库"></public-title>
+  <view class="publicProjectStore_topmenu">
+    <view class="searchBox_wrap">
+      <view class="searchBox">
+        <text class="iconfont icon-sousuo search_icon"></text><input type="text" bindblur="searchProjectName" placeholder="请输入项目名称"/>
+      </view>
+    </view>
+    <view class="menulist_wrap">
+      <view class="menu_item {{ menuIndex == 1 ? 'active_menu' : '' }}" bindtap="changeMenu" data-index="1">固定资产投资<text class="iconfont icon-ldsearch menu_item_icon" bindtap="openMoreSearch"></text></view>
+      <view class="menu_item {{ menuIndex == 2 ? 'active_menu' : '' }}" bindtap="changeMenu" data-index="2">中央预算类</view>
+      <view class="menu_item {{ menuIndex == 3 ? 'active_menu' : '' }}" bindtap="changeMenu" data-index="3">专项债类</view>
+    </view>
+    <view wx:if="{{ menuIndex == 2 }}" class="project_center_searchwrap">
+      <view class="project_center_searchitem {{ centerActive == '3' ? 'center_actives' : '' }}" bindtap="changeCenterSearch" data-index="3">全部</view>
+      <view class="project_center_searchitem {{ centerActive == 0 ? 'center_actives' : '' }}" bindtap="changeCenterSearch" data-index="0">未开工</view>
+      <view class="project_center_searchitem {{ centerActive == 1 ? 'center_actives' : '' }}" bindtap="changeCenterSearch" data-index="1">已开工</view>
+      <view class="project_center_searchitem {{ centerActive == 2 ? 'center_actives' : '' }}" bindtap="changeCenterSearch" data-index="2">已完工</view>
+    </view>
+		<view wx:if="{{ menuIndex == 1 }}" class="project_timesearch">
+      <view class="project_timesearch_labelwrap">
+        <view class="supervise_popup_titles_split"></view>项目计划开工日期
+      </view>
+      <view class="project_timesearch_timewrap">
+        <picker mode="date" value="{{ startDate }}" end="{{ toDay }}" bindchange="bindStartDateChange">{{ startDate }}
+        </picker>
+        <view class="enterpriseProject_timewraper_time_desc">至</view>
+        <picker mode="date" value="{{ endDate }}" end="{{ toDay }}" bindchange="bindEndDateChange">{{ endDate }}
+        </picker>
+        <view class="project_timesearch_timeicon"></view>
+      </view>
+    </view>
+    <view wx:if="{{ menuIndex == 1 && activeType == 0 }}" class="projectinfo_wrap">
+      <view class="project_timesearch_labelwrap">
+        <view class="supervise_popup_titles_split"></view>项目统计
+      </view>
+      <view class="project_info">
+        <view class="project_info_item"><text class="project_info_num">{{ projectTotalInfo[1] || 0 }}</text>开工个数</view>
+        <view class="project_info_item"><text class="project_info_num">{{ projectTotalInfo[2] || 0 }}</text>竣工个数</view>
+        <view class="project_info_item"><text class="project_info_num">{{ projectTotalInfo[3] || 0 }}</text>投产个数</view>
+        <view class="project_info_item"><text class="project_info_num">{{ projectTotalInfo[4] || 0 }}</text>达效个数</view>
+      </view>
+    </view>
+    <view wx:if="{{ menuIndex != 1 }}" class="projecttotal_wrap">
+      <view class="project_timesearch_labelwrap">
+        <view class="supervise_popup_titles_split"></view>项目统计
+      </view>
+      <view class="project_timesearch_timewrap projecttotal_infos">
+        <view>总投资额度（万元）<text class="projecttotal_nums">{{ totalInvest || 0 }}</text></view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{ menuIndex == 1 && activeType == 0 }}" class="project_content">
+    <view wx:for="{{ projectList }}" wx:key="index" bindtap="handleToDetail" data-id="{{ item.id }}" class="project_itembox">
+      <view class="project_item_top">
+        <view class="project_avatar"></view>
+        <view class="project_infos">
+          <view class="project_label">{{ item.proName }}</view>
+          <view class="project_supervise_tags">
+            <view wx:for="{{ item.projectTag }}" wx:for-item="tagsitem" wx:for-index="tagsidx" wx:key="tagsidx" class="project_supervise_tagitem">{{ tagsitem }}</view>
+          </view>
+          <view>项目单位：{{ item.entName }}</view>
+        </view>
+      </view>
+      <view class="project_item_bottom">
+        <view>{{ item.phaseName }}</view>
+        <view class="project_bottom_item"><text class="iconfont icon-ldzeren project_people_icon"></text>{{ item.projectLeaderName }}</view>
+        <view class="project_bottom_item"><view class="project_phase_icon {{ projectProgressMap[item.projectAlert] }}"></view>{{ item.projectAlertName }}</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{ menuIndex == 1 && activeType != 0 }}" class="project_content pt0">
+    <view wx:if="{{ projectInfoMap }}" class="project_allwrap">
+      <view class="project_timesearch_labelwrap">
+        <view class="supervise_popup_titles_split"></view>{{ projectInfoMap.key }}
+      </view>
+      <view wx:for="{{ projectInfoMap.list }}" wx:key="index" bindtap="handleToDetail" data-id="{{ item.id }}" class="project_itembox">
+        <view class="project_item_top">
+          <view class="project_avatar"></view>
+          <view class="project_infos">
+            <view class="project_label">{{ item.proName }}</view>
+            <view class="project_supervise_tags">
+              <view wx:for="{{ item.projectTag }}" wx:for-item="tagsitem" wx:for-index="tagsidx" wx:key="tagsidx" class="project_supervise_tagitem">{{ tagsitem }}</view>
+            </view>
+            <view>项目单位：{{ item.entName }}</view>
+          </view>
+        </view>
+        <view class="project_item_bottom detail_item_bottom">
+          <view>{{ item.phaseName }}</view>
+          <view class="project_bottom_item"><text class="iconfont icon-ldzeren project_people_icon"></text>{{ item.projectLeaderName }}</view>
+          <view class="project_bottom_item"><view class="project_phase_icon {{ projectProgressMap[item.projectAlert] }}"></view>{{ item.projectAlertName }}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{ menuIndex == 2 }}" class="project_content pt0">
+    <view wx:for="{{ otherList }}" wx:key="index" bindtap="handleToDetail" data-id="{{ item.id }}" class="project_centeritem">
+      <view class="project_centeritem_top">
+        <view class="project_centeritem_label">{{ item.proName }}</view>
+        <view class="project_centeritem_type {{ centerTypeMap[item.startWork] }}">{{ item.startWorkName }}</view>
+      </view>
+      <view class="project_centeritem_bottom">
+        <view>总投资额（万元）：{{ item.totalInvest }}</view>
+        <view>中央预算类累计下达（万元）：{{ item.investAccumulate }}</view>
+        <view>日常监管直接责任单位：{{ item.responsibilityUnit }}</view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{ menuIndex == 3 }}" class="project_content pt0">
+    <view wx:for="{{ otherList }}" wx:key="index" bindtap="handleToDetail" data-id="{{ item.id }}" class="project_centeritem">
+      <view class="project_centeritem_top">
+        <view class="project_centeritem_label">{{ item.proName }}</view>
+      </view>
+      <view class="project_centeritem_bottom">
+        <view>总投资额（亿元）：{{ item.totalInvest }}</view>
+        <view>
+          <view>专项债需求：<view>{{ item.demand }}</view></view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{ menuIndex == 1 && activeType == 0 }}">
+    <t-divider wx:if="{{ projectList.length > 0 }}" content="{{nomore ? '已经到底啦' : '上拉加载更多' }}" />
+    <view wx:else class="has_nodata">
+      <image class="nodata_img" src="/assets/imgs/nodata.png" mode=""/>
+      <view>暂无数据</view>
+    </view>
+  </view>
+
+  <view wx:if="{{ menuIndex == 1 && activeType != 0 }}">
+    <t-divider wx:if="{{ projectInfoMap.list.length > 0 }}" content="{{nomore ? '已经到底啦' : '上拉加载更多' }}" />
+    <view wx:else class="has_nodata">
+      <image class="nodata_img" src="/assets/imgs/nodata.png" mode=""/>
+      <view>暂无数据</view>
+    </view>
+  </view>
+
+  <view wx:if="{{ menuIndex == 2 || menuIndex == 3 }}">
+    <t-divider wx:if="{{ otherList.length > 0 }}" content="{{nomore ? '已经到底啦' : '上拉加载更多' }}" />
+    <view wx:else class="has_nodata">
+      <image class="nodata_img" src="/assets/imgs/nodata.png" mode=""/>
+      <view>暂无数据</view>
+    </view>
+  </view>
+
+	<view class="empty"></view>
+
+  <tabbars></tabbars>
+
+  <!-- 弹窗 -->
+  <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="center" close-on-overlay-click="{{true}}">
+    <view class="moresearch_wrap" style="height: calc(70vh - {{ menuHeight + menuTop + 10 }}px - 80rpx);">
+      <view class="moresearch_left">
+        <view class="moresearch_searchtype {{ activeType == 0 ? 'searchType_active' : '' }}" bindtap="changeSearchType" data-type="0">默认查询</view>
+        <view class="moresearch_searchtype {{ activeType == 2 ? 'searchType_active' : '' }}" bindtap="changeSearchType" data-type="2">按局委查询</view>
+        <view class="moresearch_searchtype {{ activeType == 3 ? 'searchType_active' : '' }}" bindtap="changeSearchType" data-type="3">按街道查询</view>
+        <view class="moresearch_searchtype {{ activeType == 4 ? 'searchType_active' : '' }}" bindtap="changeSearchType" data-type="4">按进展查询</view>
+        <view class="moresearch_searchtype {{ activeType == 6 ? 'searchType_active' : '' }}" bindtap="changeSearchType" data-type="6">省市重点</view>
+        <view class="moresearch_searchtype {{ activeType == 5 ? 'searchType_active' : '' }}" bindtap="changeSearchType" data-type="5">三个一批</view>
+        <view class="moresearch_searchtype {{ activeType == 1 ? 'searchType_active' : '' }}" bindtap="changeSearchType" data-type="1">按企业查询</view>
+      </view>
+      <view class="moresearch_right" style="height: calc(70vh - {{ menuHeight + menuTop + 10 }}px - 80rpx);">
+        <view class="moresearch_inputwrap">
+          <text class="iconfont icon-sousuo search_icon"></text><input type="text" value="{{ searchValue }}" bindinput="searchInput" placeholder="请输入"/>
+        </view>
+        <view class="moresearch_content">
+          <view wx:for="{{ searchList }}" wx:key="index" class="moresearch_item" bindtap="handleSearch" data-key="{{ item }}">{{ searchData[item] }}</view>
+        </view>
+      </view>
+    </view>
+  </t-popup>
+</view>

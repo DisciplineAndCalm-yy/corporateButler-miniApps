@@ -1,0 +1,183 @@
+/* pages/subPagesForLeader/pages/projectProvince/projectProvince.wxss */
+.projectProvince {
+  overflow: hidden;
+  background: #f5f6fa;
+}
+.matchDetail_title {
+  background-color: #fff;
+}
+/* 搜索栏 */
+.province_searchbox {
+	margin: 30rpx 40rpx;
+	height: 80rpx;
+	border-radius: 20rpx;
+	background: #FFF;
+}
+.province_searchbox {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.province_searchbox_labelwrap {
+	display: flex;
+	align-items: center;
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 28rpx;
+	font-style: normal;
+	font-weight: 700;
+}
+.province_searchbox_timewrap {
+	position: relative;
+	display: flex;
+	align-items: center;
+	padding-right: 40rpx;
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 24rpx;
+	font-style: normal;
+	font-weight: 400;
+}
+.province_timewraper_time_desc {
+	padding: 0 20rpx;
+}
+.province_searchbox_timeicon {
+  content: '';
+  width: 12rpx;
+  height: 12rpx;
+	position: absolute;
+	top: 50%;
+  right: 20rpx;
+  border-left: 3rpx solid #000;
+  border-bottom: 3rpx solid #000;
+  -webkit-transform: translate(0, -50%) rotate(225deg);
+  transform: translate(0, -50%) rotate(225deg);
+}
+.titles_split {
+	width: 8rpx;
+	height: 46rpx;
+	background: #0F7CEE;
+	border-radius: 0px 24rpx 24rpx 0px;
+	margin: 0 30rpx 0 -2rpx;
+}
+.titles_icons {
+  margin-left: 10rpx;
+  font-size: 24rpx;
+  color: #187FFF;
+}
+
+/* 弹窗 */
+.detail_wraper {
+  width: 80vw;
+  padding: 40rpx;
+}
+.detail_label {
+  margin-bottom: 30rpx;
+  font-weight: 700;
+}
+.detail_btn {
+  width: 200rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 26rpx;
+  margin-bottom: 30rpx;
+}
+/* 金额模块 */
+.province_moneywrap {
+  padding: 0 40rpx;
+}
+.province_moneywrap_item {
+  padding: 0 30rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #FFF;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-size: 24rpx;
+  font-style: normal;
+  font-weight: 700;
+  border-radius: 10rpx;
+  background: linear-gradient(180deg, #007DFF 0%, #1870F5 100%);
+}
+.province_moneywrap_item:not(:first-child) {
+  margin-top: 20rpx;
+}
+.orange_bg {
+  background: linear-gradient(222deg, #FA7340 -4.55%, #F95B0E 98.08%);
+}
+.green_bg {
+  background: linear-gradient(225deg, #17B387 -4.55%, #37CFA2 103.37%);
+}
+.province_moneywrap_item_num {
+  margin-right: 10rpx;
+  font-size: 28rpx;
+}
+/* 省市县维度 */
+.province_wraper {
+  padding: 40rpx 40rpx 20rpx;
+}
+.province_itembox {
+  border-radius: 20rpx;
+  background: #FFF;
+}
+.province_itembox:not(:first-child) {
+  margin-top: 30rpx;
+}
+.province_itembox_label {
+  padding: 30rpx 30rpx 30rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #187FFF;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-size: 28rpx;
+  font-style: normal;
+  font-weight: 400;
+  border-bottom: 1px solid #e9e9e9;
+}
+.province_itembox_title {
+  display: flex;
+  align-items: center;
+  color: #333;
+  font-weight: 700;
+}
+/* 进度条样式 */
+.province_itembox_progressbox {
+  padding: 30rpx 30rpx;
+}
+.province_progress_itemtop {
+  /* padding-right: 100rpx; */
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  color: #333;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-size: 24rpx;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -0.3px;
+  margin-bottom: 10rpx;
+}
+.province_progress_itemtop_flex {
+  flex: 1;
+}
+.province_progress_itemtop_flexs {
+  flex: 1;
+  text-align: right;
+}
+.province_progress_items progress {
+	color: #187FFF;
+	font-weight: 400;
+}
+.progress_orange progress {
+	color: #F95D13;
+}
+.progress_green progress {
+  color: #34CC9F;
+}
+/* 底部空元素 */
+.empty {
+  padding-bottom: calc(env(safe-area-inset-bottom) / 2);
+}

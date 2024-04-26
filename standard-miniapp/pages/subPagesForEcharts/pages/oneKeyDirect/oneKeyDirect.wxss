@@ -1,0 +1,88 @@
+/* pages/subPagesForEcharts/pages/oneKeyDirect/oneKeyDirect.wxss */
+.oneKeyDirect {
+  background-color: #f3f5fa;
+}
+.oneKeyDirect_title_class {
+  background-color: #fff;
+}
+.oneKeyDirect_content {
+  padding: 40rpx;
+}
+.oneKeyDirect_cards {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.actives {
+  width: calc(100% - 200rpx);
+}
+.oneKeyDirect_cards:not(:first-child) {
+  margin-top: 30rpx;
+}
+.oneKeyDirect_itemcard {
+  width: 100%;
+  padding: 30rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  letter-spacing: -0.3px;
+  font-weight: 400;
+  color: #999;
+}
+.oneKeyDirect_itemcard_title {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 20rpx;
+  word-break: break-all;
+}
+.oneKeyDirect_itemcard_content {
+  margin-top: 10rpx;
+}
+.oneKeyDirect_itemcard_toproject {
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  text-align: center;
+  color: #3F74F6;
+  font-weight: 600;
+  border-top: 1px solid #E9E9E9;
+}
+.delete_btns {
+  width: 120rpx;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.delete_btn_wrap {
+  width: 70rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 50%;
+}
+.delete_icons {
+  color: #FA3E3E;
+  font-size: 40rpx;
+}
+/* 底部空元素 */
+.empty {
+  padding-bottom: calc(env(safe-area-inset-bottom) / 2);
+}
+.has_nodata {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(153, 153, 153, 0.60);
+  font-family: PingFang SC;
+  font-size: 28rpx;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 6rpx;
+  padding: 40rpx 0;
+}
+.nodata_img {
+  width: 300rpx;
+  height: 300rpx;
+}

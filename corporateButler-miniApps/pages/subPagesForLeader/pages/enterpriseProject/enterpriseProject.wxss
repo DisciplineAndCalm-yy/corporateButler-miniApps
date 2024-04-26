@@ -1,0 +1,196 @@
+/* pages/subPagesForLeader/pages/enterpriseProject/enterpriseProject.wxss */
+.enterpriseProject {
+  overflow: hidden;
+  background: #f5f6fa;
+}
+.enterpriseProject_title_class {
+  background: #fff!important;
+}
+/* 搜索栏 */
+.enterpriseProject_searchbox {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 30rpx 40rpx;
+	height: 80rpx;
+	border-radius: 20rpx;
+	background: #FFF;
+}
+.enterpriseProject_searchbox_labelwrap {
+	display: flex;
+	align-items: center;
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 28rpx;
+	font-style: normal;
+	font-weight: 700;
+}
+.enterpriseProject_searchbox_timewrap {
+	position: relative;
+	display: flex;
+	align-items: center;
+	padding-right: 40rpx;
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 24rpx;
+	font-style: normal;
+	font-weight: 400;
+}
+.enterpriseProject_timewraper_time_desc {
+	padding: 0 20rpx;
+}
+.enterpriseProject_searchbox_timeicon {
+  content: '';
+  width: 12rpx;
+  height: 12rpx;
+	position: absolute;
+	top: 50%;
+  right: 20rpx;
+  border-left: 3rpx solid #000;
+  border-bottom: 3rpx solid #000;
+  -webkit-transform: translate(0, -50%) rotate(225deg);
+  transform: translate(0, -50%) rotate(225deg);
+}
+.supervise_popup_titles_split {
+	width: 8rpx;
+	height: 46rpx;
+	background: #0F7CEE;
+	border-radius: 0px 24rpx 24rpx 0px;
+	margin: 0 30rpx 0 -2rpx;
+}
+/* 内容 */
+.enterpriseProject_content {
+	padding: 0rpx 40rpx 30rpx;
+}
+.enterprise_item_wraper {
+	border-radius: 20rpx;
+	background: #FFF;
+}
+.enterprise_item_wraper:not(:first-child) {
+	margin-top: 30rpx;
+}
+.enterprise_wraper_infos {
+	padding: 30rpx;
+	display: flex;
+	align-items: center;
+}
+.enterprise_avatar {
+	width: 140rpx;
+	height: 140rpx;
+	border-radius: 3rpx;
+	opacity: 0.8;
+	background: #DDE7FF;
+	margin-right: 30rpx;
+}
+.enterprise_infos {
+	width: calc(100% - 170rpx);
+	height: 140rpx;
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 24rpx;
+	font-style: normal;
+	font-weight: 400;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.enterprise_infos_name {
+	color: #333;
+	font-size: 28rpx;
+	font-weight: 700;
+}
+.enterprise_infos_numbers {
+	color: #187FFF;
+	font-size: 28rpx;
+	font-weight: 700;
+	margin-right: 10rpx;
+}
+.enterprise_projectManager {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+.enterprise_projectManager_more {
+	color: #187FFF;
+}
+.enterprise_wraper_message {
+	border-top: 1px solid #E9E9E9;
+	padding: 30rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	text-align: center;
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 24rpx;
+	font-style: normal;
+	font-weight: 400;
+}
+.enterprise_project_numbers {
+	color: #187FFF;
+	font-size: 28rpx;
+	font-weight: 700;
+	margin-bottom: 10rpx;
+}
+/* 弹窗 */
+.popup_wraper {
+	width: 80vw;
+	padding: 20rpx 0;
+	border-radius: 20rpx;
+	background: #FFF;
+}
+.popup_wraper_topbox {
+	padding: 0rpx 30rpx 20rpx 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid #e9e9e9;
+}
+.popup_wraper_top {
+	display: flex;
+	align-items: center;
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 28rpx;
+	font-style: normal;
+	font-weight: 700;
+}
+.popup_wraper_close {
+	font-size: 28rpx;
+	font-weight: 400;
+	color: #E83636;
+}
+.popup_wraper_content {
+	height: 30vh;
+	overflow-y: scroll;
+}
+.popup_wraper_people {
+	padding: 10rpx 40rpx;
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 26rpx;
+	font-style: normal;
+	font-weight: 400;
+}
+/* 底部空元素 */
+.empty {
+  padding-bottom: calc(env(safe-area-inset-bottom) / 2);
+}
+.has_nodata {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(153, 153, 153, 0.60);
+  font-family: PingFang SC;
+  font-size: 28rpx;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 6rpx;
+  padding: 40rpx 0;
+}
+.nodata_img {
+  width: 300rpx;
+  height: 300rpx;
+}

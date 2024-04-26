@@ -1,0 +1,97 @@
+<!--pages/accuratePush/accuratePush.wxml-->
+<view class="accuratePush">
+  <view class="topbox">
+    <image class="imgs" src="../../../../assets/imgs/home_bj.png" mode=""/>
+    <view class="title" style="padding-top: {{menuTop}}px;">
+      <text class="backbtn" bindtap="backlast"></text>
+      <text>政策智能匹配报告</text>
+    </view>
+    <view class="match_tips">
+      <text class="match_text">已为您生成匹配报告！</text>
+      <image class="match_imgs" src="../../../../assets/imgs/match.png" mode=""/>
+    </view>
+    <view class="match_enterprise">
+      <view class="match_enterprise_icon">
+        <view class="enterprise_icon_bg">
+          <view class="enterprise_icon_wrap">{{entInfo.entName[0]}}</view>
+        </view>
+      </view>
+      <view class="match_enterprise_name">{{entInfo.entName}}</view>
+      <view class="match_enterprise_info">
+        <view class="enterprise_info_policy">
+          <view class="info_policy_nums">{{declarePolicyCount}}条</view>
+          <view>预计可申报政策</view>
+        </view>
+        <view class="enterprise_info_split"></view>
+        <view class="enterprise_info_money">
+          <view class="info_money_nums">{{declareMoney == '依据实际情况' ? '依据实际情况' : (declareMoney || 0) + '万元'}}</view>
+          <view>预计可申报金额</view>
+        </view>
+      </view>
+      <view class="match_enterprise_desc">
+        <text class="iconfont icon-wenxintishi"></text>
+        平台依据您所填的信息提供智能匹配报告，以最终申报结果为准
+      </view>
+    </view>
+    <view class="match_notice">
+      <view class="match_notice_title">
+        <view>服务</view>
+        <view class="match_notice_title_bluefont">公告</view>
+      </view>
+      <view class="match_notice_split"></view>
+      <view class="match_notice_tips">完善企业信息，获得更精准匹配报告</view>
+      <view class="match_notice_btns" bindtap="toCompleteInfo">去完善</view>
+    </view>
+  </view>
+  <view class="match_contentwrap">
+    <view class="match_contentwrap_tabs">
+      <view class="contentwrap_tabs_item {{tabIndex == 0 ? 'contentwrap_tabs_item_active' : ''}}" bindtap="changeTabs" data-tabIndex="0">推荐申报政策<view class="tabs_item_nums">{{declarePolicyCount > 100 ? '···' : declarePolicyCount}}</view></view>
+      <view class="contentwrap_tabs_item {{tabIndex == 1 ? 'contentwrap_tabs_item_active' : ''}}" bindtap="changeTabs" data-tabIndex="1">更多申报政策<view class="tabs_item_nums">{{allDeclarePolicyCount > 100 ? '···' : allDeclarePolicyCount}}</view></view>
+    </view>
+    <view class="match_contentwrap_selects">
+      <view wx:for="{{levelList}}" wx:key="index" class="match_contentwrap_selects_item {{selectIndex == index ? 'match_selects_active' : ''}}" bindtap="changeSelect" data-selectindex="{{index}}">{{item}}</view>
+    </view>
+    <view class="match_contentwrap_content">
+      <view class="match_content_card" wx:for="{{matchPolicyData}}" wx:key="index" bindtap="toMatchDetail" data-policyid="{{item.policyId}}">
+        <view class="match_card_title">
+          <text class="iconfont icon-xiaobiaoti match_triangle_iconfont"></text>
+          <!-- <view class="match_card_title_triangle"></view> -->
+          {{item.policyTitle}}
+        </view>
+        <view class="match_card_labels">
+          <!-- <view class="match_card_labels_item">{{item.policyLevel}}</view> -->
+          <view wx:for="{{item.labelList}}" wx:key="index" class="match_card_labels_item orange_item">{{item}}</view>
+          <view wx:for="{{item.policyLabelList}}" wx:for-item="eles" wx:for-key="eleKeys" wx:key="eleKeys" class="match_card_labels_item {{policyCss[eles.labelType]}}">{{eles.labelName}}</view>
+        </view>
+        <view class="match_card_eles">
+          <text class="iconfont icon-daojishi eles_iconfont"></text>
+          <text class="match_card_eles_label">发布日期：</text>
+          <text class="match_card_eles_black">{{item.publicityTime || '--'}}</text>
+        </view>
+        <view class="match_card_eles">
+          <text class="iconfont icon-fabubumen eles_iconfont"></text>
+          <text class="match_card_eles_label">发布部门：</text>
+          <text class="match_card_eles_black">{{item.publicityOrgCode || '--'}}</text>
+        </view>
+        <view class="match_card_eles">
+          <text class="iconfont icon-fuchizijin eles_iconfont"></text>
+          <text class="match_card_eles_label">扶持资金：</text>
+          <text class="match_card_eles_black">{{item.declareMoney == '依据实际情况' ? '依据实际情况' : (item.declareMoney || 0) + '万元'}}</text>
+        </view>
+        <view class="match_card_eles">
+          <text class="iconfont icon-shenbaoriqi eles_iconfont"></text>
+          <text class="match_card_eles_label">申报日期：</text>
+          <text wx:if="{{item.declareStartDate != null && item.declareEndDate == null}}" class="match_card_eles_black">长期有效</text>
+          <text wx:else class="match_card_eles_black">{{item.declareStartDate || '--'}} 至 {{item.declareEndDate || '--'}}</text>
+        </view>
+      </view>
+      <view wx:if="{{ matchPolicyData.length == 0 }}" class="has_nodata">
+        <image class="nodata_img" src="/assets/imgs/nodata.png" mode=""/>
+        <view>暂无数据</view>
+      </view>
+    </view>
+  </view>
+  <t-divider wx:if="{{ matchPolicyData.length > 0 }}" content="{{nomore ? '已经到底啦' : '上拉加载更多' }}" />
+  <view class="empty"></view>
+  <tabbar></tabbar>
+</view>

@@ -1,0 +1,22 @@
+<!--pages/subpages/pages/settingTags/settingTags.wxml-->
+<view class="settingTags" style="margin-top: {{ menuHeight + menuTop + 10 }}px; height: calc(100vh - {{ menuHeight + menuTop + 10 }}px);">
+  <public-title titleClass="store_title_class" showback="true" title="设置订阅标签"></public-title>
+  <view class="settingTags_content">
+    <view class="settingTags_content_tabs">
+      <view wx:for="{{ labelTypeList }}" wx:key="index" class="'settingTags_content_tabs_item' {{ activetab == index ? 'activeitem' : '' }}" bindtap="handleChangeTab" data-tabindex="{{ index }}">
+        <view class="tabs_item_split"></view>
+        <view>{{ item.labelName }}</view>
+      </view>
+    </view>
+    <view class="settingTags_content_tags">
+      <view class="settingTags_content_tagswrap">
+        <view class="tagswrap_card" wx:for="{{ tagsOption }}" wx:key="index">
+          <t-check-tag class="margin-16" size="large" variant="dark" content="{{ item.labelName }}" bind:change="handleTagCheck" data-itemindex="{{ index }}" data-labelid="{{ item.labelId }}" checked="{{ item.subscribed }}" />
+        </view>
+      </view>
+      <view class="settingTags_savebtn">
+        <button class="settingTags_btns" bindtap="toSaveTags">保存</button>
+      </view>
+    </view>
+  </view>
+</view>

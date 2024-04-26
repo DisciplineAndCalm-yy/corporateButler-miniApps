@@ -1,0 +1,35 @@
+/* pages/subpages/pages/noApply/noApply.wxss */
+.noApplyList {
+  padding: 20rpx 40rpx 40rpx;
+  background-color: #f5f6fa;
+}
+.noApplyList_title_class {
+  background-color: #fff;
+}
+.noApplyList_wraper {
+  color: #4893f3;
+}
+.noApplyList_carditem {
+  margin: 30rpx 0;
+  padding: 30rpx 40rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+}
+.has_nodata {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(153, 153, 153, 0.60);
+  font-family: PingFang SC;
+  font-size: 28rpx;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 6rpx;
+  padding: 40rpx 0;
+}
+.nodata_img {
+  width: 300rpx;
+  height: 300rpx;
+}

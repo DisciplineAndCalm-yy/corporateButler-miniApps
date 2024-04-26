@@ -1,0 +1,84 @@
+<!--pages/subPagesForLeader/pages/superviseRecord/superviseRecord.wxml-->
+<view class="superviseRecord" style="margin-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px);">
+  <public-title titleClass="superviseRecord_title_class" title="督办记录" showback="true"></public-title>
+	<view class="superviseRecord_searchbox">
+		<view class="superviseRecord_searchbox_labelwrap">
+			<view class="supervise_popup_titles_split"></view>督办日期
+		</view>
+		<view class="superviseRecord_searchbox_timewrap">
+			<picker mode="date" value="{{ startDate }}" end="{{ toDay }}" bindchange="bindStartDateChange">{{ startDate }}
+			</picker>
+			<view class="superviseRecord_timewraper_time_desc">至</view>
+			<picker mode="date" value="{{ endDate }}" end="{{ toDay }}" bindchange="bindEndDateChange">{{ endDate }}
+			</picker>
+			<view class="superviseRecord_searchbox_timeicon"></view>
+		</view>
+	</view>
+	<view class="superviseRecord_content">
+		<view wx:for="{{ recordList }}" wx:key="index" class="superviseRecord_itemwrap">
+			<view class="superviseRecord_item_top">
+				<view class="project_supervise_label">
+					<view class="project_supervise_labelwrap">
+						<view class="supervise_popup_titles_split"></view>{{ item.proName }}
+					</view>
+					<text class="project_supervise_delete" bindtap="toDeleteSupervise" data-id="{{ item.id }}">删除</text></view>
+				<view class="project_supervise_tags">
+					<view wx:for="{{ item.projectTag }}" wx:for-item="tagsitem" wx:for-index="tagsidx" wx:key="tagsidx" class="project_supervise_tagitem">{{ tagsitem }}</view>
+				</view>
+			</view>
+			<view class="superviseRecord_item_infos_splitline"></view>
+			<view class="superviseRecord_item_infos">
+				<view><text class="superviseRecord_infos_name">被督办人：</text>{{ item.projectLeaderName }}</view>
+				<view><text class="superviseRecord_infos_name">督办日期：</text>{{ item.time }}</view>
+			</view>
+			<view class="superviseRecord_infos_label">督办内容：</view>
+			<view class="superviseRecord_infos_content">{{ item.content }}</view>
+			<view class="superviseRecord_item_bottom">
+				<view bindtap="openSupervisePopup" data-id="{{ item.id }}">编辑</view>
+				<view class="superviseRecord_item_splitline"></view>
+				<view bindtap="handleToDetail" data-id="{{ item.projectId }}">查看进展</view>
+			</view>
+		</view>
+	</view>
+	<t-divider wx:if="{{ recordList.length > 0 }}" content="{{nomore ? '已经到底啦' : '上拉加载更多' }}" />
+	<view wx:else class="has_nodata">
+		<image class="nodata_img" src="/assets/imgs/nodata.png" mode=""/>
+		<view>暂无数据</view>
+	</view>
+	<view class="empty"></view>
+  <!-- 督办弹窗 -->
+  <t-popup visible="{{ superviseVisible }}" bind:visible-change="onSuperviseVisibleChange" placement="bottom">
+    <view class="supervise_popup_wraper">
+      <view class="supervise_popup_titles">
+        <view class="supervise_popup_titleswraper">
+          <view class="supervise_popup_titles_split"></view>提示
+        </view>
+        <view class="supervise_popup_close" bindtap="closeSupervisePopup">关闭</view>
+      </view>
+      <view class="supervise_popup_splitline"></view>
+      <view class="supervise_popup_content">
+        <view class="supervise_popup_label">督办项目</view>
+        <view class="supervise_popup_infos">{{ superviseInfo.projectName }}</view>
+        <view class="supervise_popup_label">督办项目负责人</view>
+        <view class="supervise_popup_infos">{{ superviseInfo.projectLeaderName }}({{ superviseInfo.projectLeaderDepart }})</view>
+        <view class="supervise_popup_label">联系电话</view>
+        <view class="supervise_popup_infos">
+          {{ superviseInfo.projectLeaderTel }}
+          <view class="supervise_popup_callphone" bindtap="toCallPhone" data-phonenum="{{ superviseInfo.projectLeaderTel }}"><text class="iconfont icon-a-callphone supervise_popup_callphoneicon"></text>拨打</view>
+        </view>
+        <view class="supervise_popup_label">督办项目分包领导</view>
+        <view class="supervise_popup_infos">{{ superviseInfo.subpackageLeaderName }}({{ superviseInfo.subpackageDepart }})</view>
+        <view class="supervise_popup_label">联系电话</view>
+        <view class="supervise_popup_infos">
+          {{ superviseInfo.subpackageLeaderTel }}
+          <view class="supervise_popup_callphone" bindtap="toCallPhone" data-phonenum="{{ superviseInfo.subpackageLeaderTel }}"><text class="iconfont icon-a-callphone supervise_popup_callphoneicon"></text>拨打</view>
+        </view>
+        <view class="supervise_popup_label">督办内容</view>
+        <form bindsubmit="toPushSupervise">
+          <textarea class="supervise_popup_textarea" name="textarea" value="{{ superviseInfo.content }}" type="text" placeholder="请输入" maxlength="-1" cursor-spacing="10" adjust-position adjust-keyboard-to="bottom" />
+          <button class="supervise_popup_btn" form-type="submit">立即发送</button>
+        </form>
+      </view>
+    </view>
+  </t-popup>
+</view>

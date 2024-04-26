@@ -1,0 +1,97 @@
+/* pages/subPagesForEcharts/pages/projectInterviewRecord/projectInterviewRecord.wxss */
+.projectInterviewRecord {
+  background-color: #f3f5fa;
+  margin-bottom: calc(120rpx + env(safe-area-inset-bottom)/2);
+}
+.projectInterviewRecord_title_class {
+  background-color: #fff;
+}
+.contentwrap {
+  padding: 40rpx;
+  height: 100%;
+}
+.record_card {
+  display: flex;
+  background-color: #fff;
+  border-radius: 20rpx;
+}
+.record_card:not(:first-child) {
+  margin-top: 20rpx;
+}
+.content {
+  padding: 30rpx;
+  width: calc(100vw - 140rpx);
+}
+.actives {
+  width: calc(100vw - 230rpx);
+}
+.record_title {
+  font-weight: 600;
+  font-size: 28rpx;
+  letter-spacing: -0.3px;
+  color: #333;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.record_time {
+  font-weight: 400;
+  font-size: 28rpx;
+  letter-spacing: -0.3px;
+  color: #999;
+  position: relative;
+}
+.record_time::after {
+  content: '';
+  width: 16rpx;
+  height: 16rpx;
+  position: absolute;
+  top: 10rpx;
+  right: 0rpx;
+  border-left: 4rpx solid #DBDBDB;
+  border-bottom: 4rpx solid #DBDBDB;
+  -webkit-transform: translate(0, 0) rotate(225deg);
+  transform: translate(0, 0) rotate(225deg);
+}
+.delete_btns {
+  width: 120rpx;
+  background-color: #f3f5fa;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.delete_btn_wrap {
+  width: 70rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  text-align: center;
+  background-color: #fff;
+  border-radius: 50%;
+}
+.delete_icons {
+  color: #FA3E3E;
+  font-size: 40rpx;
+}
+/* 底部空元素 */
+.empty {
+  padding-bottom: calc(150rpx + env(safe-area-inset-bottom) / 2);
+}
+.has_nodata {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(153, 153, 153, 0.60);
+  font-family: PingFang SC;
+  font-size: 28rpx;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 6rpx;
+  padding: 40rpx 0;
+}
+.nodata_img {
+  width: 300rpx;
+  height: 300rpx;
+}

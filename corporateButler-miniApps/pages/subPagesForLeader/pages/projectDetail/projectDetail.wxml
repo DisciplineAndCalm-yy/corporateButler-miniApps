@@ -1,0 +1,352 @@
+<!--pages/subPagesForEcharts/pages/projectTrack/projectTrack.wxml-->
+<view class="projectTrack" style="margin-top: {{ menuHeight + menuTop + 10 }}px; height: calc(100vh - {{ menuHeight + menuTop + 10 }}px);">
+  <public-title titleClass="projectTrack_title_class" title="项目追踪" showback="true"></public-title>
+  <tabbars wx:if="{{ !isPoint }}"></tabbars>
+  <view class="contentwrap">
+    <view class="project_info">
+      <view class="project_info_title">{{ projectInfo.projectInfo.proName }}</view>
+      <view class="project_info_tags">
+        <view wx:if="{{ projectInfo.ssKeyFlagStr != null }}" class="info_tag">{{ projectInfo.ssKeyFlagStr }}</view>
+        <view wx:if="{{ projectInfo.projectInfo.sgypFlag == '1' }}" class="info_tag">三个一批</view>
+      </view>
+      <view class="project_info_content">项目编码：<text class="project_info_content_font">{{ projectInfo.projectInfo.proCode }}</text></view>
+      <view class="project_info_content">项目分包领导：<text class="project_info_content_font">{{ projectInfo.subpackageLeaderName }}</text></view>
+      <view class="project_info_content">项目负责人：<text class="project_info_content_font">{{ projectInfo.projectLeaderName }}</text></view>
+      <!-- <view class="project_info_toproject">
+        <view class="project_info_toproject_btn" bindtap="toProjectTrackOneKey" data-id="{{ projectInfo.projectInfo.id }}">一键直达</view>
+      </view> -->
+    </view>
+    <view class="track_tabs">
+      <view class="{{ tabIndex == 0 ? 'activetab' : '' }}" bindtap="changeTabs" data-index="0">完成投资情况</view>
+      <view class="right_tabs, {{ tabIndex == 1 ? 'activetab' : '' }}" bindtap="changeTabs" data-index="1">流程跟进</view>
+      <view class="right_tabs, {{ tabIndex == 2 ? 'activetab' : '' }}" bindtap="changeTabs" data-index="2">项目工期</view>
+    </view>
+    <view class="track_infos" wx:if="{{ tabIndex == 0 }}">
+      <view class="info_wraper">
+        <view class="info_wraper_title">年度投资情况</view>
+        <view class="info_wraper_item">
+          <text class="info_wraper_item_subtitle">截止上年底完成投资：</text>
+          <text class="info_wraper_font">{{ yearPlanInfo.lastYearInvert }} 万元</text>
+        </view>
+        <view class="info_wraper_item">
+          <text class="info_wraper_item_subtitle">形象进度：</text>
+          <text class="info_wraper_font">{{ yearPlanInfo.lastYearImageProgress }}</text>
+        </view>
+        <view class="info_wraper_splitline"></view>
+        <view class="info_wraper_item">
+          <text class="info_wraper_item_subtitle">当年计划投资：</text>
+          <text class="info_wraper_font">{{ yearPlanInfo.currentYearInvert }} 万元</text>
+        </view>
+        <view class="info_wraper_item">
+          <text class="info_wraper_item_subtitle">形象进度：</text>
+          <text class="info_wraper_font">{{ yearPlanInfo.currentYearImageProgress }}</text>
+        </view>
+        <!-- <view class="info_wraper_item">
+          <text>当前进展为：</text>
+          <text class="info_wraper_font">施工阶段</text>
+        </view> -->
+      </view>
+      <view class="complete_wraper">
+        <view class="quarter_wraper">
+          <view class="quarter_title">
+            <text class="quarter_title_label">推进计划情况</text>
+            <view class="first_quarter" bindtap="changeExpend" data-id="1">第一季度<text class="quarter_icons, {{ Q1Expend ? 'expend_icon' : '' }}"></text></view>
+          </view>
+          <view class="complete_quarter" wx:if="{{ Q1Expend }}">
+            <view class="complete_month_cards">
+              <view class="month_cards_title"><view class="month_cards_icon"></view>1月</view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">当前投资（万元）：</view>
+                <input class="month_cards_input {{ nowMonth != 1 ? '' : 'month_cards_input_active' }}" type="digit" placeholder="{{ nowMonth != 1 ? '' : '0' }}" bindblur="nowInvest" data-id="{{ JanId }}" value="{{ JanNowInvest }}" disabled="{{ nowMonth != 1 }}"/>
+              </view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">累计投资（万元）：</view>
+                <input class="month_cards_input" type="text" bindblur="accInvest" data-id="{{ JanId }}" value="{{ JanAccInvest }}" disabled="true"/>
+              </view>
+              <view class="month_cards_item">当月形象进度：
+                <!-- <input class="month_cards_input" type="text" placeholder="{{ nowMonth != 1 ? '' : '' }}" bindblur="progressBlur" data-id="{{ JanId }}" value="{{ JanProgress }}" disabled="{{ nowMonth != 1 }}"/> -->
+              </view>
+              <textarea class="month_cards_textarea {{ nowMonth != 1 ? 'month_cards_textarea_bg' : ''}}" type="text" maxlength="-1" placeholder="{{ nowMonth != 1 ? '' : '' }}" bindblur="progressBlur" data-id="{{ JanId }}" value="{{ JanProgress }}" disabled="{{ nowMonth != 1 }}"/>
+            </view>
+            <view class="complete_month_cards">
+              <view class="month_cards_title"><view class="month_cards_icon"></view>2月</view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">当前投资（万元）：</view>
+                <input class="month_cards_input {{ nowMonth != 2 ? '' : 'month_cards_input_active' }}" type="digit" placeholder="{{ nowMonth != 2 ? '' : '0' }}" bindblur="nowInvest" data-id="{{ FebId }}" value="{{ FebNowInvest }}" disabled="{{ nowMonth != 2 }}"/>
+              </view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">累计投资（万元）：</view>
+                <input class="month_cards_input" type="text" bindblur="accInvest" data-id="{{ FebId }}" value="{{ FebAccInvest }}" disabled="true"/>
+              </view>
+              <view class="month_cards_item">当月形象进度：
+                <!-- <input class="month_cards_input" type="text" placeholder="{{ nowMonth != 2 ? '' : '' }}" bindblur="progressBlur" data-id="{{ FebId }}" value="{{ FebProgress }}" disabled="{{ nowMonth != 2 }}"/> -->
+              </view>
+              <textarea class="month_cards_textarea {{ nowMonth != 2 ? 'month_cards_textarea_bg' : ''}}" type="text" maxlength="-1" placeholder="{{ nowMonth != 2 ? '' : '' }}" bindblur="progressBlur" data-id="{{ FebId }}" value="{{ FebProgress }}" disabled="{{ nowMonth != 2 }}"/>
+            </view>
+            <view class="complete_month_cards">
+              <view class="month_cards_title"><view class="month_cards_icon"></view>3月</view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">当前投资（万元）：</view>
+                <input class="month_cards_input {{ nowMonth != 3 ? '' : 'month_cards_input_active' }}" type="digit" placeholder="{{ nowMonth != 3 ? '' : '0' }}" bindblur="nowInvest" data-id="{{ MarId }}" value="{{ MarNowInvest }}" disabled="{{ nowMonth != 3 }}"/>
+              </view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">累计投资（万元）：</view>
+                <input class="month_cards_input" type="text" bindblur="accInvest" data-id="{{ MarId }}" value="{{ MarAccInvest }}" disabled="true"/>
+              </view>
+              <view class="month_cards_item">当月形象进度：
+                <!-- <input class="month_cards_input" type="text" placeholder="{{ nowMonth != 3 ? '' : '' }}" bindblur="progressBlur" data-id="{{ MarId }}" value="{{ MarProgress }}" disabled="{{ nowMonth != 3 }}"/> -->
+              </view>
+              <textarea class="month_cards_textarea {{ nowMonth != 3 ? 'month_cards_textarea_bg' : ''}}" type="text" maxlength="-1" placeholder="{{ nowMonth != 3 ? '' : '' }}" bindblur="progressBlur" data-id="{{ MarId }}" value="{{ MarProgress }}" disabled="{{ nowMonth != 3 }}"/>
+            </view>
+          </view>
+        </view>
+        <view class="quarter_wraper">
+          <view class="quarter_title">
+            <text class="quarter_title_label">推进计划情况</text>
+            <view class="first_quarter" bindtap="changeExpend" data-id="2">第二季度<text class="quarter_icons, {{ Q2Expend ? 'expend_icon' : '' }}"></text></view>
+          </view>
+          <view class="complete_quarter" wx:if="{{ Q2Expend }}">
+            <view class="complete_month_cards">
+              <view class="month_cards_title"><view class="month_cards_icon"></view>4月</view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">当前投资（万元）：</view>
+                <input class="month_cards_input {{ nowMonth != 4 ? '' : 'month_cards_input_active' }}" type="digit" placeholder="{{ nowMonth != 4 ? '' : '0' }}" bindblur="nowInvest" data-months="4" data-id="{{ AprId }}" value="{{ AprNowInvest }}" disabled="{{ nowMonth != 4 }}"/>
+              </view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">累计投资（万元）：</view>
+                <input class="month_cards_input" type="text" bindblur="accInvest" data-months="4" data-id="{{ AprId }}" value="{{ AprAccInvest }}" disabled="true"/>
+              </view>
+              <view class="month_cards_item">当月形象进度：
+                <!-- <input class="month_cards_input" type="text" placeholder="{{ nowMonth != 4 ? '' : '' }}" bindblur="progressBlur" data-months="4" data-id="{{ AprId }}" value="{{ AprProgress }}" disabled="{{ nowMonth != 4 }}"/> -->
+              </view>
+              <textarea class="month_cards_textarea {{ nowMonth != 4 ? 'month_cards_textarea_bg' : ''}}" type="text" maxlength="-1" placeholder="{{ nowMonth != 4 ? '' : '' }}" bindblur="progressBlur" data-months="4" data-id="{{ AprId }}" value="{{ AprProgress }}" disabled="{{ nowMonth != 4 }}"/>
+            </view>
+            <view class="complete_month_cards">
+              <view class="month_cards_title"><view class="month_cards_icon"></view>5月</view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">当前投资（万元）：</view>
+                <input class="month_cards_input {{ nowMonth != 5 ? '' : 'month_cards_input_active' }}" type="digit" placeholder="{{ nowMonth != 5 ? '' : '0' }}" bindblur="nowInvest" data-months="5" data-id="{{ MayId }}" value="{{ MayNowInvest }}" disabled="{{ nowMonth != 5 }}"/>
+              </view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">累计投资（万元）：</view>
+                <input class="month_cards_input" type="text" bindblur="accInvest" data-months="5" data-id="{{ MayId }}" value="{{ MayAccInvest }}" disabled="true"/>
+              </view>
+              <view class="month_cards_item">当月形象进度：
+                <!-- <input class="month_cards_input" type="text" placeholder="{{ nowMonth != 5 ? '' : '' }}" bindblur="progressBlur" data-months="5" data-id="{{ MayId }}" value="{{ MayProgress }}" disabled="{{ nowMonth != 5 }}"/> -->
+              </view>
+              <textarea class="month_cards_textarea {{ nowMonth != 5 ? 'month_cards_textarea_bg' : ''}}" type="text" maxlength="-1" placeholder="{{ nowMonth != 5 ? '' : '' }}" bindblur="progressBlur" data-months="5" data-id="{{ MayId }}" value="{{ MayProgress }}" disabled="{{ nowMonth != 5 }}"/>
+            </view>
+            <view class="complete_month_cards">
+              <view class="month_cards_title"><view class="month_cards_icon"></view>6月</view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">当前投资（万元）：</view>
+                <input class="month_cards_input {{ nowMonth != 6 ? '' : 'month_cards_input_active' }}" type="digit" placeholder="{{ nowMonth != 6 ? '' : '0' }}" bindblur="nowInvest" data-id="{{ JunId }}" value="{{ JunNowInvest }}" disabled="{{ nowMonth != 6 }}"/>
+              </view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">累计投资（万元）：</view>
+                <input class="month_cards_input" type="text" bindblur="accInvest" data-id="{{ JunId }}" value="{{ JunAccInvest }}" disabled="true"/>
+              </view>
+              <view class="month_cards_item">当月形象进度：
+                <!-- <input class="month_cards_input" type="text" placeholder="{{ nowMonth != 6 ? '' : '' }}" bindblur="progressBlur" data-id="{{ JunId }}" value="{{ JunProgress }}" disabled="{{ nowMonth != 6 }}"/> -->
+              </view>
+              <textarea class="month_cards_textarea {{ nowMonth != 6 ? 'month_cards_textarea_bg' : ''}}" type="text" maxlength="-1" placeholder="{{ nowMonth != 6 ? '' : '' }}" bindblur="progressBlur" data-id="{{ JunId }}" value="{{ JunProgress }}" disabled="{{ nowMonth != 6 }}"/>
+            </view>
+          </view>
+        </view>
+        <view class="quarter_wraper">
+          <view class="quarter_title">
+            <text class="quarter_title_label">推进计划情况</text>
+            <view class="first_quarter" bindtap="changeExpend" data-id="3">第三季度<text class="quarter_icons, {{ Q3Expend ? 'expend_icon' : '' }}"></text></view>
+          </view>
+          <view class="complete_quarter" wx:if="{{ Q3Expend }}">
+            <view class="complete_month_cards">
+              <view class="month_cards_title"><view class="month_cards_icon"></view>7月</view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">当前投资（万元）：</view>
+                <input class="month_cards_input {{ nowMonth != 7 ? '' : 'month_cards_input_active' }}" type="digit" placeholder="{{ nowMonth != 7 ? '' : '0' }}" bindblur="nowInvest" data-months="7" data-id="{{ JulId }}" value="{{ JulNowInvest }}" disabled="{{ nowMonth != 7 }}"/>
+              </view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">累计投资（万元）：</view>
+                <input class="month_cards_input" type="text" bindblur="accInvest" data-months="7" data-id="{{ JulId }}" value="{{ JulAccInvest }}" disabled="true"/>
+              </view>
+              <view class="month_cards_item">当月形象进度：
+                <!-- <input class="month_cards_input" type="text" placeholder="{{ nowMonth != 7 ? '' : '' }}" bindblur="progressBlur" data-months="7" data-id="{{ JulId }}" value="{{ JulProgress }}" disabled="{{ nowMonth != 7 }}"/> -->
+              </view>
+              <textarea class="month_cards_textarea {{ nowMonth != 7 ? 'month_cards_textarea_bg' : ''}}" type="text" maxlength="-1" placeholder="{{ nowMonth != 7 ? '' : '' }}" bindblur="progressBlur" data-months="7" data-id="{{ JulId }}" value="{{ JulProgress }}" disabled="{{ nowMonth != 7 }}"/>
+            </view>
+            <view class="complete_month_cards">
+              <view class="month_cards_title"><view class="month_cards_icon"></view>8月</view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">当前投资（万元）：</view>
+                <input class="month_cards_input {{ nowMonth != 8 ? '' : 'month_cards_input_active' }}" type="digit" placeholder="{{ nowMonth != 8 ? '' : '0' }}" bindblur="nowInvest" data-months="8" data-id="{{ AugId }}" value="{{ AugNowInvest }}" disabled="{{ nowMonth != 8 }}"/>
+              </view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">累计投资（万元）：</view>
+                <input class="month_cards_input" type="text" bindblur="accInvest" data-months="8" data-id="{{ AugId }}" value="{{ AugAccInvest }}" disabled="true"/>
+              </view>
+              <view class="month_cards_item">当月形象进度：
+                <!-- <input class="month_cards_input" type="text" placeholder="{{ nowMonth != 8 ? '' : '' }}" bindblur="progressBlur" data-months="8" data-id="{{ AugId }}" value="{{ AugProgress }}" disabled="{{ nowMonth != 8 }}"/> -->
+              </view>
+              <textarea class="month_cards_textarea {{ nowMonth != 8 ? 'month_cards_textarea_bg' : ''}}" type="text" maxlength="-1" placeholder="{{ nowMonth != 8 ? '' : '' }}" bindblur="progressBlur" data-months="8" data-id="{{ AugId }}" value="{{ AugProgress }}" disabled="{{ nowMonth != 8 }}"/>
+            </view>
+            <view class="complete_month_cards">
+              <view class="month_cards_title"><view class="month_cards_icon"></view>9月</view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">当前投资（万元）：</view>
+                <input class="month_cards_input {{ nowMonth != 9 ? '' : 'month_cards_input_active' }}" type="digit" placeholder="{{ nowMonth != 9 ? '' : '0' }}" bindblur="nowInvest" data-months="9" data-id="{{ SepId }}" value="{{ SepNowInvest }}" disabled="{{ nowMonth != 9 }}"/>
+              </view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">累计投资（万元）：</view>
+                <input class="month_cards_input" type="text" bindblur="accInvest" data-months="9" data-id="{{ SepId }}" value="{{ SepAccInvest }}" disabled="true"/>
+              </view>
+              <view class="month_cards_item">当月形象进度：
+                <!-- <input class="month_cards_input" type="text" placeholder="{{ nowMonth != 9 ? '' : '' }}" bindblur="progressBlur" data-months="9" data-id="{{ SepId }}" value="{{ SepProgress }}" disabled="{{ nowMonth != 9 }}"/> -->
+              </view>
+              <textarea class="month_cards_textarea {{ nowMonth != 9 ? 'month_cards_textarea_bg' : ''}}" type="text" maxlength="-1" placeholder="{{ nowMonth != 9 ? '' : '' }}" bindblur="progressBlur" data-months="9" data-id="{{ SepId }}" value="{{ SepProgress }}" disabled="{{ nowMonth != 9 }}"/>
+            </view>
+          </view>
+        </view>
+        <view class="quarter_wraper">
+          <view class="quarter_title">
+            <text class="quarter_title_label">推进计划情况</text>
+            <view class="first_quarter" bindtap="changeExpend" data-id="4">第四季度<text class="quarter_icons, {{ Q4Expend ? 'expend_icon' : '' }}"></text></view>
+          </view>
+          <view class="complete_quarter" wx:if="{{ Q4Expend }}">
+            <view class="complete_month_cards">
+              <view class="month_cards_title"><view class="month_cards_icon"></view>10月</view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">当前投资（万元）：</view>
+                <input class="month_cards_input {{ nowMonth != 10 ? '' : 'month_cards_input_active' }}" type="digit" placeholder="{{ nowMonth != 10 ? '' : '0' }}" bindblur="nowInvest" data-months="10" data-id="{{ OctId }}" value="{{ OctNowInvest }}" disabled="{{ nowMonth != 10 }}"/>
+              </view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">累计投资（万元）：</view>
+                <input class="month_cards_input" type="text" bindblur="accInvest" data-months="10" data-id="{{ OctId }}" value="{{ OctAccInvest }}" disabled="true"/>
+              </view>
+              <view class="month_cards_item">当月形象进度：
+                <!-- <input class="month_cards_input" type="text" placeholder="{{ nowMonth != 10 ? '' : '' }}" bindblur="progressBlur" data-months="10" data-id="{{ OctId }}" value="{{ OctProgress }}" disabled="{{ nowMonth != 10 }}"/> -->
+              </view>
+              <textarea class="month_cards_textarea {{ nowMonth != 10 ? 'month_cards_textarea_bg' : ''}}" type="text" maxlength="-1" placeholder="{{ nowMonth != 10 ? '' : '' }}" bindblur="progressBlur" data-months="10" data-id="{{ OctId }}" value="{{ OctProgress }}" disabled="{{ nowMonth != 10 }}"/>
+            </view>
+            <view class="complete_month_cards">
+              <view class="month_cards_title"><view class="month_cards_icon"></view>11月</view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">当前投资（万元）：</view>
+                <input class="month_cards_input {{ nowMonth != 11 ? '' : 'month_cards_input_active' }}" type="digit" placeholder="{{ nowMonth != 11 ? '' : '0' }}" bindblur="nowInvest" data-months="11" data-id="{{ NovId }}" value="{{ NovNowInvest }}" disabled="{{ nowMonth != 11 }}"/>
+              </view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">累计投资（万元）：</view>
+                <input class="month_cards_input" type="text" bindblur="accInvest" data-months="11" data-id="{{ NovId }}" value="{{ NovAccInvest }}" disabled="true"/>
+              </view>
+              <view class="month_cards_item">当月形象进度：
+                <!-- <input class="month_cards_input" type="text" placeholder="{{ nowMonth != 11 ? '' : '' }}" bindblur="progressBlur" data-months="11" data-id="{{ NovId }}" value="{{ NovProgress }}" disabled="{{ nowMonth != 11 }}"/> -->
+              </view>
+              <textarea class="month_cards_textarea {{ nowMonth != 11 ? 'month_cards_textarea_bg' : ''}}" type="text" maxlength="-1" placeholder="{{ nowMonth != 11 ? '' : '' }}" bindblur="progressBlur" data-months="11" data-id="{{ NovId }}" value="{{ NovProgress }}" disabled="{{ nowMonth != 11 }}"/>
+            </view>
+            <view class="complete_month_cards">
+              <view class="month_cards_title"><view class="month_cards_icon"></view>12月</view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">当前投资（万元）：</view>
+                <input class="month_cards_input {{ nowMonth != 12 ? '' : 'month_cards_input_active' }}" type="digit" placeholder="{{ nowMonth != 12 ? '' : '0' }}" bindblur="nowInvest" data-months="12" data-id="{{ DecId }}" value="{{ DecNowInvest }}" disabled="{{ nowMonth != 12 }}"/>
+              </view>
+              <view class="month_cards_item">
+                <view class="month_cards_item_label">累计投资（万元）：</view>
+                <input class="month_cards_input" type="text" bindblur="accInvest" data-months="12" data-id="{{ DecId }}" value="{{ DecAccInvest }}" disabled="true"/>
+              </view>
+              <view class="month_cards_item">当月形象进度：
+                <!-- <input class="month_cards_input" type="text" placeholder="{{ nowMonth != 12 ? '' : '' }}" bindblur="progressBlur" data-months="12" data-id="{{ DecId }}" value="{{ DecProgress }}" disabled="{{ nowMonth != 12 }}"/> -->
+              </view>
+              <textarea class="month_cards_textarea {{ nowMonth != 12 ? 'month_cards_textarea_bg' : ''}}" type="text" maxlength="-1" placeholder="{{ nowMonth != 12 ? '' : '' }}" bindblur="progressBlur" data-months="12" data-id="{{ DecId }}" value="{{ DecProgress }}" disabled="{{ nowMonth != 12 }}"/>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="track_procedures" wx:if="{{ tabIndex == 1 }}">
+      <view class="procedures_cards" wx:for="{{ proceduresList }}" wx:key="index">
+        <view class="procedures_cards_title" bindtap="changeProceduresExpend" data-index="{{ index }}">
+          <text class="procedures_names">{{ item.name }}</text>
+          <!-- <text wx:if="{{ item.isMust }}" class="procedures_addmore" bindtap="openPopup" data-index="{{ index }}" data-flowtaskid="{{ item.flowTaskId }}">添加其他手续</text>
+          <text wx:else class="procedures_delete" bindtap="toDeleteCard" data-index="{{ index }}">删除</text> -->
+          <text class="quarter_icons, {{ item.isExpend ? 'expend_icon' : '' }}"></text>
+        </view>
+        <view wx:if="{{ item.isExpend }}">
+          <view class="procedures_cards_date">
+            <text class="procedures_cards_label">审批时间：</text>
+            <picker class="procedures_cards_time_picker" mode="date" end="{{ today }}" bindchange="dateChange" value="{{ item.approvalTime }}" data-index="{{ index }}" disabled="{{ isPoint }}">
+              {{ item.approvalTime ? item.approvalTime : '' }}
+            </picker>
+          </view>
+          <view class="procedures_cards_nums">
+            <text class="procedures_cards_label">审批文号：</text>
+            <input class="procedures_cards_inputs" type="text" placeholder="" value="{{ item.approvalNum }}" bindblur="inputBlur" data-index="{{ index }}" disabled="{{ isPoint }}"/>
+          </view>
+          <view class="procedures_cards_desc">
+            <text class="procedures_cards_label">备注：</text>
+            <textarea class="procedures_cards_textarea {{ isPoint ? 'procedures_cards_textarea_bg' : '' }}" value="{{ item.remark }}" placeholder="" maxlength="-1" bindblur="textAreaBlur" data-index="{{ index }}" disabled="{{ isPoint }}"/>
+          </view>
+          <view class="procedures_cards_images">
+            <text class="procedures_cards_label">上传图片：</text>
+            <view class="procedures_cards_upload">
+              <view class="image_frame" wx:for="{{ item.fileList }}" wx:for-item="imgs" wx:for-index="idx" wx:key="idx">
+                <image class="image_frame_img" src="{{ imgs }}" data-pindex="{{index}}" data-index="{{idx}}" mode="aspectFill" bindtap="previewImg">
+                </image>
+                <image class="image_frame_icon" src="../../assets/deleteIcon.png" data-pindex="{{index}}" data-index="{{idx}}" catchtap="deleteImg" mode=""/>
+              </view>
+              <view class="upload_pic" bindtap="chooseImg" data-index="{{ index }}" wx:if="{{ !isPoint }}">
+                <text class="iconfont icon-a-uploadicon camera_icon"></text>
+                <view>选择图片</view>
+              </view>
+            </view>
+          </view>
+          <!-- <view class="procedures_cards_complate">
+            <text class="procedures_cards_label">完成</text>
+            <switch class="procedures_cards_switch, {{ isPoint ? 'disableSwitch' : '' }}" color="#CDE7FF" checked="{{ item.isComplete }}" bindchange="switchChange" data-index="{{ index }}" disabled="{{ isPoint }}"/>
+          </view> -->
+        </view>
+      </view>
+      <!-- <button wx:if="{{ !isPoint }}" class="add_more">添加其他手续</button> -->
+    </view>
+    <view class="track_times" wx:if="{{ tabIndex == 2 }}">
+      <view class="project_time_card" wx:for="{{ projectTimeList }}" wx:key="index">
+        <view class="project_time_card_title">
+          <view class="supervise_popup_titles_split"></view>任务节点：{{ item.projectNode }}
+        </view>
+        <view class="project_time_card_content">
+          <view>具体时间：{{ item.startTime }} 至 {{ item.endTime }}</view>
+          <view class="time_content_label">阶段内容：</view>
+          <view class="time_content_text">{{ item.content }}</view>
+        </view>
+      </view>
+    </view>
+    <button wx:if="{{ !isPoint }}" class="save_btn" bindtap="toSaveData" disabled="{{ canNotSave }}">保存</button>
+  </view>
+  <!-- 弹出层 -->
+  <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom">
+    <!-- <view class="popup_addmore">
+      <view class="popup_addmore_searchwrap">
+        <input class="popup_addmore_searchinput" type="text" placeholder="" bindblur="searchBlurs"/>
+        <button class="popup_addmore_searchbtn" bindtap="toSearch">搜索</button>
+      </view>
+      <view class="popup_addmore_checkradio">
+        <t-radio default-checked="{{ isImportant }}" icon="dot" label="仅查看重要手续" bind:change="onImportantChange" />
+      </view>
+      <view class="popup_addmore_radiolist">
+        <t-radio wx:for="{{ proceduresOptions }}" wx:key="index" value="{{ item.value }}" label="{{ item.label }}" default-checked="{{ item.value }}" bind:change="onRadioChange" data-index="{{ index }}"/>
+      </view>
+      <view class="popup_addmore_btnwrap">
+        <button class="popup_addmore_btn" bindtap="cancelPopup">返回</button>
+        <button class="popup_addmore_btn confirmbtn" bindtap="confirmPopup">确认</button>
+      </view>
+    </view> -->
+    <view class="popup_addmore">
+      <view class="popup_addmore_title">添加其他手续</view>
+      <view class="popup_addmore_radiolist">
+        <t-radio wx:for="{{ proceduresOptions }}" wx:key="index" value="{{ item.flowTaskId }}" label="{{ item.name }}" checked="{{ item.checked }}" bind:change="onRadioChange" data-index="{{ index }}"/>
+      </view>
+      <view class="popup_addmore_btnwrap">
+        <button class="popup_addmore_btn" bindtap="cancelPopup">返回</button>
+        <button class="popup_addmore_btn confirmbtn" bindtap="confirmPopup">确认</button>
+      </view>
+    </view>
+  </t-popup>
+</view>

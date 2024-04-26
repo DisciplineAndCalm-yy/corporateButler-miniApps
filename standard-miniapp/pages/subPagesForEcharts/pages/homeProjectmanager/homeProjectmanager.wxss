@@ -1,0 +1,184 @@
+/* pages/subPagesForEcharts/pages/homeProjectmanager/homeProjectmanager.wxss */
+.homeProjectmanager {
+  min-height: 100vh;
+  background-color: #f3f5fa;
+  padding-bottom: calc(120rpx + env(safe-area-inset-bottom)/2);
+}
+.homeProjectmanager_topwrap {
+  width: 100vw;
+  background: linear-gradient(180deg, #3F74F6 0%, #3F74F6 28.24%, rgba(63, 116, 246, 0) 75.8%);
+  text-align: center;
+}
+.homeProjectmanager_topwrap_title {
+  color: #fff;
+}
+.homeProjectmanager_topwrap_imgs {
+  margin-top: 50rpx;
+  width: 90vw;
+  height: 320rpx;
+}
+/* 内容 */
+.homeProjectmanager_contentwrap {
+  padding: 30rpx;
+}
+.content_cards:not(:first-child) {
+  margin-top: 30rpx;
+}
+.content_card_title {
+  position: relative;
+  height: 110rpx;
+}
+.content_card_img {
+  width: 100%;
+  height: 120rpx;
+}
+.content_card_title_font {
+  position: absolute;
+  top: 24rpx;
+  left: 30rpx;
+  font-weight: 600;
+  font-size: 30rpx;
+  color: #FFF;
+}
+.cards_wrap {
+  position: relative;
+  z-index: 3;
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 0rpx 30rpx 40rpx;
+}
+
+.projectnum_wrap {
+  display: flex;
+  align-items: center;
+  font-weight: 400;
+  font-size: 28rpx;
+  letter-spacing: -0.3px;
+  color: #FFF;
+}
+.projectnum_wrap_total {
+  width: 34%;
+  height: 320rpx;
+  background: linear-gradient(153.58deg, #779EFF 3.76%, #2F6BFD 99.54%);
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: flex-end;
+  padding: 0 3%;
+}
+.projectnum_total_iconwrap {
+  width: 110rpx;
+  height: 110rpx;
+  line-height: 110rpx;
+  text-align: center;
+  border-radius: 50%;
+  background-color: #fff;
+}
+.projectnum_icon {
+  font-size: 48rpx;
+  color: #2F6BFD;
+}
+.projectnum_total_numwrap {
+  width: 100%;
+  text-align: left;
+}
+.projectnum_total_num {
+  font-weight: 700;
+  font-size: 50rpx;
+}
+.projectnum_wrap_plan {
+  margin-left: 30rpx;
+  width: 60%;
+}
+.projectnum_plan {
+  padding-left: 5%;
+  width: 95%;
+  height: 150rpx;
+  background-color: #FFA336;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.projectnum_sum {
+  margin-top: 20rpx;
+  padding-left: 5%;
+  width: 95%;
+  height: 150rpx;
+  background: linear-gradient(100.15deg, #2ACE9F 1.93%, #42D5AA 105.35%);
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.projectnum_numfont {
+  font-weight: 700;
+  font-size: 44rpx;
+  letter-spacing: -0.3px;
+  color: #FFF;
+  margin-right: 14rpx;
+}
+
+.money_changewrap {
+  position: absolute;
+  max-width: 200rpx;
+  top: 20rpx;
+  right: 20rpx;
+  color: #3F74F6;
+  font-weight: 400;
+  font-size: 24rpx;
+  background: #E8F2FF;
+  border-radius: 60rpx;
+  padding: 10rpx 20rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.change_icon {
+  font-size: 24rpx;
+  margin-right: 6rpx;
+}
+.projectmoney_chartswrap {
+  height: 600rpx;
+}
+.project_money_desc {
+  font-weight: 400;
+  font-size: 24rpx;
+  color: #999;
+  text-align: center;
+}
+.money_icon {
+  font-size: 28rpx;
+  margin-right: 6rpx;
+}
+
+.project_flow {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.project_flow_item {
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #666;
+  text-align: center;
+}
+.project_flow_item_desc {
+  margin: 20rpx 0;
+  color: #999;
+}
+.project_flow_item_numfont {
+  font-weight: 700;
+  font-size: 46rpx;
+}
+.project_flow_item_font {
+  font-weight: 700;
+  font-size: 46rpx;
+  color: #3F74F6;
+}
+.project_flow_splitline {
+  width: 2rpx;
+  height: 80rpx;
+  background-color: #f2f2f2;
+}

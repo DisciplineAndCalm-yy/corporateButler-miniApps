@@ -1,0 +1,118 @@
+/* pages/subPagesForEcharts/pages/pointProject/pointProject.wxss */
+.pointProject {
+  background: #f5f6fa;
+  overflow: hidden;
+}
+.store_title_class {
+  background: #fff!important;
+}
+.searchBox {
+  padding: 0 40rpx;
+  background-color: #fff;
+}
+.searchBox .t-input {
+  padding: 20rpx;
+  border-radius: 20rpx;
+  color: #999;
+  background-color: #f5f6fa;
+}
+.searchBox .t-input--border {
+  position: static;
+}
+.searchBox .t-input .t-icon-search {
+  color: #999;
+}
+.selectBox {
+  display: flex;
+  background-color: #fff;
+}
+.selectBox_item, .drop_active {
+  flex: 1;
+}
+.selectBox_item .t-dropdown-menu__item {
+  border: none!important;
+  color: #666!important;
+}
+.drop_active .t-dropdown-menu__item {
+  border: none!important;
+  color: #0f7cee!important;
+}
+.searchSelection {
+  height: 100rpx;
+  background-color: #fff;
+  display: flex;
+}
+/* 内容 */
+.pointProject_content {
+  padding: 30rpx;
+}
+.projectitem_card {
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 30rpx;
+}
+.projectitem_card:not(:first-child) {
+  margin-top: 30rpx;
+}
+.projectitem_card_title {
+  margin-bottom: 20rpx;
+  font-weight: 600;
+  font-size: 28rpx;
+  letter-spacing: -0.3px;
+  color: #333333;
+}
+.projectitem_card_content {
+  margin: 14rpx 0;
+  font-weight: 400;
+  font-size: 28rpx;
+  letter-spacing: -0.3px;
+  color: #999999;
+}
+.projectitem_card_btnwrap {
+  border-top: 1px solid #e9e9e9;
+  margin-top: 20rpx;
+  padding-top: 30rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-size: 28rpx;
+  letter-spacing: -0.3px;
+  color: #3F74F6;
+}
+.todetail {
+  position: relative;
+}
+.todetail::after {
+  content: '';
+  width: 14rpx;
+  height: 14rpx;
+  position: absolute;
+  top: 14rpx;
+  right: -30rpx;
+  border-left: 4rpx solid #3F74F6;
+  border-bottom: 4rpx solid #3F74F6;
+  -webkit-transform: translate(0, 0) rotate(225deg);
+  transform: translate(0, 0) rotate(225deg);
+}
+/* 底部空元素 */
+.empty {
+  padding-bottom: calc(env(safe-area-inset-bottom) / 2);
+}
+.has_nodata {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(153, 153, 153, 0.60);
+  font-family: PingFang SC;
+  font-size: 28rpx;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 6rpx;
+  padding: 40rpx 0;
+}
+.nodata_img {
+  width: 300rpx;
+  height: 300rpx;
+}

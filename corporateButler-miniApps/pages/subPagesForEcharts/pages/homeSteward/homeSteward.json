@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "tabbars": "../../component/tabbar/index",
+    "ec-canvas": "../../component/ec-canvas/ec-canvas"
+  }
+}

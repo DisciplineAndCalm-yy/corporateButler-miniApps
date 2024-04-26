@@ -1,0 +1,62 @@
+<!--pages/subPagesForEcharts/pages/projectStatusRecord/projectStatusRecord.wxml-->
+<view class="projectStatusRecord" style="padding-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px);">
+  <public-title titleClass="projectStatusRecord_title_class" title="项目进度状态记录" showback="true"></public-title>
+	<view class="project_content">
+		<view class="project_infowrap">
+			<view class="project_titles"><text class="iconfont icon-xiaobiaoti project_subtitle"></text>{{ projectInfo.proName }}</view>
+			<view class="project_infos">
+				<view class="project_infos_item">
+					<text class="project_infositem_label">项目编码：</text>
+					<text class="project_infositem">{{ projectInfo.id }}</text>
+				</view>
+				<view class="project_infos_item">
+					<text class="project_infositem_label">项目分包领导：</text>
+					<text class="project_infositem">{{ projectInfo.subpackageLeaderName }}</text>
+				</view>
+				<view class="project_infos_item">
+					<text class="project_infositem_label">项目负责人：</text>
+					<text class="project_infositem">{{ projectInfo.projectLeaderName }}</text>
+				</view>
+				<view class="project_infos_item">
+					<text class="project_infositem_label">项目分类：</text>
+					<!-- <text wx:if="{{ projectInfo.ssKeyFlag != '' }}" class="project_info_tag">省、市重点项目</text>
+					<text wx:if="{{ projectInfo.sgypFlag == 1 }}" class="project_info_tag orange_tag">三个一批</text> -->
+					<text wx:for="{{ projectInfo.projectTag }}" wx:key="index" class="project_info_tag">{{ item }}</text>
+				</view>
+			</view>
+		</view>
+		<view wx:for="{{ list }}" wx:key="index" class="project_status_card">
+			<view class="project_status_titlewrap">
+				<view class="project_status_titles">{{ item.projectProgressStatus_dictText }}</view>
+			</view>
+			<view class="project_status_content">
+				<view class="project_status_item">
+					<view class="status_item_label">项目进度状态</view>
+					<view>{{ statusMap[item.projectProgressStatus] }}</view>
+				</view>
+				<view class="project_status_item">
+					<view class="status_item_label">当前状态日期</view>
+					<view>{{ item.statusTime }}</view>
+				</view>
+				<view class="project_status_item">
+					<view class="status_item_label">附件</view>
+					<view wx:if="{{ item.pathList }}" class="status_filewrap">
+						<video wx:if="{{ item.pathList.fileType == 'video'}}" class="status_imgs" src="{{ item.pathList.src }}"/>
+						<image wx:else class="status_imgs" src="{{ item.pathList.src }}" bindtap="previewImg" data-src="{{ item.pathList.src }}" mode=""/>
+					</view>
+					<view wx:else>暂无</view>
+				</view>
+				<view class="project_status_item">
+					<view class="status_item_label">系统保存日期</view>
+					<view>{{ item.createTime }}</view>
+				</view>
+			</view>
+		</view>
+		<t-divider wx:if="{{ list.length > 0 }}" content="{{nomore ? '已经到底啦' : '上拉加载更多' }}" />
+		<view wx:else class="has_nodata">
+			<image class="nodata_img" src="/assets/imgs/nodata.png" mode=""/>
+			<view>暂无数据</view>
+		</view>
+		<view class="empty"></view>
+	</view>
+</view>

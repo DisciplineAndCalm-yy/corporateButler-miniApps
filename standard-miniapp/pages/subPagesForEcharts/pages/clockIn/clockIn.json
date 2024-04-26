@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "public-title": "/publicTitle/publicTitle",
+    "t-popup": "tdesign-miniprogram/popup/popup"
+  }
+}

@@ -1,0 +1,159 @@
+/* pages/subPagesForEcharts/pages/clockRecord/clockRecord.wxss */
+.clockRecord {
+  position: relative;
+  z-index: 2;
+}
+.store_title_class {
+  background-color: #fff;
+}
+/* 顶部筛选栏 */
+.clockRecord_filterwrap {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 40rpx;
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 28rpx;
+	font-style: normal;
+	font-weight: 400;
+	letter-spacing: -0.3px;
+}
+.search_clock {
+	margin-left: 20rpx;
+	font-size: 30rpx;
+	color: #999;
+}
+/* 内容 */
+.clockRecord_contentwrap {
+  padding: 40rpx 40rpx 80rpx;
+  background-color: #f5f6fa;
+}
+.clockRecord_contentwrap_cards {
+  position: relative;
+  padding: 40rpx 0rpx 40rpx 40rpx;
+	background-color: #fff;
+	border-radius: 20rpx;
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 28rpx;
+	font-style: normal;
+	font-weight: 400;
+	letter-spacing: -0.3px;
+}
+.clockRecord_contentwrap_cards:not(:first-child) {
+	margin: 40rpx 0;
+}
+.card_title {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-right: 40rpx;
+}
+.label_color {
+	color: #666;
+}
+.card_split_line {
+	margin: 30rpx 0 30rpx 40rpx;
+	height: 1px;
+	background: #EEE;
+}
+.card_imgwrap {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-right: 40rpx;
+}
+.card_img {
+	width: 100rpx;
+	height: 100rpx;
+	border-radius: 15rpx;
+}
+.card_eles_desc {
+	margin-top: 10rpx;
+	padding-left: 10rpx;
+}
+/* 弹出层 */
+.clock_popup_wrap {
+	width: calc(100vw - 80rpx);
+	background-color: #fff;
+	padding: 40rpx;
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 28rpx;
+	font-style: normal;
+	font-weight: 400;
+	letter-spacing: -0.3px;
+}
+.clock_popup_iconwrap {
+	padding: 20rpx 0rpx;
+	text-align: right;
+}
+.clock_popup_icon {
+	font-size: 32rpx;
+	color: #666;
+}
+.clock_popup_label {
+	margin-bottom: 20rpx;
+}
+.clock_popup_lastdate {
+	margin-bottom: 40rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.clock_popup_lastdate_item {
+	padding: 14rpx 40rpx;
+	border-radius: 84rpx;
+	border: 1px solid #CBCBCB;
+	background: #FFF;
+}
+.active_item {
+	color: #187FFF;
+	border: 1px solid #187FFF;
+}
+.clock_popup_custom {
+	display: flex;
+	align-items: center;
+}
+.custom_item {
+	margin: 0 40rpx;
+	padding: 14rpx 30rpx;
+	border-radius: 10rpx;
+	background: #F6F6F6;
+}
+.clock_popup_btn {
+	margin: 100rpx auto 0;
+	width: 50vw;
+	padding: 20rpx 0;
+	text-align: center;
+	border-radius: 10rpx;
+	background: #187FFF;
+	color: #FFF;
+	font-family: PingFang SC;
+	font-size: 26rpx;
+	font-style: normal;
+	font-weight: 400;
+}
+/* 底部空元素 */
+.empty {
+  padding-bottom: calc(env(safe-area-inset-bottom) / 2);
+}
+.has_nodata {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(153, 153, 153, 0.60);
+  font-family: PingFang SC;
+  font-size: 28rpx;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 6rpx;
+  padding: 40rpx 0;
+}
+.nodata_img {
+  width: 300rpx;
+  height: 300rpx;
+}

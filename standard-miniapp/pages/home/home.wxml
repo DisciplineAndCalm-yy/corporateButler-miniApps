@@ -1,0 +1,91 @@
+<!--pages/home/home.wxml-->
+<view class="container">
+  <view class="topbox">
+    <image class="imgs" src="../../assets/imgs/home_bj.png" mode=""/>
+    <view class="title" style="padding-top: {{menuTop}}px;">政策通</view>
+    <view class="homebox" style="margin-top: {{menuHeight}}px;">
+      <view class="home_info">
+        <view class="home_left">
+          <view class="home_left_infos">
+            <view wx:if="{{ entInfo == null }}" class="home_avatar">政</view>
+            <view wx:else class="home_avatar">{{entInfo.entName[0]}}</view>
+            <view wx:if="{{ entInfo == null }}" class="home_companyname">尊敬的政策通用户</view>
+            <view wx:else class="home_companyname" bindtap="showMoreEntName">{{entInfo.entName}}</view>
+          </view>
+          <view wx:if="{{ entInfo == null }}" class="home_left_noent" bindtap="toAddEnt">暂未绑定企业，请绑定！</view>
+          <view wx:else>
+            <view class="home_left_taxnum">
+              <view class="home_left_taxicon_box"><text class="home_left_taxicon">征</text></view>
+              <text>{{entInfo.creditCode}}</text>
+            </view>
+          </view>
+        </view>
+        <view class="home_right">
+          <!-- <view class="home_messagebox" bindtap="toMessage">
+            <view class="home_message_num">2</view>
+            <text class="iconfont icon-tongzhixiaoxi icon-tixing message_iconfont"></text>
+          </view> -->
+          <image class="home_shield" src="../../assets/imgs/home_shield.png" mode=""/>
+        </view>
+      </view>
+      <view class="home_nav">
+        <view class="home_nav_item" bindtap="toPolicyStore">
+          <image class="home_item_icon" src="../../assets/imgs/home_icon_1.png" mode=""/>
+          <view>政策库</view>
+        </view>
+        <!-- <view class="home_nav_item">
+          <image class="home_item_icon" src="../../assets/imgs/home_icon_2.png" mode=""/>
+          <view>政策图解</view>
+        </view> -->
+        <view class="home_nav_item" bindtap="handleTroubleshoot">
+          <image class="home_item_icon" src="../../assets/imgs/home_icon_3.png" mode=""/>
+          <view>疑难解答</view>
+        </view>
+        <view class="home_nav_item" bindtap="handleQuestionFeedback">
+          <image class="home_item_icon" src="../../assets/imgs/home_icon_4.png" mode=""/>
+          <view>诉求反馈</view>
+        </view>
+        <view class="home_nav_item" bindtap="toNoApply">
+          <image class="home_item_icon" src="../../assets/imgs/home_icon_5.png" mode=""/>
+          <view>免申即享</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="content">
+    <view class="content_title">
+      <view class="content_title_split"></view>
+      <view>最新发布</view>
+    </view>
+    <view class="content_itembox">
+      <view class="content_itembox_item" wx:for="{{list}}" wx:key="index" bindtap="toMatchDetail" data-policyid="{{item.policyId}}">
+        <view class="content_item_title">{{item.policyTitle}}</view>
+        <view class="content_item_time">
+          <text class="iconfont icon-daojishi cards_iconfont"></text>
+          <text>{{item.publicityTime}}</text>
+        </view>
+        <view class="content_item_author">
+          <text class="iconfont icon-didian cards_iconfont"></text>
+          <text>{{item.publicityOrgCode}}</text>
+        </view>
+        <view class="content_item_split"></view>
+      </view>
+    </view>
+    <view wx:if="{{ list.length == 0 }}" class="has_nodata">
+      <image class="nodata_img" src="/assets/imgs/nodata.png" mode=""/>
+      <view>暂无数据</view>
+    </view>
+  </view>
+  <t-divider wx:if="{{ list.length > 0 }}" content="{{nomore ? '已经到底啦' : '上拉加载更多' }}" />
+  <view class="empty"></view>
+  <view wx:if="{{showOverlay}}" class="faker_overlay"></view>
+
+  <!-- 弹窗 -->
+  <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="center" close-on-overlay-click="{{false}}">
+    <view class="entname_wraper">
+      <view class="entname_label">企业主体名称：</view>
+      <view class="entname_text">{{entInfo.entName}}</view>
+    </view>
+    <button class="entname_btn" bindtap="closeShowmore">关闭</button>
+  </t-popup>
+</view>

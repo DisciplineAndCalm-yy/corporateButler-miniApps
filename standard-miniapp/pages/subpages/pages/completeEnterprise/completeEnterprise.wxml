@@ -1,0 +1,579 @@
+<!--pages/subpages/pages/completeEnterprise/completeEnterprise.wxml-->
+<view class="completeEnterprise" style="margin-top: {{ menuHeight + menuTop + 10 }}px;">
+  <public-title titleClass="completeEnterprise_title_class" title="{{!completeTitle ? '添加企业' : '完善企业信息'}}" showback="{{showback}}" isMatch="{{isMatch}}"></public-title>
+  <!-- 顶部导航进度条 -->
+  <view class="complete_top_tabs">
+    <view class="complete_top_tabs_item">
+      <view class="complete_top_tabs_item_step {{topTabIndex > 0 ? 'complete_tabs_step_finsh' : ''}}" bindtap="changeTopTab" data-index="1">1</view>
+      <view class="complete_top_tabs_item_line {{topTabIndex > 0 ? 'complete_tabs_line_finsh' : ''}}"></view>
+      <view class="complete_top_tabs_item_dashed">
+        <view class="complete_top_tabs_item_dashed_line {{topTabIndex > 0 ? 'complete_tabs_dashed_line_finsh' : ''}}"></view>
+        <view class="complete_top_tabs_item_dashed_line {{topTabIndex > 0 ? 'complete_tabs_dashed_line_finsh' : ''}}"></view>
+        <view class="complete_top_tabs_item_dashed_line {{topTabIndex > 0 ? 'complete_tabs_dashed_line_finsh' : ''}}"></view>
+      </view>
+    </view>
+    <view class="complete_top_tabs_item">
+      <view class="complete_top_tabs_item_step {{topTabIndex > 1 ? 'complete_tabs_step_finsh' : ''}}" bindtap="changeTopTab" data-index="2">2</view>
+      <view class="complete_top_tabs_item_line {{topTabIndex > 1 ? 'complete_tabs_line_finsh' : ''}}"></view>
+      <view class="complete_top_tabs_item_dashed">
+        <view class="complete_top_tabs_item_dashed_line {{topTabIndex > 1 ? 'complete_tabs_dashed_line_finsh' : ''}}"></view>
+        <view class="complete_top_tabs_item_dashed_line {{topTabIndex > 1 ? 'complete_tabs_dashed_line_finsh' : ''}}"></view>
+        <view class="complete_top_tabs_item_dashed_line {{topTabIndex > 1 ? 'complete_tabs_dashed_line_finsh' : ''}}"></view>
+      </view>
+    </view>
+    <view class="complete_top_tabs_item">
+      <view class="complete_top_tabs_item_step {{topTabIndex > 2 ? 'complete_tabs_step_finsh' : ''}}" bindtap="changeTopTab" data-index="3">3</view>
+      <view class="complete_top_tabs_item_line {{topTabIndex > 2 ? 'complete_tabs_line_finsh' : ''}}"></view>
+      <view class="complete_top_tabs_item_dashed">
+        <view class="complete_top_tabs_item_dashed_line {{topTabIndex > 2 ? 'complete_tabs_dashed_line_finsh' : ''}}"></view>
+        <view class="complete_top_tabs_item_dashed_line {{topTabIndex > 2 ? 'complete_tabs_dashed_line_finsh' : ''}}"></view>
+        <view class="complete_top_tabs_item_dashed_line {{topTabIndex > 2 ? 'complete_tabs_dashed_line_finsh' : ''}}"></view>
+      </view>
+    </view>
+    <view class="complete_top_tabs_item">
+      <view class="complete_top_tabs_item_step {{topTabIndex > 3 ? 'complete_tabs_step_finsh' : ''}}" bindtap="changeTopTab" data-index="4">4</view>
+      <view class="complete_top_tabs_item_line {{topTabIndex > 3 ? 'complete_tabs_line_finsh' : ''}}"></view>
+      <view class="complete_top_tabs_item_dashed">
+        <view class="complete_top_tabs_item_dashed_line {{topTabIndex > 3 ? 'complete_tabs_dashed_line_finsh' : ''}}"></view>
+        <view class="complete_top_tabs_item_dashed_line {{topTabIndex > 3 ? 'complete_tabs_dashed_line_finsh' : ''}}"></view>
+        <view class="complete_top_tabs_item_dashed_line {{topTabIndex > 3 ? 'complete_tabs_dashed_line_finsh' : ''}}"></view>
+      </view>
+    </view>
+    <view class="complete_top_tabs_item">
+      <view class="complete_top_tabs_item_step {{topTabIndex > 4 ? 'complete_tabs_step_finsh' : ''}}" bindtap="changeTopTab" data-index="5">5</view>
+    </view>
+  </view>
+  <!-- 企业基本信息 -->
+  <view wx:if="{{topTabIndex == 1}}" class="complete_enterprise">
+    <view class="complete_enterprise_title">
+      <view class="complete_enterprise_title_icons"></view>企业基本信息
+    </view>
+    <view class="complete_enterprise_info">
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label"><text class="red_point">*</text>企业统一社会信用代码</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="text" placeholder="请输入" value="{{entCode}}" bindblur='entCodeInput' disabled="{{ completeTitle }}"/>
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label"><text class="red_point">*</text>企业名称</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="text" placeholder="请输入" value="{{entName}}" bindblur='entNameInput' disabled="{{ completeTitle }}"/>
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">注册时间</text>
+        <view class="complete_enterprise_info_fill">
+          <picker class="complete_enterprise_info_item_picker" mode="date" value="{{registerDate}}" end="{{today}}" bindchange="bindRegisterDateChange">
+            <view class="picker">{{registerDate ? registerDate : '请选择 >'}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">注册地址</text>
+        <picker class="complete_enterprise_info_item_picker" mode="region" bindchange="bindRegionChange" value="{{region}}">
+          <view class="picker">{{region[0] != undefined ? region[0] + '，' + region[1] + '，' + region[2] : '省、市、区 >'}}</view>
+        </picker>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">详细地址</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="text" placeholder="请输入" value="{{entAdress}}" bindblur='entadressInput'/>
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">企业规模</text>
+        <view class="complete_enterprise_info_fill">
+          <picker class="complete_enterprise_info_item_picker" bindchange="bindEntSizePickerChange" value="{{entSize}}" range="{{entSizeOption}}">
+            <view class="picker">{{entSizeOption[entSize] ? entSizeOption[entSize] : '请选择 >'}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">企业类型</text>
+        <view class="complete_enterprise_info_fill">
+          <picker class="complete_enterprise_info_item_picker" bindchange="bindEntTypePickerChange" value="{{entType}}" range="{{entTypeOptions}}">
+            <view class="picker">{{entTypeOptions[entType] ? entTypeOptions[entType] : '请选择 >'}}</view>
+          </picker>
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">所属行业</text>
+        <view class="complete_enterprise_info_fill">
+          <picker class="complete_enterprise_info_item_picker" bindchange="bindIndustryPickerChange" value="{{industry}}" range="{{industryOptions}}">
+            <view class="picker">{{industryOptions[industry] ? industryOptions[industry] : '请选择 >'}}</view>
+          </picker>
+        </view>
+      </view>
+      <!-- <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">企业经纬度</text>
+        <view class="complete_enterprise_info_fill">
+          允许自动获取经纬度
+          <t-switch value="{{switchGisChecked}}" slot="note" size="small" bindchange="switchGisChange" />
+        </view>
+      </view> -->
+    </view>
+  </view>
+  <!-- 企业人事情况 -->
+  <view wx:if="{{topTabIndex == 2}}" class="complete_enterprise">
+    <view class="complete_enterprise_title">
+      <view class="complete_enterprise_title_icons"></view>人事情况
+    </view>
+    <view class="complete_enterprise_info">
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">企业总人数</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{entTotalPeople}}" bindblur='entTotalPeopleInput'/>人
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">大专以上人数</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{entJuniorCollegePeople}}" bindblur='entJuniorCollegePeopleInput'/>人
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">本科以上人数</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{entCollegePeople}}" bindblur='entCollegePeopleInput'/>人
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">硕士以上人数</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{entMasterPeople}}" bindblur='entMasterPeopleInput'/>人
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">博士人数</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{entDoctorPeople}}" bindblur='entDoctorPeopleInput'/>人
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">高级职称人数</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{entSeniorProfessionalPeople}}" bindblur='entSeniorProfessionalPeopleInput'/>人
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">中级职称人数</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{entIntermediatePeople}}" bindblur='entIntermediatePeopleInput'/>人
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">科研人员人数</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{entScientificPeople}}" bindblur='entScientificPeopleInput'/>人
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">研发人员人数</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{entDevelopPeople}}" bindblur='entDevelopPeopleInput'/>人
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">技术人员人数</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{entTTechnologyPeople}}" bindblur='entTTechnologyPeopleInput'/>人
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 企业经营情况 -->
+  <view wx:if="{{topTabIndex == 3}}" class="complete_enterprise">
+    <view class="complete_enterprise_title">
+      <view class="complete_enterprise_title_icons"></view>经营情况
+    </view>
+    <view class="complete_enterprise_info_crumbs">
+      <view class="complete_enterprise_info_crumbs_els {{crumbsIndex == 3 ? 'crumbs_active' : ''}}" bindtap="handleChangeCrumbs" data-index="3">{{pastThreeYears}}年</view>
+      <view class="complete_enterprise_info_crumbs_els {{crumbsIndex == 2 ? 'crumbs_active' : ''}}" bindtap="handleChangeCrumbs" data-index="2">{{pastTwoYears}}年</view>
+      <view class="complete_enterprise_info_crumbs_els {{crumbsIndex == 1 ? 'crumbs_active' : ''}}" bindtap="handleChangeCrumbs" data-index="1">{{lastYears}}年</view>
+    </view>
+    <view wx:if="{{crumbsIndex == 3}}" class="complete_enterprise_info">
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">营业收入</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="digit" placeholder="请输入" value="{{pastThreeOperatingRevenue}}" bindblur='pastThreeOperatingRevenueInput'/>万元
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">主营业务收入</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="digit" placeholder="请输入" value="{{pastThreeMainOperatingRevenue}}" bindblur='pastThreeMainOperatingRevenueInput'/>万元
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">上市情况</text>
+        <view class="complete_enterprise_info_fill">
+          <picker class="complete_enterprise_info_item_picker" bindchange="bindPastThreeListedPickerChange" value="{{pastThreeListed}}" range="{{listedOptions}}">
+            <view class="picker">{{listedOptions[pastThreeListed] ? listedOptions[pastThreeListed] : '请选择 >'}}</view>
+          </picker>
+        </view>
+      </view>
+      <view wx:if="{{pastThreeListed == 0}}" class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">企业融资金额</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="digit" placeholder="请输入" value="{{pastThreeEntFinancingMoney}}" bindblur='pastThreeEntFinancingMoneyInput'/>万元
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">研发投入</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="digit" placeholder="请输入" value="{{pastThreeRAndDMoney}}" bindblur='pastThreeRAndDMoneyInput'/>万元
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">利润率</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="digit" placeholder="请输入" value="{{pastThreeProfit}}" bindblur='pastThreeProfitInput'/>%
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{crumbsIndex == 2}}" class="complete_enterprise_info">
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">营业收入</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="digit" placeholder="请输入" value="{{pastTwoOperatingRevenue}}" bindblur='pastTwoOperatingRevenueInput'/>万元
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">主营业务收入</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="digit" placeholder="请输入" value="{{pastTwoMainOperatingRevenue}}" bindblur='pastTwoMainOperatingRevenueInput'/>万元
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">上市情况</text>
+        <view class="complete_enterprise_info_fill">
+          <picker class="complete_enterprise_info_item_picker" bindchange="bindPastTwoListedPickerChange" value="{{pastTwoListed}}" range="{{listedOptions}}">
+            <view class="picker">{{listedOptions[pastTwoListed] ? listedOptions[pastTwoListed] : '请选择 >'}}</view>
+          </picker>
+        </view>
+      </view>
+      <view wx:if="{{pastTwoListed == 0}}" class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">企业融资金额</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="digit" placeholder="请输入" value="{{pastTwoEntFinancingMoney}}" bindblur='pastTwoEntFinancingMoneyInput'/>万元
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">研发投入</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="digit" placeholder="请输入" value="{{pastTwoRAndDMoney}}" bindblur='pastTwoRAndDMoneyInput'/>万元
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">利润率</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="digit" placeholder="请输入" value="{{pastTwoProfit}}" bindblur='pastTwoProfitInput'/>%
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{crumbsIndex == 1}}" class="complete_enterprise_info">
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">营业收入</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="digit" placeholder="请输入" value="{{lastOperatingRevenue}}" bindblur='lastOperatingRevenueInput'/>万元
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">主营业务收入</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="digit" placeholder="请输入" value="{{lastMainOperatingRevenue}}" bindblur='lastMainOperatingRevenueInput'/>万元
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">上市情况</text>
+        <view class="complete_enterprise_info_fill">
+          <picker class="complete_enterprise_info_item_picker" bindchange="bindlastListedPickerChange" value="{{lastListed}}" range="{{listedOptions}}">
+            <view class="picker">{{listedOptions[lastListed] ? listedOptions[lastListed] : '请选择 >'}}</view>
+          </picker>
+        </view>
+      </view>
+      <view wx:if="{{lastListed == 0}}" class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">企业融资金额</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="digit" placeholder="请输入" value="{{lastEntFinancingMoney}}" bindblur='lastEntFinancingMoneyInput'/>万元
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">研发投入</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="digit" placeholder="请输入" value="{{lastRAndDMoney}}" bindblur='lastRAndDMoneyInput'/>万元
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">利润率</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="digit" placeholder="请输入" value="{{lastProfit}}" bindblur='lastProfitInput'/>%
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 企业知识产权 -->
+  <view wx:if="{{topTabIndex == 4}}" class="complete_enterprise">
+    <view class="complete_enterprise_title">
+      <view class="complete_enterprise_title_icons"></view>企业知识产权
+    </view>
+    <view class="complete_enterprise_info">
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">知识产权总数</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入知识产权总数" value="{{intellectualPropertyTotalNum}}" bindblur='intellectualPropertyTotalNumInput'/>个
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">一类知识产权数</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{intellectualPropertyOneNum}}" bindblur='intellectualPropertyOneNumInput'/>个
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">二类知识产权数</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{intellectualPropertyTwoNum}}" bindblur='intellectualPropertyTwoNumInput'/>个
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">专利总数</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{patentNum}}" bindblur='patentNumInput'/>个
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">注册商标总数</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{trademarkNum}}" bindblur='trademarkNumInput'/>个
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">软件著作权总数</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{copyrightsNum}}" bindblur='copyrightsNumInput'/>个
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">国际专利（PTC）数</text>
+        <view class="complete_enterprise_info_fill">
+          <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{PTCNum}}" bindblur='PTCNumInput'/>件
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 其他 -->
+  <view wx:if="{{topTabIndex == 5}}" class="complete_enterprise">
+    <view class="complete_enterprise_title">
+      <view class="complete_enterprise_title_icons"></view>其他
+    </view>
+    <view class="complete_enterprise_info">
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">资质荣誉</text>
+        <view class="complete_enterprise_info_fill">
+          <view wx:if="{{qualificationsHonorValue.length > 0}}" class="complete_enterprise_info_fill_checked" bindtap="handlePopup" data-popindex="1">已选{{qualificationsHonorValue.length}}个</view>
+          <view wx:else bindtap="handlePopup" data-popindex="1">请选择</view>
+          <view wx:if="{{visible && popIndex == 1}}" class="complete_enterprise_info_fill_checked_openicon"></view>
+          <view wx:else class="complete_enterprise_info_fill_checked_closeicon"></view>
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">机构设置</text>
+        <view class="complete_enterprise_info_fill">
+          <view wx:if="{{organizationValue.length > 0}}" class="complete_enterprise_info_fill_checked" bindtap="handlePopup" data-popindex="2">已选{{organizationValue.length}}个</view>
+          <view wx:else bindtap="handlePopup" data-popindex="2">请选择</view>
+          <view wx:if="{{visible && popIndex == 2}}" class="complete_enterprise_info_fill_checked_openicon"></view>
+          <view wx:else class="complete_enterprise_info_fill_checked_closeicon"></view>
+        </view>
+      </view>
+      <!-- 科技企业孵化器 -->
+      <view wx:if="{{showMoreEl1}}" class="complete_enterprise_info_item info_moreinfo">
+        <view>科技企业孵化器</view>
+        <view class="complete_enterprise_info_item moreinfo_bg">
+          <text class="complete_enterprise_info_item_label">场地面积</text>
+          <view class="complete_enterprise_info_fill">
+            <input class="complete_enterprise_info_item_input" type="digit" placeholder="请输入" value="{{scienceSiteArea}}" bindblur='scienceSiteAreaInput'/>平米
+          </view>
+        </view>
+        <view class="complete_enterprise_info_item moreinfo_bg">
+          <text class="complete_enterprise_info_item_label">资金规模</text>
+          <view class="complete_enterprise_info_fill">
+            <input class="complete_enterprise_info_item_input" type="digit" placeholder="请输入" value="{{scienceMoney}}" bindblur='scienceMoneyInput'/>万元
+          </view>
+        </view>
+        <view class="complete_enterprise_info_item moreinfo_bg">
+          <text class="complete_enterprise_info_item_label">在孵企业</text>
+          <view class="complete_enterprise_info_fill">
+            <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{scienceHatch}}" bindblur='scienceHatchInput'/>家
+          </view>
+        </view>
+        <view class="complete_enterprise_info_item moreinfo_bg">
+          <text class="complete_enterprise_info_item_label">累计毕业企业</text>
+          <view class="complete_enterprise_info_fill">
+            <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{scienceGraduate}}" bindblur='scienceGraduateInput'/>家
+          </view>
+        </view>
+      </view>
+      <!-- 众创空间 -->
+      <view wx:if="{{showMoreEl2}}" class="complete_enterprise_info_item info_moreinfo">
+        <view>众创空间</view>
+        <view class="complete_enterprise_info_item moreinfo_bg">
+          <text class="complete_enterprise_info_item_label">场地面积</text>
+          <view class="complete_enterprise_info_fill">
+            <input class="complete_enterprise_info_item_input" type="digit" placeholder="请输入" value="{{spaceSiteArea}}" bindblur='spaceSiteAreaInput'/>平米
+          </view>
+        </view>
+        <view class="complete_enterprise_info_item moreinfo_bg">
+          <text class="complete_enterprise_info_item_label">资金规模</text>
+          <view class="complete_enterprise_info_fill">
+            <input class="complete_enterprise_info_item_input" type="digit" placeholder="请输入" value="{{spaceMoney}}" bindblur='spaceMoneyInput'/>万元
+          </view>
+        </view>
+        <view class="complete_enterprise_info_item moreinfo_bg">
+          <text class="complete_enterprise_info_item_label">专业服务人员</text>
+          <view class="complete_enterprise_info_fill">
+            <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{spaceWaiter}}" bindblur='spaceWaiterInput'/>名
+          </view>
+        </view>
+      </view>
+      <!-- 公共服务示范平台 -->
+      <view wx:if="{{showMoreEl3}}" class="complete_enterprise_info_item info_moreinfo">
+        <view>公共服务示范平台</view>
+        <view class="complete_enterprise_info_item moreinfo_bg">
+          <text class="complete_enterprise_info_item_label">场地面积</text>
+          <view class="complete_enterprise_info_fill">
+            <input class="complete_enterprise_info_item_input" type="digit" placeholder="请输入" value="{{publicSiteArea}}" bindblur='publicSiteAreaInput'/>平米
+          </view>
+        </view>
+        <view class="complete_enterprise_info_item moreinfo_bg">
+          <text class="complete_enterprise_info_item_label">资金规模</text>
+          <view class="complete_enterprise_info_fill">
+            <input class="complete_enterprise_info_item_input" type="digit" placeholder="请输入" value="{{publicMoney}}" bindblur='publicMoneyInput'/>万元
+          </view>
+        </view>
+        <view class="complete_enterprise_info_item moreinfo_bg">
+          <text class="complete_enterprise_info_item_label">在孵企业</text>
+          <view class="complete_enterprise_info_fill">
+            <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{publicHatch}}" bindblur='publicHatchInput'/>家
+          </view>
+        </view>
+        <view class="complete_enterprise_info_item moreinfo_bg">
+          <text class="complete_enterprise_info_item_label">累计毕业企业</text>
+          <view class="complete_enterprise_info_fill">
+            <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{publicGraduate}}" bindblur='publicGraduateInput'/>家
+          </view>
+        </view>
+      </view>
+      <!-- 创新创业示范基地 -->
+      <view wx:if="{{showMoreEl4}}" class="complete_enterprise_info_item info_moreinfo">
+        <view>创新创业示范基地</view>
+        <view class="complete_enterprise_info_item moreinfo_bg">
+          <text class="complete_enterprise_info_item_label">场地面积</text>
+          <view class="complete_enterprise_info_fill">
+            <input class="complete_enterprise_info_item_input" type="digit" placeholder="请输入" value="{{newArea}}" bindblur='newAreaInput'/>平米
+          </view>
+        </view>
+        <view class="complete_enterprise_info_item moreinfo_bg">
+          <text class="complete_enterprise_info_item_label">在孵企业</text>
+          <view class="complete_enterprise_info_fill">
+            <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{newHatch}}" bindblur='newHatchInput'/>家
+          </view>
+        </view>
+        <view class="complete_enterprise_info_item moreinfo_bg">
+          <text class="complete_enterprise_info_item_label">孵化成功率</text>
+          <view class="complete_enterprise_info_fill">
+            <input class="complete_enterprise_info_item_input" type="number" placeholder="请输入" value="{{newHatchProfit}}" bindblur='newHatchProfitInput'/>%
+          </view>
+        </view>
+      </view>
+
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">行业许可</text>
+        <view class="complete_enterprise_info_fill">
+          <view wx:if="{{industryLicenseValue.length > 0}}" class="complete_enterprise_info_fill_checked" bindtap="handlePopup" data-popindex="3">已选{{industryLicenseValue.length}}个</view>
+          <view wx:else bindtap="handlePopup" data-popindex="3">请选择</view>
+          <view wx:if="{{visible && popIndex == 3}}" class="complete_enterprise_info_fill_checked_openicon"></view>
+          <view wx:else class="complete_enterprise_info_fill_checked_closeicon"></view>
+        </view>
+      </view>
+      <view class="complete_enterprise_info_item">
+        <text class="complete_enterprise_info_item_label">质量认证</text>
+        <view class="complete_enterprise_info_fill">
+          <view wx:if="{{certificateValue.length > 0}}" class="complete_enterprise_info_fill_checked" bindtap="handlePopup" data-popindex="4">已选{{certificateValue.length}}个</view>
+          <view wx:else bindtap="handlePopup" data-popindex="4">请选择</view>
+          <view wx:if="{{visible && popIndex == 4}}" class="complete_enterprise_info_fill_checked_openicon"></view>
+          <view wx:else class="complete_enterprise_info_fill_checked_closeicon"></view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="complete_enterprise_btns">
+    <button wx:if="{{topTabIndex > 1}}" class="complete_enterprise_btns_last" bindtap="handleBackStep">上一步</button>
+    <button wx:if="{{topTabIndex < 5}}" class="complete_enterprise_btns_next" bindtap="handleNextStep">下一步</button>
+    <button wx:if="{{topTabIndex  == 5}}" class="complete_enterprise_btns_next" bindtap="handleFinsh">完成</button>
+  </view>
+
+  <!-- 弹出层 -->
+  <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom">
+    <view wx:if="{{popIndex == 1}}" class="entinfo_popup">
+      <view class="entinfo_popup_card" wx:for="{{qualificationsHonorOptions}}" wx:key="index">
+        <t-check-tag class="margin-16" size="large" variant="dark" content="{{item.title}}" bind:change="handleTagCheck" data-itemindex="{{index}}" checked="{{item.checked}}" />
+      </view>
+    </view>
+    <view wx:if="{{popIndex == 2}}" class="entinfo_popup">
+      <view class="entinfo_popup_card" wx:for="{{organizationOptions}}" wx:key="index">
+        <t-check-tag class="margin-16" size="large" variant="dark" content="{{item.title}}" bind:change="handleTagCheck" data-itemindex="{{index}}" checked="{{item.checked}}" />
+      </view>
+    </view>
+    <view wx:if="{{popIndex == 3}}" class="entinfo_popup">
+      <view class="entinfo_popup_card" wx:for="{{industryLicenseOptions}}" wx:key="index">
+        <t-check-tag class="margin-16" size="large" variant="dark" content="{{item.title}}" bind:change="handleTagCheck" data-itemindex="{{index}}" checked="{{item.checked}}" />
+      </view>
+    </view>
+    <view wx:if="{{popIndex == 4}}" class="entinfo_popup">
+      <view class="entinfo_popup_card" wx:for="{{certificateOptions}}" wx:key="index">
+        <t-check-tag class="margin-16" size="large" variant="dark" content="{{item.title}}" bind:change="handleTagCheck" data-itemindex="{{index}}" checked="{{item.checked}}" />
+      </view>
+    </view>
+    <view class="entinfo_popup_btns">
+      <button bindtap="onHandleCencel">取消</button>
+      <button bindtap="onHandleConfirm" class="entinfo_popup_confirm_btn">确定</button>
+    </view>
+  </t-popup>
+  
+  <!-- 解绑弹窗 -->
+  <t-popup visible="{{modalVisible}}" bind:visible-change="onModalVisibleChange" close-on-overlay-click="{{false}}" placement="center">
+    <view class="entmodalWraper">
+      <view class="entmodalWraper_title">
+        <view>提示</view>
+        <image class="entmodalWraper_title_close" bindtap="handleClose" src="../../assets/unbind_close.png" mode=""/>
+      </view>
+      <view class="entmodalWraper_content">
+        <image src="../../assets/entunbind_notice.png" class="entmodalWraper_content_noticeimg" mode=""/>
+        <view wx:if="{{ modalType == '1' }}">
+          <view class="entmodalWraper_content_types">当前企业已被<text class="entmodalWraper_content_types_font">{{bindphone}}</text>绑定！</view>
+          <view class="entmodalWraper_content_item">请确认是否为公司内部员工</view>
+          <view class="entmodalWraper_content_item">可让该人员授权进行登录</view>
+          <view class="entmodalWraper_content_item">若该企业从未被您及公司内部人员绑定</view>
+          <view class="entmodalWraper_content_item">请提交联系方式做<text class="entmodalWraper_content_item_fonts">企业解绑</text></view>
+          <button class="entmodalWraper_content_btns" bindtap="toUnbindEnt">去提交</button>
+        </view>
+        <view wx:if="{{ modalType == '2' }}">
+          <view class="entmodalWraper_content_types">当前企业已被<text class="entmodalWraper_content_types_font">注销</text></view>
+          <view class="entmodalWraper_content_item">不可绑定</view>
+          <button class="entmodalWraper_content_btns" bindtap="handleClose">返回</button>
+        </view>
+      </view>
+    </view>
+  </t-popup>
+
+  <!-- 报错消息提示 -->
+  <t-dialog
+    visible="{{ showTextVisible }}"
+    title="错误提示"
+    content="{{ showTextContent }}"
+    confirm-btn="确认"
+    bind:confirm="closeDialog"
+  />
+</view>

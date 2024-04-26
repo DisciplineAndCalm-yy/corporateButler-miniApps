@@ -1,0 +1,286 @@
+<!--pages/subpages/pages/policyMatchDetail/policyMatchDetail.wxml-->
+<view class="policyMatchDetail" style="margin-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px - 40rpx);">
+  <public-title titleClass="matchDetail_title" showback="true" title="政策详情" isMatch="{{isMatch}}" isShare="{{isShare}}" prevPage="{{prevPagePath}}">
+  </public-title>
+  <view class="topbox">
+    <image class="imgs" src="../../../../assets/imgs/home_bj.png" mode=""/>
+    <view class="top_content">
+      <view class="policy_detail_iconbox">
+        <image wx:if="{{!isMatch}}" class="policy_detail_iconimg" src="../../assets/policy-detail-icon.png" mode=""/>
+        <image wx:if="{{isMatch}}" class="policy_detail_iconimg" src="../../assets/start-icon.png" mode=""/>
+        <view class="policy_detail_icons">
+          <text wx:if="{{policyDetails.collectFlag == '1'}}" bindtap="handleCollect" class="iconfont icon-yishoucang item_iconfont item_icon_collect"></text>
+          <text wx:else bindtap="handleCollect" class="iconfont icon-shoucang item_iconfont"></text>
+          <button class="share_btn" open-type="share">
+            <text class="iconfont icon-fenxiang item_iconfont item_icon_ml"></text>
+          </button>
+        </view>
+      </view>
+      <view wx:if="{{!isMatch}}" class="policy_detail_icondesc">惠企政策“一网汇聚”，打造高质量营商环境。</view>
+      <view wx:if="{{isMatch}}" class="policy_detail_icondesc">当前星级评分为企业标签与政策标签进行双向智能测算结果。</view>
+    </view>
+  </view>
+  <view class="policy_detail_content">
+    <view class="policy_detail_content_title">
+      <view wx:if="{{isMatch}}" class="policy_match_score">
+        <image wx:for="{{ fullStart }}" wx:key="index" class="scoreimg" src="../../assets/score-full.png" mode=""/>
+        <image wx:for="{{ halfStart }}" wx:key="index" class="scoreimg" src="../../assets/score-half.png" mode=""/>
+        <image wx:for="{{ noStart }}" wx:key="index" class="scoreimg" src="../../assets/score-empty.png" mode=""/>
+      </view>
+      <view class="policy_detail_title">政策标题</view>
+      <view class="policy_detail_desc">{{policyDetails.policyTitle}}</view>
+      <view class="policy_detail_labels">
+        <view wx:for="{{policyDetails.policyLabelList}}" wx:key="index" class="policy_detail_labelitem {{policyCss[item.labelType]}}">{{item.labelName}}</view>
+      </view>
+    </view>
+    <view wx:if="{{ isMatch && !notStore }}" class="policy_detail_content_matchdetail">
+      <view class="policy_matchdetail_title">
+        <view class="policy_matchdetail_targe"></view>匹配条件详情
+      </view>
+      <view wx:for="{{ conditionList }}" wx:for-item="elements" wx:key="eleKeys" class="matchdetail_wrap">
+        <view class="matchdetail_wrap_title">{{ elements.title }}</view>
+        <view wx:for="{{ elements.assembleList }}" wx:for-item="eles" wx:for-index="ekeys" wx:key="ekeys">
+          <view class="matchdetail_wrap_subtitle"><text>{{ ekeys + 1 }}.</text>{{ eles.conditionType }}</view>
+          <view wx:for="{{ eles.list }}" wx:key="index">
+            <view class="policy_matchdetail_elements_wrap">
+              <text wx:if="{{ item.power == '0' }}" class="iconfont icon-duigou matchdetail_elements_left_icon"></text>
+              <text wx:else class="iconfont icon-wenhao matchdetail_elements_left_icons"></text>
+              <view class="policy_matchdetail_elements">
+                <view wx:if="{{ item.logicalRelation == '或' && item.conditionOrRelationList != null && item.conditionOrRelationList.length > 1 }}" class="matchdetail_elements_left">{{ item.conditionContent }}
+                  <view class="policy_matchdetail_conditions_popupfont" bindtap="openRelationPopup" data-relationlist="{{ item.conditionOrRelationList }}" data-relationlabel="{{ item.conditionContent }}">
+                   <text decode="true">&nbsp;=&nbsp;</text>
+                   <view decode="true" class="policy_matchdetail_conditions_popup_overfont">{{ item.conditionOrRelationList[0].conditionValue }}&nbsp;</view><text class="policy_matchdetail_conditions_popup_undelintfont">等{{ item.conditionOrRelationList.length }}条</text></view>
+                </view>
+                <view wx:else class="matchdetail_elements_left">{{ item.conditionContent + item.conditionRelationship + item.conditionValue }}
+                </view>
+                <view wx:if="{{ item.power == '1' }}" class="matchdetail_elements_right" bindtap="handlePopup" data-manageflag="{{ item.manageFlag }}" data-label="{{ item.conditionContent + item.conditionRelationship + item.conditionValue }}" data-type="{{ item.entFieldType }}" data-name="{{ item.entFieldName }}" data-pkid="{{ item.conditionPkId }}">
+                  编辑
+                  <text class="matchdetail_elements_right_icon">{{'>'}}</text>
+                </view>
+              </view>
+            </view>
+            <!-- <view wx:if="{{ item.logicalRelation == '或' && item.conditionOrRelationList != null && item.conditionOrRelationList.length > 1 }}" class="policy_matchdetail_conditions_wrap">
+              <view class="policy_matchdetail_conditions" wx:for="{{ item.conditionOrRelationList }}" wx:for-item="conditions" wx:for-index="conditionkey" wx:key="conditionkey">
+                <view>
+                  <view wx:if="{{ conditionkey > 0 }}" class="policy_matchdetail_conditions_andwrap">
+                    <view class="policy_matchdetail_conditions_splitline"></view>
+                    <view class="policy_matchdetail_conditions_and">
+                      {{ conditions.logicalRelation }}
+                    </view>
+                    <view class="policy_matchdetail_conditions_splitline"></view>
+                  </view>
+                  <text>{{ conditions.conditionValue }}</text>
+                </view>
+              </view>
+            </view> -->
+          </view>
+        </view>
+        <view class="matchdetail_estimate_wrap">
+          <view class="matchdetail_estimate_title">事实评估依据</view>
+          <view class="matchdetail_estimate_desc">{{ elements.declarationCondition || '' }}</view>
+        </view>
+      </view>
+      <!-- <view class="matchdetail_estimate_wrap">
+        <view class="matchdetail_estimate_title">事实评估依据</view>
+        <view class="matchdetail_estimate_desc">{{ conditionList[0].declarationCondition || '' }}</view>
+      </view> -->
+    </view>
+    <view wx:if="{{ !isMatch && policyDetails.policyClassify == '1' }}" class="policy_detail_content_matchdetail">
+      <view class="policy_matchdetail_title">
+        <view class="policy_matchdetail_targe"></view>申报条件详情
+      </view>
+      <view wx:if="{{ showConditionVOList.length > 0 }}" wx:for="{{ showConditionVOList }}" wx:for-item="elements"  wx:for-index="eleKeys" wx:key="eleKeys" class="matchdetail_wrap detail_wrap {{ eleKeys > 0 ? 'detail_split_line' : '' }}">
+        <view class="matchdetail_wrap_title detail_title">{{ elements.title }}</view>
+        <view wx:for="{{ elements.assembleList }}" wx:for-item="eles" wx:for-index="ekeys" wx:key="ekeys">
+          <view class="matchdetail_wrap_subtitle detaid_subtitle"><text class="iconfont icon-xiaobiaoti detaid_subtitle_iconfont"></text>{{ eles.conditionType }}</view>
+          <view wx:for="{{ eles.list }}" wx:key="index" class="policy_matchdetail_conditions_wrap detail_conditions_wrap">
+            <view class="policy_matchdetail_elements_wrap">
+              <!-- <text style="margin-right: 10rpx;">{{ ekeys + 1 }}.{{index + 1}}：</text> -->
+              <view class="policy_matchdetail_elements detail_matchdetail_elements">
+                <view wx:if="{{ item.logicalRelation == '或' && item.conditionOrRelationList != null && item.conditionOrRelationList.length > 1 }}" class="matchdetail_elements_left detail_matchdetail_elements_wrap">
+                  <view class="detail_matchdetail_elements_left">
+                    {{ item.conditionContent }}
+                  </view>
+                  <view class="detail_matchdetail_elements_right">
+                    <view class="policy_matchdetail_conditions_popupfont" bindtap="openRelationPopup" data-relationlist="{{ item.conditionOrRelationList }}" data-relationlabel="{{ item.conditionContent }}">
+                    <text decode="true">&nbsp;=&nbsp;</text>
+                    <view decode="true" class="policy_matchdetail_conditions_popup_overfont">{{ item.conditionOrRelationList[0].conditionValue }}&nbsp;</view><text class="policy_matchdetail_conditions_popup_undelintfont">等{{ item.conditionOrRelationList.length }}条</text></view>
+                  </view>
+                </view>
+                <view wx:else class="matchdetail_elements_left detail_matchdetail_elements_wrap">
+                  <view class="detail_matchdetail_elements_left">{{ item.conditionContent }}</view>
+                  <view class="detail_matchdetail_elements_right">{{ item.conditionRelationship + item.conditionValue }}</view>
+                </view>
+                <view wx:if="{{ item.power == '1' }}" class="matchdetail_elements_right" bindtap="handlePopup"  data-label="{{ item.conditionContent + item.conditionRelationship + item.conditionValue }}" data-type="{{ item.entFieldType }}" data-name="{{ item.entFieldName }}" data-pkid="{{ item.conditionPkId }}">
+                  编辑
+                  <text class="matchdetail_elements_right_icon">{{'>'}}</text>
+                </view>
+              </view>
+            </view>
+            <!-- <view wx:if="{{ item.logicalRelation == '或' && item.conditionOrRelationList != null && item.conditionOrRelationList.length > 1 }}" class="policy_matchdetail_conditions_wrap">
+              <view class="policy_matchdetail_conditions" wx:for="{{ item.conditionOrRelationList }}" wx:for-item="conditions" wx:for-index="conditionkey" wx:key="conditionkey">
+                <view>
+                  <view wx:if="{{ conditionkey > 0 }}" class="policy_matchdetail_conditions_and">{{ conditions.logicalRelation }}</view>
+                  <text>{{ conditions.conditionValue }}</text>
+                </view>
+              </view>
+            </view> -->
+          </view>
+        </view>
+        <view class="matchdetail_wrap_subtitle detaid_subtitle"><text class="iconfont icon-xiaobiaoti detaid_subtitle_iconfont"></text>事实评估依据</view>
+        <view class="matchdetail_estimate_desc_newcss">
+          <view class="unbindTipsWraper_content_reasondescnew {{ elements.isExpend ? 'reasondesc_expend' : '' }}">{{ elements.declarationCondition }}</view>
+          <view class="reason_open_new" bindtap="changeExpend" data-index="{{ eleKeys }}"><text class="reason_open_icon {{ elements.isExpend ? 'close_icon' : '' }}"></text>{{ elements.isExpend ? '收起' : '展开' }}</view>
+        </view>
+        <!-- <view class="matchdetail_estimate_wrap detail_estimate_wrap">
+          <view class="matchdetail_estimate_title detail_estimate_title">事实评估依据：</view>
+          <view class="matchdetail_estimate_desc detail_estimate_desc">{{ elements.declarationCondition || '' }}</view>
+        </view> -->
+      </view>
+    </view>
+    <view class="policy_detail_content_message">
+      <view class="detail_message_title">
+        <view class="detail_message_title_item {{messageTab == 1 ? 'detail_message_title_active' : ''}}"  bindtap="clickToShow" data-index="1" data-id="message">信息</view>
+        <view class="detail_message_title_item {{messageTab == 2 ? 'detail_message_title_active' : ''}}"  bindtap="clickToShow" data-index="2" data-id="detail">详情</view>
+        <view class="detail_message_title_item {{messageTab == 3 ? 'detail_message_title_active' : ''}}"  bindtap="clickToShow" data-index="3" data-id="annex">附件</view>
+      </view>
+      <scroll-view class="policy_detail_content_message" style="height: calc(60vh - 220rpx)" type="list" scroll-y="true" scroll-into-view="{{toView}}" enhanced="true" bindscrolltoupper="toScrollTop" bindscrolltolower="toScrollBottom" bindscroll="toScrollView">
+        <view id="message" class="detail_message_content">
+          <view class="message_content_el">
+            <view class="message_content_el_title">
+              <text class="iconfont icon-xiaobiaoti message_title_icon"></text>政策基本信息
+            </view>
+            <view class="message_content_el_rule">
+              <text class="message_content_el_rule_name">发布时间</text>
+              <text>{{policyDetails.publicityTime}}</text>
+            </view>
+            <view class="message_content_el_rule">
+              <text class="message_content_el_rule_name">发布部门</text>
+              <text>{{policyDetails.publicityOrgCode}}</text>
+            </view>
+            <view class="message_content_el_rule" wx:if="{{policyDetails.policyClassify == '1'}}">
+              <text class="message_content_el_rule_name">扶持资金</text>
+              <text wx:if="{{policyDetails.declareMoney}}">{{policyDetails.declareMoney == '依据实际情况' ? '依据实际情况' : (policyDetails.declareMoney || 0) + '万元'}}</text>
+              <text wx:else>--</text>
+            </view>
+            <view class="message_content_el_rule" wx:if="{{policyDetails.policyClassify == '1'}}">
+              <text class="message_content_el_rule_name">申报日期</text>
+              <text wx:if="{{policyDetails.declareStartDate != null && policyDetails.declareEndDate == null}}">长期有效</text>
+              <text wx:else>{{policyDetails.declareStartDate || '--'}} 至 {{policyDetails.declareEndDate || '--'}}</text>
+            </view>
+          </view>
+        </view>
+        <view id="detail" class="detail_message_content">
+          <view class="message_content_el_title">
+            <text class="iconfont icon-xiaobiaoti message_title_icon"></text>政策详情
+          </view>
+          <view class="message_content_el_textlabel">
+            政策原文
+          </view>
+          <!-- <text wx:if="{{ policyDetails.policySource == 0 }}" decode="true" class="message_content_el_textarea">{{ policyDetails.policyContent }}</text> -->
+          <rich-text class="message_content_el_textarea" space="nbsp" nodes="{{ policyDetails.policyContent }}"/>
+        </view>
+        <view id="annex" class="detail_message_content">
+          <view class="message_content_el_title">
+            <text class="iconfont icon-xiaobiaoti message_title_icon"></text>附件
+          </view>
+          <view class="message_content_folderwrap">
+            <view wx:if="{{listData.length == 0}}" class="message_content_folderwrap_nofolder">暂无附件</view>
+            <view wx:if="{{listData}}" class="annex_wrap" wx:for="{{listData}}" wx:key="index">
+              <image class="annexicon" src="../../assets/annex-icon.png" mode=""/>
+              <p wx:if="{{ policyDetails.policySource == '0' }}" class="annexicon_name {{ item.sourceLink != '' ? 'bluefont' : '' }}" bindtap="openToCopy" data-src="{{ item.sourceLink }}">《{{ item.title }}》</p>
+              <p wx:if="{{ policyDetails.policySource == '1' }}" class="annexicon_name {{ item.sourceLink != '' ? 'bluefont' : '' }}" bindtap="previewDoc" data-src="{{ item.sourceLink }}">{{ item.title }}</p>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+  
+  <t-popup visible="{{ relationVisible }}" bind:visible-change="onRelationVisibleChange" placement="center">
+    <view class="relation_popup_wrap">
+      <view class="relation_popup_title">
+        <text class="iconfont icon-xiaobiaoti relation_popup_title_triangle"></text>{{ relationlabel }}（或）
+      </view>
+      <view class="relation_popup_content" wx:for="{{ relationlist }}" wx:for-item="conditions" wx:for-index="conditionkey" wx:key="conditionkey">
+        <view class="relation_popup_card">{{ conditions.conditionValue }}</view>
+      </view>
+    </view>
+  </t-popup>
+  <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="center" close-on-overlay-click="{{false}}">
+    <view class="popup_wrap">
+      <view wx:if="{{ typeIndex == 1 }}" class="popup_inputwrap">
+        <text class="popup_label">{{popLabel}}</text>
+        <input class="popup_input" type="digit" placeholder="请输入" value="{{conditionValue}}" bindinput="popInputBlur"/>
+      </view>
+      <view wx:if="{{ typeIndex == 2 }}" class="popup_inputwrap">
+        <text class="popup_label">{{popLabel}}</text>
+        <picker class="popup_picker" mode="date" value="{{conditionValue}}" bindchange="bindRegisterDateChange">
+          <view class="picker">{{conditionValue ? conditionValue : '请选择 >'}}</view>
+        </picker>
+      </view>
+      <view wx:if="{{ typeIndex == 3 }}" class="popup_inputwrap">
+        <text class="popup_label">{{popLabel}}</text>
+        <picker class="popup_picker" mode="region" bindchange="bindRegionChange" value="{{region}}">
+          <view class="picker">{{region[0] != undefined ? region[0] + '，' + region[1] + '，' + region[2] : '省、市、区 >'}}</view>
+        </picker>
+      </view>
+      <view wx:if="{{ typeIndex == 4 }}" class="popup_inputwrap">
+        <text class="popup_label">{{ popLabel }}</text>
+        <picker class="popup_picker" bindchange="bindPickerChange" value="{{conditionPickerValue}}" range="{{conditionOption}}">
+          <view class="picker">{{conditionOption[conditionPickerValue] ? conditionOption[conditionPickerValue] : '请选择 >'}}</view>
+        </picker>
+      </view>
+      <view wx:if="{{ typeIndex == 5 }}">
+        <view class="popup_label tags_label">{{ popLabel }}</view>
+        <view class="entinfo_popup_card" wx:for="{{conditionOption}}" wx:key="index">
+          <t-check-tag class="margin-16" size="large" variant="dark" content="{{item.title}}" bind:change="handleTagCheck" data-itemindex="{{index}}" checked="{{item.checked}}" />
+        </view>
+        <view wx:if="{{ entFieldName == 'orgSetting' }}" class="org_surper_list" wx:for="{{ orgSurperArr }}" wx:key="index">
+          <view wx:if="{{ item.value == 'a' }}">科技企业孵化器</view>
+          <view wx:if="{{ item.value == 'b' }}">众创空间</view>
+          <view wx:if="{{ item.value == 'c' }}">公共服务示范平台</view>
+          <view wx:if="{{ item.area != undefined }}" class="popup_inputwrap">
+            <text class="popup_label">场地面积</text>
+            <input class="popup_input" type="digit" placeholder="请输入" bindblur="popSurperInputBlur" data-value="{{ item.value }}" data-label="area"/>
+          </view>
+          <view wx:if="{{ item.finance != undefined }}" class="popup_inputwrap">
+            <text class="popup_label">资金规模</text>
+            <input class="popup_input" type="digit" placeholder="请输入" bindinput="popSurperInputBlur" data-value="{{ item.value }}" data-label="finance"/>
+          </view>
+          <view wx:if="{{ item.entNum != undefined }}" class="popup_inputwrap">
+            <text class="popup_label">在孵企业</text>
+            <input class="popup_input" type="digit" placeholder="请输入" bindinput="popSurperInputBlur" data-value="{{ item.value }}" data-label="entNum"/>
+          </view>
+          <view wx:if="{{ item.graduateEntNum != undefined }}" class="popup_inputwrap">
+            <text class="popup_label">累计毕业企业</text>
+            <input class="popup_input" type="digit" placeholder="请输入" bindinput="popSurperInputBlur" data-value="{{ item.value }}" data-label="graduateEntNum"/>
+          </view>
+          <view wx:if="{{ item.servicerNum != undefined }}" class="popup_inputwrap">
+            <text class="popup_label">专业服务人员</text>
+            <input class="popup_input" type="digit" placeholder="请输入" bindinput="popSurperInputBlur" data-value="{{ item.value }}" data-label="servicerNum"/>
+          </view>
+        </view>
+      </view>
+      <view class="popup_btns">
+        <button bindtap="handlePopCencel">取消</button>
+        <button bindtap="handlePopConfirm">确定</button>
+      </view>
+    </view>
+  </t-popup>
+  <t-popup visible="{{ copyVisible }}" bind:visible-change="onCopyVisibleChange" placement="center">
+    <view class="copy_wraper">
+      <view class="copy_title">提示</view>
+      <view class="copy_tips">
+        <view>请使用外部浏览器打开该链接进行文件预览</view>
+        <view class="copy_tips_item"><view class="copy_tips_icon">1</view>点击“一键复制”</view>
+        <view class="copy_tips_item"><view class="copy_tips_icon">2</view>打开浏览器，粘贴搜索</view>
+      </view>
+      <!-- <view class="copy_content">{{ copyUrl }}</view> -->
+      <view class="copy_btnwraper">
+        <button class="copy_btns" bindtap="toCopy">一键复制</button>
+        <button class="copy_btns" bindtap="closeCopy">关闭</button>
+      </view>
+    </view>
+  </t-popup>
+</view>

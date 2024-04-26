@@ -1,0 +1,31 @@
+<!--pages/subpages/pages/unbindEnt/unbindEnt.wxml-->
+<view class="unbindEnt" style="margin-top: {{ menuHeight + menuTop + 10 }}px; height: calc(100vh - {{ menuHeight + menuTop + 10 }}px);">
+  <public-title titleClass="unbindEnt_title_class" showback="true" title="企业解绑"></public-title>
+  <view class="unbindEnt_content">
+    <view class="form_infos">
+      <view class="form_infos_tips"><text class="form_infos_tips_icon">*</text>一旦提交不可再次编辑、不可删除！</view>
+      <view class="form_infos_item">
+        <view>联系人</view>
+        <input class="form_infos_input" type="text" placeholder="请输入" value="{{ name }}" bindinput="inputName"/>
+      </view>
+      <view class="form_infos_item">
+        <view>联系电话</view>
+        <input class="form_infos_input" type="text" placeholder="请输入" value="{{ phone }}" bindinput="inputPhone"/>
+      </view>
+      <view class="form_infos_items">
+        <view>营业执照</view>
+        <view class="image_frame" wx:for="{{ fileList }}" wx:key="index">
+          <image class="image_frame_img" src="{{ item }}" data-index="{{index}}" mode="aspectFill" bindtap="previewImg">
+          </image>
+          <image class="image_frame_icon" src="../../assets/deleteIcon.png"  data-index="{{index}}" catchtap="deleteImg" mode=""/>
+        </view>
+        <view wx:if="{{ fileList.length == 0 }}" class="upload_pic" bindtap="chooseImg">
+          <text class="iconfont icon-a-uploadicon camera_icon"></text>
+          <view>选择图片</view>
+        </view>
+      </view>
+      <view class="form_infos_desc">备注：保证上传营业执照正面照片，且需保持照片完整。</view>
+    </view>
+    <button class="form_btn" bindtap="submitUnbind" disabled="{{ !canSubmit }}">提交申请解绑</button>
+  </view>
+</view>

@@ -1,0 +1,86 @@
+<!--pages/subPagesForEcharts/pages/projectStatus/projectStatus.wxml-->
+<view class="projectStatus" style="padding-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px);">
+  <public-title titleClass="projectStatus_title_class" title="项目进度状态" showback="true"></public-title>
+	<view class="project_content">
+		<view class="project_infowrap">
+			<view class="project_titles"><text class="iconfont icon-xiaobiaoti project_subtitle"></text>{{ projectInfo.proName }}</view>
+			<view class="project_infos">
+				<view class="project_infos_item">
+					<text class="project_infositem_label">项目编码：</text>
+					<text class="project_infositem">{{ projectInfo.id }}</text>
+				</view>
+				<view class="project_infos_item">
+					<text class="project_infositem_label">项目分包领导：</text>
+					<text class="project_infositem">{{ projectInfo.subpackageLeaderName }}</text>
+				</view>
+				<view class="project_infos_item">
+					<text class="project_infositem_label">项目负责人：</text>
+					<text class="project_infositem">{{ projectInfo.projectLeaderName }}</text>
+				</view>
+				<view class="project_infos_item">
+					<text class="project_infositem_label">项目分类：</text>
+					<!-- <text wx:if="{{ projectInfo.ssKeyFlag != '' }}" class="project_info_tag">省、市重点项目</text>
+					<text wx:if="{{ projectInfo.sgypFlag == 1 }}" class="project_info_tag orange_tag">三个一批</text> -->
+					<text wx:for="{{ projectInfo.projectTag }}" wx:key="index" class="project_info_tag">{{ item }}</text>
+				</view>
+			</view>
+		</view>
+		<view class="project_status_card">
+			<view class="project_status_titlewrap">
+				<view bindtap="handleToRecord" data-pid="{{ projectInfo.id }}" class="project_status_record">查看记录</view>
+				<view class="project_status_titles">{{ projectStatusIndex ? statusLabelList[projectStatusIndex] : '项目状态' }}</view>
+			</view>
+			<view class="project_status_content">
+				<view class="project_status_item">
+					<view class="status_item_label"><text class="red_must">*</text>项目进度状态</view>
+					<picker bindchange="bindStatusChange" value="{{ projectStatusIndex }}" range="{{ statusLabelList }}">
+						<view>{{ projectStatusIndex ? statusLabelList[projectStatusIndex] : '请选择 >' }}</view>
+					</picker>
+				</view>
+				<view class="project_status_item">
+					<view class="status_item_label"><text class="red_must">*</text>当前状态日期</view>
+					<picker bindchange="bindStatusDateChange" mode="date" value="{{ statusDate }}" end="{{ toDay }}">
+						<view>{{ statusDate ? statusDate : '请选择 >' }}</view>
+					</picker>
+				</view>
+				<view class="project_status_item">
+					<view class="status_item_label">附件</view>
+					<view wx:if="{{ imgList.length == 0 && src == '' }}" class="status_filewrap" bindtap="actioncnt">
+						<view class="status_fileupload"><text class="iconfont icon-a-x status_fileupload_icon"></text></view>
+						<view>仅支持图片、视频</view>
+					</view>
+					<view wx:if="{{ imgList.length > 0 }}" wx:for="{{ imgList }}" wx:key="index" class="status_filewrap">
+						<image class="status_imgs" src="{{ item }}" bindtap="previewImg" data-index="{{ index }}" mode="aspectFill"/>
+            <image class="image_frame_icon" src="../../assets/deleteIcon.png"  data-index="{{index}}" catchtap="deleteImg" data-index="{{ index }}" mode=""/>
+					</view>
+					<view wx:if="{{ src != '' }}" class="status_filewrap">
+						<video class="status_video" src="{{ src }}"/>
+            <image class="image_frame_icon" src="../../assets/deleteIcon.png"  data-index="{{index}}" catchtap="deleteVideo" mode=""/>
+					</view>
+				</view>
+				<view class="project_status_btnwrap">
+					<view bindtap="goBack" class="project_status_btns">返回</view>
+					<view bindtap="openSubmit" class="project_status_btns status_submitbtn">保存</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	
+  <!-- 弹出层 -->
+  <t-popup visible="{{ visible }}" bind:visible-change="onVisibleChange" placement="center">
+		<view class="confirm_popup">
+			<view class="popup_topicon">
+				<image class="popup_imgs" src="../../assets/status_icon.png" mode=""/>
+			</view>
+			<view class="popup_desc">
+				<view>“{{ projectStatusIndex ? statusLabelList[projectStatusIndex] : '项目状态' }}”之后已设置的</view>
+				<view>状态将全部清空并保留行为记录</view>
+			</view>
+			<view class="popup_tips">是否确认保存？</view>
+			<view class="popup_btns">
+				<view bindtap="toConfirm" class="popup_btn_item submit_btn">确认</view>
+				<view bindtap="closePopup" class="popup_btn_item">取消</view>
+			</view>
+		</view>
+	</t-popup>
+</view>

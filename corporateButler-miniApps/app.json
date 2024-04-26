@@ -1,0 +1,135 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/accontLogin/accontLogin",
+    "pages/home/home",
+    "pages/policyStore/policyStore",
+    "pages/policyCounter/policyCounter",
+    "pages/accuratePush/accuratePush",
+    "pages/mine/mine"
+  ],
+  "subPackages": [
+    {
+      "root": "pages/subpages/",
+      "pages": [
+        "pages/counterPush/counterPush",
+        "pages/answer/answer",
+        "pages/question/question",
+        "pages/questionQrcode/questionQrcode",
+        "pages/submitSuccess/submitSuccess",
+        "pages/orders/orders",
+        "pages/appeal/appeal",
+        "pages/detail/detail",
+        "pages/policyStoreMessage/policyStoreMessage",
+        "pages/policyMatchDetail/policyMatchDetail",
+        "pages/completeEnterprise/completeEnterprise",
+        "pages/myEnterprise/myEnterprise",
+        "pages/settingTags/settingTags",
+        "pages/myCollect/myCollect",
+        "pages/myentAddPerson/myentAddPerson",
+        "pages/unbindList/unbindList",
+        "pages/unbindEnt/unbindEnt",
+        "pages/noApply/noApply",
+        "pages/agreement/agreement"
+      ]
+    },
+    {
+      "root": "pages/subPagesForEcharts/",
+      "pages": [
+        "pages/homeSteward/homeSteward",
+        "pages/publicPolicyStore/policyStore",
+        "pages/publicProjectStore/publicProjectStore",
+        "pages/homeProjectmanager/homeProjectmanager",
+        "pages/mineSteward/mineSteward",
+        "pages/mineProjectmanager/mineProjectmanager",
+        "pages/publicAccont/publicAccont",
+        "pages/publicResetPassword/publicResetPassword",
+        "pages/clockIn/clockIn",
+        "pages/oneKeyDirect/oneKeyDirect",
+        "pages/projectInterview/projectInterview",
+        "pages/projectInterviewRecord/projectInterviewRecord",
+        "pages/projectTrack/projectTrack",
+        "pages/projectTrackOneKey/projectTrackOneKey",
+        "pages/pointProject/pointProject",
+        "pages/pointEnterprise/pointEnterprise",
+        "pages/entAndPersonInfo/entAndPersonInfo",
+        "pages/clockRecord/clockRecord",
+        "pages/projectStatus/projectStatus",
+        "pages/projectProgress/projectProgress",
+        "pages/projectStatusRecord/projectStatusRecord",
+        "pages/projectSupervise/projectSupervise",
+        "pages/projectSuperviseDetail/projectSuperviseDetail"
+      ]
+    },
+    {
+      "root": "pages/subPagesForLeader/",
+      "pages": [
+        "pages/homeLeader/homeLeader",
+        "pages/publicPolicyStore/policyStore",
+        "pages/publicProjectStore/publicProjectStore",
+        "pages/mineLeader/mineLeader",
+        "pages/superviseRecord/superviseRecord",
+        "pages/projectProvince/projectProvince",
+        "pages/projectThree/projectThree",
+        "pages/projectCentre/projectCentre",
+        "pages/projectSpecial/projectSpecial",
+        "pages/superviseProject/superviseProject",
+        "pages/publicAccont/publicAccont",
+        "pages/publicResetPassword/publicResetPassword",
+        "pages/projectProvinceDetail/projectProvinceDetail",
+        "pages/enterpriseProject/enterpriseProject",
+        "pages/projectDetail/projectDetail",
+        "pages/detailIOther/detailIOther"
+      ]
+    }
+  ],
+  "preloadRule": {
+    "pages/index/index": {
+      "network": "all",
+      "packages": [
+        "__APP__"
+      ]
+    }
+  },
+  "window": {
+    "navigationStyle": "custom",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "custom": true,
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/policyStore/policyStore",
+        "text": "政策库"
+      },
+      {
+        "pagePath": "pages/policyCounter/policyCounter",
+        "text": "政策计算器"
+      },
+      {
+        "pagePath": "pages/accuratePush/accuratePush",
+        "text": "精准推送"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents",
+  "requiredPrivateInfos": [
+    "getLocation",
+    "choosePoi",
+    "chooseLocation"
+  ],
+  "permission": {
+    "scope.userLocation": {
+      "desc": "获取您当前位置信息"
+    }
+  }
+}

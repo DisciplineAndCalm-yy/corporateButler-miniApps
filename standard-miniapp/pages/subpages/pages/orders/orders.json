@@ -1,0 +1,9 @@
+{
+    "component": true,
+    "usingComponents": {
+      "dialog": "../components/dialog/dialog",
+      "public-title": "/publicTitle/publicTitle",
+      "t-divider": "tdesign-miniprogram/divider/divider",
+      "t-sticky": "tdesign-miniprogram/sticky/sticky"
+    }
+  }

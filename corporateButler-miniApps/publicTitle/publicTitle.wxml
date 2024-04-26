@@ -1,0 +1,8 @@
+<!--publicTitle/publicTitle.wxml-->
+<view class="publicTitle {{titleClass ? titleClass : ''}}" style="padding-top: {{menuTop}}px; height: {{menuHeight}}px; line-height: {{menuHeight}}px">
+  <slot name="backlast"></slot>
+  <view wx:if="{{showback}}" class="backlast_wraper" style="top: {{menuTop + 4}}px;left: 30rpx;height: {{menuHeight}}px; line-height: {{menuHeight}}px" bindtap="backlast">
+    <text class="backlast"></text>
+  </view>
+  <text>{{ title }}</text>
+</view>

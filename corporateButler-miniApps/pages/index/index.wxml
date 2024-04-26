@@ -1,0 +1,23 @@
+<!--index.wxml-->
+<view class="container">
+  <image class="background_img" src="../../assets/imgs/index_bj.jpg" mode=""/>
+  <view class="index_content">
+    <view class="logos_wrap">
+      <image class="logos" src="../../assets/imgs/logo.png" mode=""/>
+    </view>
+    <view class="title">淇心办</view>
+    <view class="btnbox">
+      <button wx:if="{{ !isRead }}" class="btns" bindtap="toAgreeAgreement" disabled="{{isStop}}">手机号快捷登录</button>
+      <button wx:else class="btns" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber" disabled="{{isStop}}">手机号快捷登录</button>
+      <button class="btns" bindtap="toAccontLogin" disabled="{{isStop}}">账号登录</button>
+    </view>
+    <view class="desc">备注：企业请选择“手机号快捷登录方式”</view>
+    <view class="agreement">
+      <checkbox bindtap="onCheckChange" data-value="{{ isRead }}" value="{{ isRead }}" disabled="{{isStop}}"/>
+      <view>我已阅读并同意《<text class="agreement_topage" bindtap="toAgreement"> 用户协议及隐私协议 </text>》</view>
+    </view>
+  </view>
+  <view class="wrantips" style="display: {{ isStop ? 'block' : 'none' }}; top: {{ menuTop + menuHeight }}px">
+    <view class="wrantips_wrap"><text class="animation_text">因小程序安全升级，系统将于2023年10月11日 00:00-24:00 停止服务，给您带来的不便敬请谅解！</text></view>
+  </view>
+</view>

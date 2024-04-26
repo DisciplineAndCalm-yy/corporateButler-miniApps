@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "tabbars": "../../component/tabbar/index",
+    "public-title": "/publicTitle/publicTitle",
+    "t-upload": "tdesign-miniprogram/upload/upload"
+  }
+}

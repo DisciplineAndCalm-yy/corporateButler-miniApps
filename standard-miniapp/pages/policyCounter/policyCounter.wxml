@@ -1,0 +1,10 @@
+<!--pages/policyCounter/policyCounter.wxml-->
+<view class="policyCounter">
+  <image class="counter_bj" src="../../assets/imgs/counter_bj.jpg" mode=""/>
+  <view class="title" style="padding-top: {{menuTop}}px;">政策计算器</view>
+  <view class="counter_wrap">
+    <!-- <input class="counter_input" type="text" bindinput="onInput" value="{{counterValue}}" disabled="true"/> -->
+    <view class="counter_views">{{counterValue}}</view>
+    <view class="counter_btn" bindtap="toCounter">智能计算</view>
+  </view>
+</view>

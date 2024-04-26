@@ -1,0 +1,123 @@
+/* pages/subPagesForEcharts/pages/mineProjectmanager/mineProjectmanager.wxss */
+.mineProjectmanager {
+  min-height: calc(100vh - 120rpx - env(safe-area-inset-bottom)/2);
+  background-color: #f3f5fa;
+  padding-bottom: calc(120rpx + env(safe-area-inset-bottom)/2);
+}
+/* 顶部 */
+.mineProjectmanager_topwrap {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.mineProjectmanager_topwrap_imgs {
+  width: 100vw;
+  height: 30vh;
+}
+.mineProjectmanager_infowrap {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.mineProjectmanager_infowrap_title {
+  color: #fff;
+}
+/* 信息 */
+.mineProjectmanager_infowrap_infos {
+  padding: 50rpx 40rpx 20rpx;
+  display: flex;
+  align-items: center;
+}
+.mineProjectmanager_infowrap_avatar {
+  width: 134rpx;
+  height: 134rpx;
+  border-radius: 50%;
+}
+.mineProjectmanager_infowrap_avatars {
+  width: 130rpx;
+  min-width: 130rpx;
+  height: 130rpx;
+  line-height: 130rpx;
+  text-align: center;
+  border: 6rpx solid #fff;
+  border-radius: 50%;
+  font-size: 50rpx;
+  color: #fff;
+}
+.mineProjectmanager_infowrap_infocard {
+  padding: 0 40rpx;
+  color: #fff;
+  font-weight: 400;
+  font-size: 28rpx;
+  text-align: left;
+}
+.infowrap_infos {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+.infos_name {
+  font-weight: 700;
+  font-size: 36rpx;
+  margin-right: 30rpx;
+}
+.infowrap_tagwrap {
+  display: flex;
+  align-items: center;
+}
+.infos_tagswrap {
+  position: relative;
+  margin-right: -20rpx;
+  width: 50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  background-color: #fff;
+  border-radius: 50%;
+  color: #3B8DFF;
+  text-align: center;
+}
+.infos_fontwrap {
+  padding: 2rpx 12rpx 2rpx 24rpx;
+  background-color: #fff;
+  color: #3B8DFF;
+  border-radius: 12rpx;
+  white-space: nowrap;
+}
+/* 内容 */
+.mineProjectmanager_contentcard {
+  margin: 0 40rpx;
+  padding: 50rpx 40rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  position: relative;
+  margin-top: -5vh;
+  z-index: 3;
+}
+
+.contentcard_item {
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 30rpx 0;
+}
+.item_icons {
+  color: #1B7FFF;
+  font-size: 36rpx;
+}
+.contentcard_item_label {
+  color: #333;
+  font-weight: 400;
+  font-size: 30rpx;
+  margin-left: 40rpx;
+}
+.contentcard_item_icon {
+  content: '';
+  width: 20rpx;
+  height: 20rpx;
+  position: absolute;
+  right: 0rpx;
+  border-left: 4rpx solid #DBDBDB;
+  border-bottom: 4rpx solid #DBDBDB;
+  -webkit-transform: translate(0, 0) rotate(225deg);
+  transform: translate(0, 0) rotate(225deg);
+}

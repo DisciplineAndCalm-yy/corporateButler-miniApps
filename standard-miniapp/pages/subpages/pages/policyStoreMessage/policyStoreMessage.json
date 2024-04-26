@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "public-title": "/publicTitle/publicTitle",
+    "tabbar": "../../../../custom-tab-bar/index",
+    "t-divider": "tdesign-miniprogram/divider/divider"
+  },
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 100
+}

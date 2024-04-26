@@ -1,0 +1,22 @@
+<!--pages/subPagesForEcharts/pages/projectInterviewRecord/projectInterviewRecord.wxml-->
+<view class="projectInterviewRecord" style="margin-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px);">
+  <public-title titleClass="projectInterviewRecord_title_class" title="项目走访记录" showback="true"></public-title>
+  <view class="contentwrap">
+    <view class="record_card" wx:for="{{ recordList }}" wx:key="index">
+      <view class="content {{ item.isTouchMove ? 'actives' : '' }}" bindtap="toDetail" bindtouchstart="touchStart" bindtouchmove="touchMove" data-index="{{index}}" data-id="{{item.id}}">
+        <view class="record_title">{{ item.itemDescription }}</view>
+        <view class="record_time">走访时间：{{ item.interviewDate }}</view>
+      </view>
+      <view class="delete_btns" wx:if="{{ item.isTouchMove }}">
+        <view class="delete_btn_wrap" bindtap="toDelete" data-id="{{ item.id }}"><text class="iconfont icon-a-delete delete_icons"></text></view>
+      </view>
+    </view>
+    <t-divider wx:if="{{ recordList.length > 0 }}" content="{{nomore ? '已经到底啦' : '上拉加载更多' }}" />
+    <view wx:else class="has_nodata">
+      <image class="nodata_img" src="/assets/imgs/nodata.png" mode=""/>
+      <view>暂无数据</view>
+    </view>
+    <view class="empty"></view>
+  </view>
+  <!-- <tabbars></tabbars> -->
+</view>

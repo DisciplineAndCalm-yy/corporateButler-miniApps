@@ -1,0 +1,56 @@
+<!--pages/subPagesForEcharts/pages/projectTrackOneKey/projectTrackOneKey.wxml-->
+<view class="projectTrackOneKey" style="margin-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px);">
+  <public-title titleClass="projectTrackOneKey_title_class" title="项目追踪" showback="true"></public-title>
+  <!-- <tabbars></tabbars> -->
+  <view class="contentwrap">
+    <view class="project_info">
+      <view class="project_info_title">{{ projectInfo.projectInfo.proName }}</view>
+      <view class="project_info_tags">
+        <view wx:if="{{ projectInfo.ssKeyFlagStr != null }}" class="info_tag">{{ projectInfo.ssKeyFlagStr }}</view>
+        <view wx:if="{{ projectInfo.projectInfo.sgypFlag == '1' }}" class="info_tag">三个一批</view>
+      </view>
+      <view class="project_info_content">项目编码：<text class="project_info_content_font">{{ projectInfo.projectInfo.proCode }}</text></view>
+      <view class="project_info_content">项目分包领导：<text class="project_info_content_font">{{ projectInfo.subpackageLeaderName }}</text></view>
+      <view class="project_info_content">项目负责人：<text class="project_info_content_font">{{ projectInfo.projectLeaderName }}</text></view>
+      <view wx:if="{{ questionId == '' }}" class="project_info_toproject">
+        <view class="project_info_toproject_btn" bindtap="toOneKey" data-id="{{ projectInfo.projectInfo.id }}">查看一键直达内容</view>
+      </view>
+    </view>
+    <view class="interview_wraper">
+      <view class="interview_title">
+        <text class="mustfill_icon">*</text>问题标题：
+        <input class="interview_desc_input" type="text" placeholder="请输入" value="{{ interviewTitle }}" bindblur="interviewTitleBlur" disabled="{{ overdue || hasNotice }}"/>
+      </view>
+      <view class="interview_desc">
+        <text class="mustfill_icon">*</text>问题描述：
+        <textarea class="interview_desc_textarea {{ (overdue || hasNotice) ? 'interview_desc_textarea_bg' : '' }}" type="text" placeholder="请输入" value="{{ interviewDesc }}" maxlength="-1" bindblur="interviewDescBlur" disabled="{{ overdue || hasNotice }}"/>
+      </view>
+      <view class="interview_time">
+        <text class="mustfill_icon">*</text>直达领导：
+        <picker class="interview_time_picker" mode="selector" bindchange="leaderChange" value="{{ leaders }}" range="{{ leadersOption }}" disabled="{{ isOneKey || overdue || hasNotice }}">
+          {{ leadersOption[leaders] ? leadersOption[leaders] : '请选择' }}<text class="righticon"></text>
+        </picker>
+      </view>
+      <view class="interview_material">
+        上传材料：
+        <view class="interview_material_upload">
+          <view class="image_frame" wx:for="{{ fileList }}" wx:key="index">
+            <image class="image_frame_img" src="{{ item }}" data-index="{{index}}" mode="aspectFill" bindtap="previewImg">
+            </image>
+            <image wx:if="{{ !overdue && !hasNotice }}" class="image_frame_icon" src="../../assets/deleteIcon.png"  data-index="{{index}}" catchtap="deleteImg" mode=""/>
+          </view>
+          <view wx:if="{{ !overdue && !hasNotice }}" class="upload_pic" bindtap="chooseImg">
+            <text class="iconfont icon-a-uploadicon camera_icon"></text>
+            <view>选择图片</view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{ hasNotice }}" class="note_wraper">
+      <view class="note_wraper_title">批示内容</view>
+      {{ notice }}
+    </view>
+    <button wx:if="{{ !overdue && !hasNotice }}" class="save_btn" bindtap="toSave" disabled="{{ canNotSave }}">保存</button>
+    <button wx:if="{{ hasNotice }}" class="save_btn" bindtap="toBack">返回</button>
+  </view>
+</view>

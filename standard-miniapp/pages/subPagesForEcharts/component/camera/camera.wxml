@@ -1,0 +1,26 @@
+<view class="cameraWrapper" hidden="{{ markPhoto }}">
+  <view class='camera'>
+    <camera wx:if="{{isAuth}}" device-position="back" flash="off" binderror="error"></camera>
+  </view>
+  <view class="btn-group">
+    <!-- <mp-icon class="iconBtn returnBtn" icon="previous" color="#666" size="34" bindtap="returnCarmera"></mp-icon> -->
+    <button bindtap="returnCarmera">cancel</button>
+		<button class="takePhoto" type="primary" plain="{{true}}" bindtap="camera"><text>Start</text></button>
+  </view>
+  <!-- 添加水印 -->
+	<view class="canvas-cont">
+		<canvas canvas-id='firstCanvas' style="width: {{w}}px;height: {{h}}px;"></canvas>
+	</view>
+</view>
+
+<!-- 拍摄后生成水印图片 -->
+<view class="camera-cont" hidden="{{ !markPhoto }}">
+	<view class="preview-image-cont">
+		<image class="preview-image" src="{{markPhoto}}" mode="aspectFit"></image>
+	</view>
+	<view class="btn-group btn-group-padding" style="{{ markPhoto=='' ? 'display:none' : ''}}">
+		<!-- <mp-icon class="iconBtn" icon="previous" color="#666" size="44" bindtap="againBtn"></mp-icon> -->
+    <button bindtap="againBtn">againBtn</button>
+		<icon class="icon-box-img" type="success" size="60" bindtap="saveBtn"></icon>
+	</view>
+</view>

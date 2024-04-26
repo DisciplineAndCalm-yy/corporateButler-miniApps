@@ -1,0 +1,23 @@
+<!--pages/subpages/pages/policyStoreMessage.wxml-->
+<view class="policyStoreMessage">
+  <public-title titleClass="message_title_class" title="消息" showback="true"></public-title>
+  <view class="content_wrap">
+    <view class="message_card" wx:for="{{messageData}}" wx:key="index">
+      <view class="message_icon">
+        <image class="message_icon_imgs" src="../../assets/message.png" mode=""/>
+        <view wx:if="{{item.noread}}" class="message_icon_noread"></view>
+      </view>
+      <view class="message_content">
+        <view class="message_content_title">{{item.title}}</view>
+        <view class="message_content_tip">{{item.content}}</view>
+      </view>
+    </view>
+    <t-divider wx:if="{{ messageData.length > 0 }}" content="{{nomore ? '已经到底啦' : '上拉加载更多' }}" />
+    <view wx:else class="has_nodata">
+      <image class="nodata_img" src="/assets/imgs/nodata.png" mode=""/>
+      <view>暂无数据</view>
+    </view>
+    <view class="empty"></view>
+  </view>
+  <tabbar></tabbar>
+</view>

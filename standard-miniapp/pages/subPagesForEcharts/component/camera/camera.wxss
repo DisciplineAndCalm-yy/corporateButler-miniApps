@@ -1,0 +1,86 @@
+/* pages/subPagesForEcharts/component/carame.wxss */
+
+/* 模拟相机 */
+.cameraWrapper {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+.camera {
+	flex: 1;
+	width: 100%;
+	position: relative;
+}
+.camera camera {
+	width: 100vw;
+	height: calc(100vh - 200rpx);
+	box-sizing: border-box;
+}
+.btn-group {
+	position: relative;
+	height: 200rpx;
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.btn-group button.takePhoto:not([size='mini']) {
+	position: relative;
+	width: 120rpx;
+	height: 120rpx;
+	border-radius: 50%;
+	border-width: 4rpx;
+}
+.btn-group button.takePhoto:not([size='mini']) text {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	width: 90rpx;
+	height: 90rpx;
+	border-radius: 50%;
+	margin: auto;
+	background-color: #07c160;
+}
+.btn-group .iconBtn {
+	border: 4rpx solid #666;
+	border-radius: 50%;
+}
+.btn-group .returnBtn {
+	position: absolute;
+	bottom: 19%;
+	left: 14%;
+}
+.cameraWrapper .canvas-cont {
+	width: 0px;
+	height: 0px;
+	position: fixed;
+	left: 90000000px;
+	z-index: -999;
+	overflow: hidden;
+}
+
+/* 拍摄后生成水印图片 */
+.camera-cont {
+	width: 100vw;
+	height: 50vh;
+}
+.camera-cont .preview-image-cont {
+	height: calc(100% - 200rpx);
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.camera-cont .preview-image {
+	width: 100%;
+	height: 100%;
+}
+.camera-cont .btn-group-padding {
+	padding: 0 12%;
+}
+.camera-cont .icon-box-img {
+	margin-top: -4rpx;
+}

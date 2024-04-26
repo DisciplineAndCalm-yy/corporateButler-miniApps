@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "tabbars": "../../component/tabbar/index",
+    "public-title": "/publicTitle/publicTitle",
+    "t-popup": "tdesign-miniprogram/popup/popup",
+    "t-radio": "tdesign-miniprogram/radio/radio"
+  }
+}

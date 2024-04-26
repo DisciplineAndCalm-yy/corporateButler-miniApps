@@ -1,0 +1,13 @@
+<!--custom-tab-bar/index.wxml-->
+<view class="tabBar" wx:if="{{showbar}}">
+  <view class="cont">
+    <block wx:for="{{list}}" wx:key="index" >
+      <view data-path="{{item.pagePath}}" data-index="{{index}}" bindtap="switchTab" class="{{item.bulge?'item bulge':'item'}}">
+        <view wx:if="{{item.bulge}}" class="tab-bar-bulge"></view>
+        <image class="bar_img" src="{{selected === index ? item.selectedIconPath : item.iconPath}}"></image>
+        <view class="txt {{selected === index ? 'selectedColor' : ''}}">{{item.text}}</view>
+      </view>
+    </block>
+  </view>
+</view>
+

@@ -1,0 +1,42 @@
+<!--pages/subPagesForLeader/pages/projectSpecial/projectSpecial.wxml-->
+<view class="projectSpecial" style="min-height: 100vh;">
+	<view class="projectSpecial_topbox">
+		<view class="projectSpecial_titles" style="padding-top: {{menuTop}}px; height: {{menuHeight}}px; line-height: {{menuHeight}}px;">
+			<view class="backlast_wraper" style="top: {{menuTop + 4}}px;left: 30rpx;height: {{menuHeight}}px; line-height: {{menuHeight}}px" bindtap="backlast">
+				<text class="backlast"></text>
+			</view>
+			<text>专项债类项目</text>
+		</view>
+		<view class="projectSpecial_topinfos">
+			<view class="projectSpecial_topinfos_item">
+				<view class="topinfos_item_left">
+					<view class="topinfos_item_left_fonts"><text class="topinfos_item_left_nums">{{ specialData.totalInvest || 0 }}</text>万元</view>
+					项目总投资
+				</view>
+				<view class="topinfos_item_right"><text class="iconfont icon-ldmoney topinfos_icon"></text></view>
+			</view>
+			<view class="projectSpecial_topinfos_item">
+				<view class="topinfos_item_left">
+					<view class="topinfos_item_left_fonts infos_green"><text class="topinfos_item_left_nums">{{ specialData.num || 0 }}</text>个</view>
+					项目个数
+				</view>
+				<view class="topinfos_item_right topinfos_bg"><text class="iconfont icon-ldproject topinfos_icon infos_green"></text></view>
+			</view>
+		</view>
+	</view>
+	<view class="projectSpecial_content" style="margin-top: calc({{ menuTop + menuHeight }}px - 330rpx);">
+		<view class="projectSpecial_content_box">
+			<view class="projectSpecial_content_title">
+				<view class="projectSpecial_content_title_split"></view>项目列表
+			</view>
+			<view class="projectSpecial_content_list" style="max-height: calc(100vh - 540rpx);">
+				<view wx:if="{{ list.length > 0 }}" wx:for="{{ list }}" wx:key="index" class="projectSpecial_content_listitem">{{ item }}</view>
+				<view wx:if="{{ list.length == 0 }}" class="has_nodata">
+					<image class="nodata_img" src="/assets/imgs/nodata.png" mode=""/>
+					<view>暂无数据</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="empty"></view>
+</view>

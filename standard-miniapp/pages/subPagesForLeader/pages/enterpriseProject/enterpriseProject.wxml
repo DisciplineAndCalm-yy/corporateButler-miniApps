@@ -1,0 +1,79 @@
+<!--pages/subPagesForLeader/pages/enterpriseProject/enterpriseProject.wxml-->
+<view class="enterpriseProject" style="margin-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px);">
+  <public-title titleClass="enterpriseProject_title_class" title="企业关联项目报表分析" showback="true"></public-title>
+	<view class="enterpriseProject_searchbox">
+		<view class="enterpriseProject_searchbox_labelwrap">
+			<view class="supervise_popup_titles_split"></view>项目计划开工日期
+		</view>
+		<view class="enterpriseProject_searchbox_timewrap">
+			<picker mode="date" value="{{ startDate }}" end="{{ toDay }}" bindchange="bindStartDateChange">{{ startDate }}
+			</picker>
+			<view class="enterpriseProject_timewraper_time_desc">至</view>
+			<picker mode="date" value="{{ endDate }}" end="{{ toDay }}" bindchange="bindEndDateChange">{{ endDate }}
+			</picker>
+			<view class="enterpriseProject_searchbox_timeicon"></view>
+		</view>
+	</view>
+	<view class="enterpriseProject_content">
+		<view wx:for="{{ enterpriseList }}" wx:key="index" class="enterprise_item_wraper">
+			<view class="enterprise_wraper_infos">
+				<view class="enterprise_avatar"></view>
+				<view class="enterprise_infos">
+					<view class="enterprise_infos_name">{{ item.entName }}</view>
+					<view>项目数：<text class="enterprise_infos_numbers">{{ item.projectNum }}</text>个</view>
+					<view wx:if="{{ item.projectLeaderNameList.length == 1 }}" class="enterprise_projectManager">项目负责人：{{ item.projectLeaderNameList[0] }}</view>
+					<view wx:else class="enterprise_projectManager">项目负责人：{{ item.projectLeaderNameList.length }} 个<text wx:if="{{ item.projectLeaderNameList.length > 0 }}" class="enterprise_projectManager_more" bindtap="toShowMoreMan" data-list="{{ item.projectLeaderNameList }}">查看全部</text></view>
+				</view>
+			</view>
+			<view class="enterprise_wraper_message">
+				<view>
+					<view class="enterprise_project_numbers">{{ item.currentMonthPlanStartNum }}</view>
+					当月计划开工数
+				</view>
+				<view>
+					<view class="enterprise_project_numbers">{{ item.currentMonthStartNum }}</view>
+					当月实际开工数
+				</view>
+				<view>
+					<view class="enterprise_project_numbers">{{ item.totalStartNum }}</view>
+					累计开工数
+				</view>
+			</view>
+			<view class="enterprise_wraper_message">
+				<view>
+					<view class="enterprise_project_numbers">{{ item.currentMonthPlanEndNum }}</view>
+					当月计划竣工数
+				</view>
+				<view>
+					<view class="enterprise_project_numbers">{{ item.currentMonthEndNum }}</view>
+					当月实际竣工数
+				</view>
+				<view>
+					<view class="enterprise_project_numbers">{{ item.totalEndNum }}</view>
+					累计竣工数
+				</view>
+			</view>
+		</view>
+	</view>
+	<t-divider wx:if="{{ enterpriseList.length > 0 }}" content="{{nomore ? '已经到底啦' : '上拉加载更多' }}" />
+	<view wx:else class="has_nodata">
+		<image class="nodata_img" src="/assets/imgs/nodata.png" mode=""/>
+		<view>暂无数据</view>
+	</view>
+	<view class="empty"></view>
+  <!-- 弹窗 -->
+  <t-popup visible="{{ visible }}" bind:visible-change="onvisibleChange" placement="center">
+    <view class="popup_wraper">
+			<view class="popup_wraper_topbox">
+				<view class="popup_wraper_top">
+					<view class="supervise_popup_titles_split"></view>
+					项目负责人
+				</view>
+				<text class="popup_wraper_close" bindtap="closePopup">关闭</text>
+			</view>
+			<view class="popup_wraper_content">
+				<view wx:for="{{ peopleList }}" wx:key="index" class="popup_wraper_people">{{ item }}</view>
+			</view>
+    </view>
+  </t-popup>
+</view>

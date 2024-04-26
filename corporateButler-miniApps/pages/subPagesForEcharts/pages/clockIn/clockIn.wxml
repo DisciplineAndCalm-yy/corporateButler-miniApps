@@ -1,0 +1,75 @@
+<!--pages/subPagesForEcharts/pages/clockIn/clockIn.wxml-->
+<view class="clockIn" style="margin-top: {{ menuHeight + menuTop + 10 }}px; height: calc(100vh - {{ menuHeight + menuTop + 10 }}px);">
+  <public-title titleClass="publicAccont_title_class" title="挂点企业打卡" showback="true"></public-title>
+  <view class="clockIn_content_wrap">
+    <view class="clockIn_content">
+      <view class="clockIn_enterprise">
+        <view style="min-width: 160rpx;"><text class="must_red">*</text>服务企业：</view>
+        <picker mode="selector" range="{{ entNameList }}" bindchange="selectEnt">
+          <text class="clockIn_selectIcon_wrap">{{ entNameList[entvalue] ? entNameList[entvalue] : '请选择' }}<text class="clockIn_selectIcon"></text></text>
+        </picker>
+      </view>
+      <view class="clockIn_enterprise">
+        <view style="min-width: 160rpx;"><text class="must_red">*</text>拍照打卡：</view>
+        <view class="image_frame" wx:for="{{ tempList }}" wx:key="index">
+          <image class="image_frame_img" src="{{ item }}" data-index="{{index}}" mode="aspectFill" bindtap="previewImg">
+          </image>
+          <image class="image_frame_icon" src="../../assets/deleteIcon.png"  data-index="{{index}}" catchtap="deleteImg" mode=""/>
+        </view>
+        <view wx:if="{{ tempList.length == 0 }}" class="upload_pic" bindtap="cameraClock">
+          <text class="iconfont icon-a-uploadicon camera_icon"></text>
+        </view>
+      </view>
+      <!-- <view class="clockIn_wrap">
+        <view class="clockIn_btn, {{ canClockIn ? '' : 'disable_btn' }}" bindtap="toClockIn">签到</view>
+        <view wx:if="{{ canClockIn }}" class="clockIn_desc">
+          <text class="iconfont icon-a-right canclock_icon"></text>
+          您当前在某某企业范围内
+        </view>
+        <view wx:else class="clockIn_desc">
+          <text class="iconfont icon-a-wrong noclock_icon"></text>
+          您当前未在打卡范围内
+        </view>
+      </view> -->
+      <view class="clockIn_descwrap">
+        <view><text class="must_red">*</text>服务事项：</view>
+        <view class="clockIn_desc">
+          <form bindsubmit="bindFormSubmit">
+            <textarea name="textarea" class="clockIn_textarea" placeholder="请输入内容" maxlength="200" bindinput="taInput" disabled="{{ !canClockIn }}"/>
+            <text class="clockIn_textarea_tip">{{ textareaValue.length }}/200</text>
+            <button class="clockIn_savebtn" form-type="submit" disabled="{{ !canClockIn }}">外勤打卡</button>
+          </form>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view wx:if="{{ visible }}" class="clock_popup_wrap">
+    <view class='camera'>
+      <camera wx:if="{{ isAuth }}" device-position="{{cameraConfig.position}}" flash="{{cameraConfig.flash}}" binderror="error"></camera>
+    </view>
+    <view class="camera_btnwrap">
+      <view class="camera_btnwrap_item">
+        <view bindtap="closeCamera">取消</view>
+        <view><view class="camera_btns"><text class="iconfont icon-a-uploadicon camera_icon" bindtap="camera"></text></view></view>
+        <view style="text-align: right;"><text class="iconfont icon-a-change change_position" bindtap="positionChange"></text></view>
+      </view>
+    </view>
+    <!-- 添加水印 -->
+    <view class="canvas_cont">
+      <canvas canvas-id='yyCanvas' style="width: {{w}}px;height: {{h}}px;"></canvas>
+    </view>
+    <!-- 拍摄后生成水印图片 -->
+    <view class="camera_cont" hidden="{{ !markPhoto }}">
+      <view class="preview_image_cont">
+        <image class="preview_image" src="{{ markPhoto }}" mode="aspectFit"></image>
+      </view>
+      <view class="camera_btnwrap preview_items">
+        <view class="camera_btnwrap_item">
+          <view bindtap="againBtn">重拍</view>
+          <view><view class="camera_btns" bindtap="getClockImg">确认</view></view>
+          <view></view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

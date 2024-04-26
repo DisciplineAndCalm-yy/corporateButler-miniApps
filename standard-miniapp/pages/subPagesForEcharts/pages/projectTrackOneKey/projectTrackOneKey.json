@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "tabbars": "../../component/tabbar/index",
+    "public-title": "/publicTitle/publicTitle"
+  }
+}

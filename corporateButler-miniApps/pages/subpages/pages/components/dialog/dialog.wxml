@@ -1,0 +1,119 @@
+<view wx:if="{{isShow}}" style="{{true ? 'position:fixed; top: 0; left: 0;' : ''}}" class="tip-area">
+  <view class="dialog-content">
+    <view class="tip-content">
+      <view class="tip-title">{{title}}</view>
+      <view class="tip-container tip-flex" wx:if="{{title === '退回'}}">
+        <view class="label">
+            <span class="required">*</span>
+            <span class="label-name">退回原因：</span>
+        </view>
+        <view class="content">
+            <view class="text">
+              <view class="textarea-wrapper">
+                  <textarea
+                      placeholder="请输入"
+                      auto-focus="true"
+                      bindinput="remarkInputAction"
+                      value="{{content}}"
+                      >
+                  </textarea>
+              </view>
+            </view>
+        </view>
+      </view>
+      <view class="tip-container" wx:if="{{title === '处理完成'}}">
+        <view class="tip-flex">
+          <view class="label">
+            <span class="required">*</span>
+            <span class="label-name">处理结果：</span>
+          </view>
+          <view class="content">
+              <view class="text">
+                <view class="textarea-wrapper">
+                    <textarea
+                        placeholder="请输入"
+                        auto-focus="true"
+                        bindinput="remarkInputAction"
+                        value="{{content}}"
+                        >
+                    </textarea>
+                </view>
+              </view>
+          </view>
+        </view>
+        <view class="tip-flex uploader">
+          <view class="label">
+            <span class="required">*</span>
+            <span class="label-name">附件：</span>
+          </view>
+          <view class="upload-wrapper">
+              <view class="wrap" wx:for="{{fileList}}" wx:key='index'>
+                  <view
+                      class="upload-item img"
+                      wx-if="{{item.type === 'img'}}"
+                      :key="item.path"
+                      data-index="{{index}}"
+                      catchtap="handleOpenFile"
+                  >
+                      <view class="img-box">
+                          <image style="width: 172rpx; height: 172rpx;" src="{{item.path}}" mode="widthFix" />
+                      </view>
+                      <p class="name">材料证明{{ index + 1 }}</p>
+                  </view>
+                  <view
+                      class="upload-item file"
+                      wx-if="{{item.type === 'file'}}"
+                      :key="file.path"
+                      data-index="{{index}}"
+                      catchtap="handleOpenFile"
+                      >
+                      <view class="file-box">
+                          <image src="../../../assets/file-icon.png" alt="" />
+                      </view>
+                      <p class="name">材料证明({{ index + 1 }})</p>
+                  </view>
+                  <image class="delete-image" data-index="{{index}}" bindtap="handleDel" src="../../../assets/delete_image.png" />
+              </view>
+              <view class="upload-push-item" bindtap="handleShowUploadAction">
+                  <image src="../../../assets/add.png" alt="" />
+              </view>
+          </view>
+        </view>
+      </view>
+      <view class="tip-container" wx:if="{{title === '我要评价'}}">
+        <p>请问您对诉求回复情况满意吗？</p>
+        <radio-group class="radio" bindchange="changeComplaintType">
+          <block wx:for="{{ complaintList }}" wx:key='value'>
+              <radio
+                  checked='{{ item.check }}'
+                  color='{{ item.color }}' 
+                  style='{{ item.style }}'
+                  value='{{ item.value }}'> 
+                  {{ item.label }}
+              </radio>
+          </block>
+        </radio-group>
+        <view wx:if="{{showItem}}">
+          <view class="checkbox-title">您认为诉求处理待改进的原因是？（多选）</view>
+          <view class="weui-cells weui-cells_after-title">
+            <checkbox-group bindchange="checkboxChange">
+              <label class="weui-cell weui-check__label" wx:for="{{checkBox}}" wx:key="index">
+                <view class="weui-cell__hd">
+                  <checkbox value="{{item.value}}" checked="{{item.checked}}"/>
+                </view>
+                <view class="weui-cell__bd">{{item.name}}</view>
+              </label>
+            </checkbox-group>
+          </view>
+          <view wx:if="{{showOther}}">
+            <input class="other" type="text" placeholder="请输入" bindinput="bindReplaceInput"/>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="btn-content">
+      <button class="btn-left back" bindtap="cancel">取消</button>
+      <button class="btn-right" bindtap="submit">确定</button>
+    </view>
+  </view>
+</view>

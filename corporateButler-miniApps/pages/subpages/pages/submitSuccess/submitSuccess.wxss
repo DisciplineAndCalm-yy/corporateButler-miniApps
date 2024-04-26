@@ -1,0 +1,29 @@
+.container {
+    width: 100%;
+}
+.success-icon {
+    display: block;
+    width: 262rpx;
+    height: 262rpx;
+    margin: 10rpx auto 0;
+}
+.title {
+    width: 100%;
+    color: #000;
+    font-size: 48rpx;
+    font-weight: 600;
+    text-align: center;
+    margin: 38rpx auto 476rpx;
+}
+.onFeedback {
+    width: 500rpx;
+    height: 88rpx;
+    color: #fff;
+    border-radius: 20rpx;
+    text-align: center;
+    line-height: 88rpx;
+    font-size: 32rpx;
+    font-weight: 600;
+    background: #70B603;
+    margin: 0 auto;
+}

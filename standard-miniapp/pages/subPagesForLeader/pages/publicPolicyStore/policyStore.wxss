@@ -1,0 +1,208 @@
+/* pages/policyStore/policyStore.wxss */
+.policyStore {
+  overflow: hidden;
+  background: #f5f6fa;
+}
+.store_title_class {
+  background: #fff!important;
+}
+.searchBox {
+  padding: 0 40rpx;
+  background-color: #fff;
+}
+.searchBox .t-input {
+  padding: 20rpx;
+  border-radius: 20rpx;
+  color: #999;
+  background-color: #f5f6fa;
+}
+.searchBox .t-input--border {
+  position: static;
+}
+.searchBox .t-input .t-icon-search {
+  color: #999;
+}
+.selectBox {
+  display: flex;
+  background-color: #fff;
+}
+.t-dropdown-menu {
+  width: 100%;
+}
+.selectBox_item .t-dropdown-menu__item {
+  border: none!important;
+  color: #666!important;
+}
+
+.selectBox .t-dropdown-menu__item .t-dropdown-menu__title {
+  font-size: 28rpx!important;
+}
+.selectBox .t-dropdown-menu__item .t-icon {
+  font-size: 36rpx!important;
+}
+.dropActive1 .t-dropdown-menu__item:nth-child(1) {
+  border: none!important;
+  font-weight: bolder;
+  color: #0f7cee!important;
+}
+.dropActive2 .t-dropdown-menu__item:nth-child(2) {
+  border: none!important;
+  font-weight: bolder;
+  color: #0f7cee!important;
+}
+.dropActive3 .t-dropdown-menu__item:nth-child(3) {
+  border: none!important;
+  font-weight: bolder;
+  color: #0f7cee!important;
+}
+.dropActive4 .t-dropdown-menu__item:nth-child(4) {
+  border: none!important;
+  font-weight: bolder;
+  color: #0f7cee!important;
+}
+
+.searchSelection {
+  height: 100rpx;
+  background-color: #fff;
+  display: flex;
+}
+.policyContent {
+  height: 100%;
+  background: #f5f6fa;
+}
+
+.policy_checkwrap {
+  padding: 0 40rpx;
+  background-color: #f5f6fa;
+}
+.policy_checkwrap .t-radio {
+  padding: 10rpx;
+  font-size: 28rpx;
+  background-color: #f5f6fa;
+}
+.policy_checkwrap .t-radio__border {
+  display: none!important;
+}
+.policy_checkwrap .t-radio__icon--left {
+  margin-right: 0;
+}
+.policy_checkwrap .t-icon-base {
+  font-size: 40rpx;
+}
+.policy_checkwrap .t-radio__icon-dot::after {
+  width: 30rpx;
+  height: 30rpx;
+}
+.policy_checkwrap .t-radio__icon-circle::after {
+  width: 60rpx;
+  height: 60rpx;
+}
+.policy_hascheck_cards {
+  margin-top: 6rpx!important;
+}
+.policyContent .policy_cards {
+  margin: 40rpx 40rpx 30rpx;
+  padding-bottom: 10rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+.policy_cards .margin_iconfont {
+  margin-top: 2rpx;
+  margin-right: 6rpx;
+  font-size: 28rpx;
+}
+.policy_cards .policy_cards_title {
+  padding: 10rpx 0 10rpx 40rpx;
+  display: flex;
+  align-items: center;
+}
+.policy_cards .red_title {
+  color: #F53B00;
+  background: linear-gradient(90.27deg, rgba(255, 0, 0, .4) 0.21%, rgba(217, 217, 217, 0) 101.25%);
+}
+.policy_cards .blue_title {
+  color: #0F7CEE;
+  background: linear-gradient(90.27deg, rgba(15, 124, 238, .4) 0.21%, rgba(217, 217, 217, 0) 101.25%);
+}
+.policy_cards .orange_title {
+  color: #ff9800;
+  background: linear-gradient(90.27deg, rgba(255, 152, 0, 0.4) 0.21%, rgba(217, 217, 217, 0) 101.25%);
+}
+.policy_cards_title .title_num {
+  width: 40rpx;
+  height: 40rpx;
+  margin-right: 10rpx;
+  display: inline-block;
+  line-height: 40rpx;
+  text-align: center;
+  color: #fff;
+  border-radius: 6px;
+}
+.policy_cards_title .red_num {
+  background: #F53B00;
+}
+.policy_cards_title .blue_num {
+  background: #0F7CEE;
+}
+.policy_cards_title .orange_num {
+  background: #ff9800;
+}
+.policy_cards .policy_cards_content {
+  padding: 20rpx 40rpx;
+  color: #333;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-size: 26rpx;
+  font-style: normal;
+  font-weight: 700;
+}
+.policy_cards_content .cards_content_label {
+  margin-left: 12rpx;
+  padding: 4rpx 10rpx;
+  font-weight: 400;
+  font-size: 20rpx;
+  text-align: center;
+  border-radius: 8rpx;
+  display: inline-block;
+}
+.policy_cards_content .green_label {
+  color: #00AC11;
+  background: #D7FFE0;
+}
+.policy_cards_content .blue_label {
+  color: #3F74F6;
+  background: #EAF0FF;
+}
+.policy_cards .policy_cards_time, .policy_cards_author {
+  padding: 0 40rpx;
+  margin: 10rpx 0;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-size: 24rpx;
+  font-style: normal;
+  font-weight: 400;
+  color: #999;
+  display: flex;
+  /* align-items: center; */
+}
+/* 底部空元素 */
+.empty {
+  padding-bottom: calc(120rpx + env(safe-area-inset-bottom) / 2);
+}
+.has_nodata {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(153, 153, 153, 0.60);
+  font-family: PingFang SC;
+  font-size: 28rpx;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 6rpx;
+  padding: 40rpx 0;
+}
+.nodata_img {
+  width: 300rpx;
+  height: 300rpx;
+}

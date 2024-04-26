@@ -1,0 +1,128 @@
+<!--pages/mine/mine.wxml-->
+<view class="mine">
+  <view wx:if="{{!hasEnt}}" class="entinfo" style="height: calc(100vh - ({{menuHeight + menuTop + 10}}px)); margin-top: {{ menuHeight + menuTop + 10 }}px;">
+    <public-title title="我的"></public-title>
+    <view class="mine_wrap">
+      <view class="no_entinfo">
+        <view class="no_entinfo_topbox">
+          <image class="no_entinfo_imgs" src="/assets/imgs/mine_noent.png" mode=""/>
+          <view class="no_entinfo_boxs">
+            <view class="no_entinfo_boxs_iconbox">
+              <text class="iconfont icon-mine blue_icon"></text>
+            </view>
+            <text>欢迎您登录淇心办！</text>
+          </view>
+        </view>
+        <view class="no_entinfo_tips">
+          暂未绑定企业！
+        </view>
+        <view class="no_entinfo_desc">
+          抱歉，您还没有绑定企业，绑定后可查看更多数据
+        </view>
+        <button class="no_entinfo_btns" bindtap="toAddEnt">去绑定</button>
+        <button class="no_entinfo_btns" bindtap="toUnbind">查看解绑进度</button>
+        <button class="no_entinfo_btns login_out" bindtap="toLoginOut">退出登录</button>
+      </view>
+    </view>
+  </view>
+  <view wx:else class="has_entinfo" style="height: calc(100vh - ({{menuHeight + menuTop + 10}}px)); padding-top: {{ menuHeight + menuTop + 10 }}px;">
+    <public-title title="我的"></public-title>
+    <image class="has_top_wrap" src="/assets/imgs/mine_bg.png" mode=""/>
+    <view class="has_entinfo_wrap">
+      <view class="has_entinfo_moreent">
+        <view class="has_entinfo_moreent_cards" bindtap="toChangeEnt">
+          <text>切换企业</text>
+          <text class="has_entinfo_moreent_icon"></text>
+        </view>
+      </view>
+      <view class="has_entinfo_entname">Hi~，{{entInfo.entName || ''}}</view>
+      <view class="has_entinfo_entcodes">
+        <view class="has_entinfo_entcode_wrap">
+          <view class="entcode_icon_wrap"><text class="entcode_icon_wrap_taxicon">征</text></view>
+          {{entInfo.creditCode}}
+        </view>
+        <view class="has_entinfo_enttags" bindtap="toSettingTags">
+          <text class="iconfont icon-tags"></text>
+          设置订阅标签
+        </view>
+      </view>
+      <view wx:if="{{!hasSteward || mangerVoList.length == 0}}" class="has_entinfo_steward">
+        <image class="has_entinfo_steward_imgs" src="/assets/imgs/steward_bg.png" mode=""/>
+        <view class="has_entinfo_steward_wrap">
+          <view class="has_entinfo_steward_icons_wrap">
+            <image class="has_entinfo_steward_icons" src="/assets/imgs/steward_icon.png" mode=""/>
+            申请您的专属企业服务管家
+          </view>
+          <button wx:if="{{hasSteward}}" class="has_entinfo_steward_btns" disabled="{{!hasSteward}}">已申请</button>
+          <button wx:else class="has_entinfo_steward_btns" bindtap="toApplySteward">立即申请</button>
+        </view>
+      </view>
+      <view wx:else class="has_entinfo_steward_cardwrap">
+        <view class="steward_bgcards"></view>
+        <view class="steward_cardswrap">
+          <!-- <view class="steward_cards">
+            <view class="steward_cards_left">
+              <view class="steward_cards_infos">
+                张行长
+                <text class="iconfont icon-phones steward_phonenum"></text>
+                <text class="steward_cards_phonenum">13456780623</text>
+              </view>
+              <view class="steward_cards_desc">
+                这里是对张行长的简单，这里是对张行长的简单介绍文案。
+              </view>
+              <view class="steward_cards_labellist">
+                <view class="steward_cards_labelitem">专属企业管家</view>
+                <view class="steward_cards_labelitem">经验十足</view>
+              </view>
+            </view>
+            <view class="steward_cards_right">
+              <view class="steward_cards_iconwraps"><text class="iconfont icon-mine steward_avatar_icons"></text></view>
+              <view class="steward_cards_level"><text class="iconfont icon-vs level_icon"></text>乡镇级</view>
+            </view>
+          </view> -->
+          <view class="steward_cards newCards" wx:for="{{ mangerVoList }}" wx:key="index">
+            <view class="steward_cards_right">
+              <view class="steward_cards_iconwraps"><text class="steward_cards_avatarfont">{{ item.realname[0] }}</text></view>
+              <view class="steward_cards_level"><text class="iconfont icon-vs level_icon"></text>{{ item.gradeText }}</view>
+            </view>
+            <view class="steward_cards_left">
+              <view class="steward_cards_infos">
+                {{ item.realname }}
+              </view>
+              <view>
+                <text class="iconfont icon-phones steward_phonenum"></text>
+                <text class="steward_cards_phonenum">{{ item.phone }}</text>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view class="mine_info_cards">
+        <view class="mine_info_cards_item" bindtap="toMyEnterprise">
+          <image class="mine_info_cards_icon" src="/assets/imgs/ming_icon_ent.png" mode=""/>
+          <view class="mine_info_card_label">我的企业</view>
+        </view>
+        <view class="mine_info_cards_item" bindtap="toQuestion">
+          <image class="mine_info_cards_icon icons" src="/assets/imgs/ming_icon_question.png" mode=""/>
+          <view class="mine_info_card_label">疑难解答/诉求反馈流程查询</view>
+        </view>
+        <view class="mine_info_cards_item" bindtap="toMyCollects">
+          <image class="mine_info_cards_icon icons" src="/assets/imgs/ming_icon_like.png" mode=""/>
+          <view class="mine_info_card_label">我的收藏</view>
+        </view>
+      </view>
+      <button class="no_entinfo_btns login_out" bindtap="toLoginOut">退出登录</button>
+    </view>
+  </view>
+  <!-- 弹出层 -->
+  <t-popup visible="{{ visible }}" bind:visible-change="onVisibleChange" placement="bottom">
+    <view class="changeent_wrap">
+      <t-radio-group value="{{ changeEntvalue }}" bind:change="onChange">
+        <view wx:for="{{ changeEntList }}" wx:key="index" class="card {{ changeEntvalue == item.id ? 'card--active' : '' }}">
+          <t-icon wx:if="{{ changeEntvalue == item.id }}" name="check" t-class="card__icon" />
+          <t-radio value="{{ item.id }}" label="{{ item.entName }}" content="" icon="none" borderless />
+        </view>
+      </t-radio-group>
+    </view>
+  </t-popup>
+</view>

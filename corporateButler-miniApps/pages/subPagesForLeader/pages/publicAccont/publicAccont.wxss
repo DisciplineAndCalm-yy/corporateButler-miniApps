@@ -1,0 +1,74 @@
+/* pages/subPagesForEcharts/pages/publicAccont/publicAccont.wxss */
+.publicAccont {
+  background-color: #f3f5fa;
+}
+.publicAccont_title_class {
+  background-color: #fff;
+}
+.publicAccont_content {
+  padding: 30rpx;
+}
+.publicAccont_usercard {
+  padding: 20rpx 40rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.user_avatar {
+  width: 140rpx;
+  height: 140rpx;
+  border-radius: 50%;
+}
+.user_avatars {
+  width: 130rpx;
+  height: 130rpx;
+  line-height: 130rpx;
+  text-align: center;
+  border: 6rpx solid #fff;
+  background-color: #1684fc;
+  border-radius: 50%;
+  font-size: 50rpx;
+  color: #fff;
+}
+.user_resetpassword {
+  color: #999;
+  font-weight: 400;
+  font-size: 28rpx;
+  position: relative;
+  padding-right: 40rpx;
+}
+.user_reseticon {
+  content: '';
+  width: 20rpx;
+  height: 20rpx;
+  position: absolute;
+  top: 10rpx;
+  right: 0rpx;
+  border-left: 4rpx solid #DBDBDB;
+  border-bottom: 4rpx solid #DBDBDB;
+  -webkit-transform: translate(0, 0) rotate(225deg);
+  transform: translate(0, 0) rotate(225deg);
+}
+.publicAccont_infocard {
+  margin-top: 30rpx;
+  padding: 20rpx 40rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+}
+.publicAccont_infocard_item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #999;
+  padding: 20rpx 0 30rpx;
+}
+.publicAccont_infocard_item:not(:last-child) {
+  border-bottom: 1px solid #f2f2f2;
+}
+.publicAccont_infocard_item_label {
+  color: #333;
+}

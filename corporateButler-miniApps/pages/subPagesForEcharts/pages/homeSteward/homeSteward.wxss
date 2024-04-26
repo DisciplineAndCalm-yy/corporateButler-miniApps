@@ -1,0 +1,475 @@
+/* pages/subPagesForEcharts/pages/homeSteward/homeSteward.wxss */
+.homeSteward {
+  min-height: 100vh;
+  background-color: #f3f5fa;
+  padding-bottom: calc(120rpx + env(safe-area-inset-bottom)/2);
+}
+/* 顶部 */
+.homeSteward_topcard {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+.homeSteward_topcard_imgs {
+  width: 100vw;
+  height: 30vh;
+}
+/* hi 文字 */
+.homeSteward_topcard_hiwrap {
+  position: absolute;
+  z-index: 2;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 80rpx;
+  text-align: left;
+  font-weight: 400;
+  font-size: 28rpx;
+}
+.homeSteward_topcard_hi {
+  width: 104rpx;
+  height: 92rpx;
+  margin-right: 20rpx;
+}
+.homeSteward_topcard_title_hi {
+  font-size: 36rpx;
+}
+/* card img */
+.homeSteward_topcard_cards {
+  margin-top: -8vh;
+  position: relative;
+  z-index: 2;
+  width: 90vw;
+  height: 260rpx;
+}
+/* 管家打卡信息 */
+.homeSteward_clockinfo {
+  position: absolute;
+  z-index: 2;
+  color: #fff;
+  width: calc(100vw - 80rpx);
+  padding: 0 40rpx;
+}
+.homeSteward_clockinfos {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: left;
+  font-size: 28rpx;
+  font-style: normal;
+  font-weight: 400;
+}
+.homeSteward_clockinfo_title {
+  font-size: 36rpx;
+  font-style: normal;
+  font-weight: 700;
+  margin-bottom: 20rpx;
+}
+/* 打卡记录 */
+.homeSteward_clockinfo_record {
+  color: #fff;
+  font-size: 26rpx;
+  font-style: normal;
+  font-weight: 400;
+  padding: 8rpx 24rpx;
+  border-radius: 25rpx;
+  background: rgba(255, 255, 255, 0.20);
+}
+.homeSteward_clockinfo_record_icon {
+  font-size: 28rpx;
+  color: #FBBA6D;
+  margin-right: 14rpx;
+}
+/* 打卡详细记录区 */
+.homeSteward_clock_wrap {
+  margin: 40rpx 0;
+  padding: 40rpx 60rpx;
+  border-radius: 20rpx;
+  background: #FFF;
+  box-shadow: 0px 10px 20px 0px rgba(15, 124, 238, 0.10);
+}
+.homeSteward_clock_wrap_top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.clock_wrap_item {
+  color: #666;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-size: 26rpx;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.3px;
+}
+.clock_wrap_item_fontwrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #0F7CEE;
+  font-family: D-DIN-PRO;
+  font-size: 38rpx;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.3px;
+  margin-bottom: 10rpx;
+}
+.clock_icons {
+  font-size: 38rpx;
+  font-weight: normal;
+}
+.clock_day {
+  color: #26DDAD;
+}
+.clock_week {
+  color: #76A3FC;
+}
+.clock_month {
+  color: #FBB831;
+}
+.homeSteward_clock_wrap_bottom {
+  margin-top: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.clock_btmwrap_item {
+  display: flex;
+  align-items: center;
+}
+.clock_btmwrap_item_iconwrap {
+  /* width: 76rpx; */
+  /* height: 76rpx; */
+  /* line-height: 76rpx; */
+  /* text-align: center; */
+  padding: 20rpx;
+  border-radius: 30rpx;
+}
+.clock_iconwrap {
+  background: rgba(102, 75, 237, 0.20);
+}
+.enterprise_iconwrap {
+  background: rgba(251, 113, 117, 0.20);
+}
+.clock_recordlist {
+  font-size: 44rpx;
+  color: #664BED;
+}
+.clock_enterprise {
+  font-size: 44rpx;
+  color: #FB7175;
+}
+.clock_btmwrap_item_fontwrap {
+  margin-left: 20rpx;
+  color: #666;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-size: 26rpx;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.3px;
+}
+.clock_btmwrap_item_font {
+  color: #0F7CEE;
+  font-family: D-DIN-PRO;
+  font-size: 38rpx;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.3px;
+  margin-bottom: 10rpx;
+}
+/* 外勤打卡区 */
+.homeSteward_toclock {
+  padding: 40rpx;
+  border-radius: 20rpx;
+  background: #FFF;
+  box-shadow: 0px 10px 20px 0px rgba(15, 124, 238, 0.10);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.homeSteward_toclock_wrap {
+  display: flex;
+  align-items: center;
+}
+.homeSteward_toclock_wrap_icons {
+  width: 40rpx;
+  height: 50rpx;
+}
+.homeSteward_toclock_tipwrap {
+  margin-left: 20rpx;
+  text-align: left;
+  color: #999;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-size: 24rpx;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.3px;
+}
+.homeSteward_toclock_tipwrap_tips {
+  color: #333;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-size: 30rpx;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  letter-spacing: -0.3px;
+  margin-bottom: 10rpx;
+}
+.homeSteward_toclck_clockbtn {
+  border-radius: 25rpx;
+  background: #0F7CEE;
+  color: #FFF;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-size: 26rpx;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  padding: 10rpx 20rpx;
+}
+/* 动态计算检测线 */
+.checkline {}
+/* 内容区 */
+.homeSteward_content {
+  padding: 0 40rpx;
+}
+/* 公共title */
+.homeSteward_publictitle {
+  margin: 40rpx 0 20rpx;
+  display: flex;
+  align-items: center;
+}
+.homeSteward_publictitle_icon {
+  width: 6rpx;
+  height: 40rpx;
+  margin-right: 20rpx;
+  background: linear-gradient(180deg, #418EFD 0%, #0079F9 100%);
+  border-radius: 20rpx;
+}
+.homeSteward_publictitle_title {
+  font-weight: 700;
+  font-size: 32rpx;
+  color: #333;
+}
+/* 企业卡片 */
+.homeSteward_entcardwrap {
+  height: 200rpx;
+  white-space: nowrap;
+  display: flex;
+  overflow-x: scroll;
+}
+.noentcard {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+}
+.homeSteward_entcard_scroll {
+  display: inline-block;
+}
+.homeSteward_entcard_scroll:not(:last-child) {
+  margin-right: 40rpx;
+}
+.homeSteward_entcard {
+  width: 400rpx;
+  height: 120rpx;
+  background: linear-gradient(180deg, #007DFF 0%, #2C80FF 100%);
+  border-radius: 20rpx;
+  display: flex;
+  padding: 40rpx;
+}
+.homeSteward_entcard_iconwrap {
+  width: 62rpx;
+  height: 62rpx;
+  background-color: #fff;
+  border-radius: 50%;
+  margin-right: 20rpx;
+}
+.homeSteward_entcard_iconwrap_icon {
+  width: 62rpx;
+  height: 62rpx;
+}
+.homeSteward_entcard_entinfo {
+  font-size: 28rpx;
+  font-weight: 400;
+  color: #fff;
+}
+.homeSteward_entcard_entname {
+  margin: 14rpx 0 10rpx;
+}
+.homeSteward_entcard_things {
+  position: relative;
+  display: flex;
+  align-items: center;
+  font-size: 48rpx;
+}
+.homeSteward_entcard_things_icon {
+  content: '';
+  width: 25rpx;
+  height: 25rpx;
+  position: absolute;
+  left: 60rpx;
+  border-left: 4rpx solid #fff;
+  border-bottom: 4rpx solid #fff;
+  -webkit-transform: translate(0, 0) rotate(225deg);
+  transform: translate(0, 0) rotate(225deg);
+}
+/* 预警卡片 */
+.homeSteward_entwarning {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.homeSteward_entwarning_cardwrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20rpx 0;
+  background-color: #fff;
+  border-radius: 20rpx;
+}
+.homeSteward_entwarning_cardwrap:not(:last-child) {
+  margin-right: 20rpx;
+}
+.entwarning_card_icon {
+  width: 74rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  background: #007DFF;
+  box-shadow: 0px 4px 4px #DCEDFF;
+  border-radius: 20rpx;
+  margin-right: 20rpx;
+}
+.orangebg {
+  background: #FA9825;
+}
+.entwarning_card_icon_iconfont {
+  color: #fff;
+  font-size: 36rpx;
+}
+.entwarning_card_text {
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #999;
+}
+.entwarning_card_text_font {
+  font-size: 48rpx;
+  color: #167AF9;
+}
+.orangefont {
+  color: #FA9825;
+}
+/* 诉求统计 */
+.homeSteward_begCharts {
+  height: 600rpx;
+  padding: 0 40rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+}
+/* 项目数量 */
+.homeSteward_projectwrap {
+  padding: 30rpx 0;
+  height: 240rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.projectwrap_cards {
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #999;
+  text-align: center;
+}
+.projectwrap_cards_imgwrap {
+  width: 84rpx;
+  height: 84rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #E2EFFF;
+  border-radius: 20rpx;
+}
+.bg_orange {
+  background: #FFF0DE;
+}
+.bg_green {
+  background: #D2FFF2;
+}
+.projectwrap_cards_img1 {
+  width: 54rpx;
+  height: 50rpx;
+}
+.projectwrap_cards_img2 {
+  width: 62rpx;
+  height: 50rpx;
+}
+.projectwrap_cards_img3 {
+  width: 50rpx;
+  height: 52rpx;
+}
+.projectwrap_cards_fonts {
+  margin: 10rpx 0;
+  color: #007DFF;
+  font-size: 48rpx;
+}
+.font_orange {
+  color: #FA9825;
+}
+.font_green {
+  color: #3BC59E;
+}
+.projectwrap_splitline {
+  width: 2rpx;
+  height: 100%;
+  background-color: #F2F2F2;
+}
+/* 项目投资 */
+.homeSteward_projectmoney {
+  padding: 20rpx 40rpx;
+  height: 110rpx;
+  margin-bottom: 20rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.projectmoney_spitline {
+  width: 2rpx;
+  height: 100%;
+  background-color: #F2F2F2;
+}
+.projectmoney_cards {
+  font-weight: 400;
+  font-size: 28rpx;
+  color: #333;
+}
+.projectmoney_cards_label {
+  margin-bottom: 16rpx;
+  font-weight: 400;
+  font-size: 24rpx;
+  color: #999;
+}
+.projectmoney_changebtn {
+  margin-left: 40rpx;
+  padding: 8rpx 14rpx;
+  display: inline-block;
+  color: #2B65D9;
+  background: #E8F2FF;
+  border-radius: 20rpx;
+}
+/* 项目投资 柱图 */
+.homeSteward_projectmoney_charts {
+  height: 600rpx;
+  padding: 0 40rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+}

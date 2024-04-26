@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "public-title": "/publicTitle/publicTitle",
+    "t-switch": "tdesign-miniprogram/switch/switch",
+    "t-popup": "tdesign-miniprogram/popup/popup",
+    "t-check-tag": "tdesign-miniprogram/check-tag/check-tag",
+    "t-dialog": "tdesign-miniprogram/dialog/dialog"
+  }
+}

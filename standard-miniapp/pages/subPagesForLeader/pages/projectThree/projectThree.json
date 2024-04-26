@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "public-title": "/publicTitle/publicTitle",
+    "ec-canvas": "../../component/ec-canvas/ec-canvas"
+  }
+}

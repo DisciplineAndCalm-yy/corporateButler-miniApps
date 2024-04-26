@@ -1,0 +1,29 @@
+<!--pages/subPagesForEcharts/pages/projectSupervise/projectSupervise.wxml-->
+<view class="projectSupervise" style="padding-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px);">
+  <public-title titleClass="projectSupervise_title_class" title="我的督办" showback="true"></public-title>
+	<view class="projectSupervise_content">
+		<view wx:for="{{ list }}" wx:key="index" class="projectSupervise_card">
+			<view class="projectSupervise_item">
+				<view class="projectSupervise_item_label">项目名称</view>
+				<view>{{ item.proName }}</view>
+			</view>
+			<view class="projectSupervise_item">
+				<view class="projectSupervise_item_label">督办时间</view>
+				<view>{{ item.createTime }}</view>
+			</view>
+			<view class="projectSupervise_item">
+				<view class="projectSupervise_item_label">督办内容</view>
+			</view>
+			<view>{{ item.content }}</view>
+			<view class="projectSupervise_btnwrap">
+				<view bindtap="toShowMore" data-id="{{ item.id }}" data-pid="{{ item.projectId }}" class="projectSupervise_btns">查看详情</view>
+			</view>
+		</view>
+	</view>
+	<t-divider wx:if="{{ list.length > 0 }}" content="{{nomore ? '已经到底啦' : '上拉加载更多' }}" />
+	<view wx:else class="has_nodata">
+		<image class="nodata_img" src="/assets/imgs/nodata.png" mode=""/>
+		<view>暂无数据</view>
+	</view>
+	<view class="empty"></view>
+</view>

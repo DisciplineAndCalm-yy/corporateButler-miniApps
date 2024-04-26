@@ -1,0 +1,74 @@
+<!--pages/policyStore/policyStore.wxml-->
+<view class="policyStore" style="margin-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px);">
+  <public-title titleClass="store_title_class" title="政策库"></public-title>
+  <t-sticky offset-top="{{ menuHeight + menuTop + 10 }}">
+    <view class="searchBox">
+      <t-input prefixIcon="search" type="text" placeholder="请输入关键字搜索" value="{{policyTitle}}" bindblur='searchTitle' />
+    </view>
+    <view class="selectBox {{ dropActiveMap[dropActive] }}">
+      <t-dropdown-menu>
+        <view class="{{dropActive == 1 ? 'drop_active' : 'selectBox_item'}}">
+          <t-dropdown-item label="政策层级" options="{{policyLevel.options}}" value="{{policyLevel.value}}" bindchange="onDropPolicyLevelChange"/>
+        </view>
+        <view class="{{dropActive == 2 ? 'drop_active' : 'selectBox_item'}}">
+          <t-dropdown-item label="政策类型" options="{{policyType.options}}" multiple optionsColumns="3" value="{{policyType.value}}" bindchange="onDropPolicyTypeChange" bindconfirm="onDropPolicyTypeConfirm" bindreset="onDropPolicyTypeReset" data-id="policyType"/>
+        </view>
+        <view class="{{dropActive == 3 ? 'drop_active' : 'selectBox_item'}}">
+          <t-dropdown-item label="产业类型" options="{{productType.options}}" multiple optionsColumns="3" value="{{productType.value}}" bindchange="onDropProductTypeChange" bindconfirm="onDropProductTypeConfirm" bindreset="onDropProductTypeReset" data-id="productType"/>
+        </view>
+        <view class="{{dropActive == 4 ? 'drop_active' : 'selectBox_item'}}">
+          <t-dropdown-item label="政策条线" options="{{policyClassify.options}}" value="{{policyClassify.value}}" bindchange="onDropPolicyClassifyChange"/>
+        </view>
+      </t-dropdown-menu>
+      <!-- <view class="{{dropActive == 1 ? 'drop_active' : 'selectBox_item'}}">
+        <t-dropdown-menu id="policyLevel" bindtap="tapPolicyLevel" data-id="policyLevel">
+          <t-dropdown-item label="政策层级" options="{{policyLevel.options}}" value="{{policyLevel.value}}" bindchange="onDropPolicyLevelChange"/>
+        </t-dropdown-menu>
+      </view>
+      <view class="{{dropActive == 2 ? 'drop_active' : 'selectBox_item'}}">
+        <t-dropdown-menu id="department" bindtap="tapDepartment" data-id="department">
+          <t-dropdown-item label="发文机构" options="{{department.options}}" multiple optionsColumns="3" value="{{department.value}}" bindchange="onDropDepartmentChange" bindconfirm="onDropDepartmentConfirm" bindreset="onDropDepartmentReset" data-id="department"/>
+        </t-dropdown-menu>
+      </view>
+      <view class="{{dropActive == 3 ? 'drop_active' : 'selectBox_item'}}">
+        <t-dropdown-menu id="policyType" bindtap="tapPolicyType" data-id="policyType">
+          <t-dropdown-item label="政策类型" options="{{policyType.options}}" multiple optionsColumns="3" value="{{policyType.value}}" bindchange="onDropPolicyTypeChange" bindconfirm="onDropPolicyTypeConfirm" bindreset="onDropPolicyTypeReset" data-id="policyType"/>
+        </t-dropdown-menu>
+      </view>
+      <view class="{{dropActive == 4 ? 'drop_active' : 'selectBox_item'}}">
+        <t-dropdown-menu id="productType" bindtap="tapProductType" data-id="productType">
+          <t-dropdown-item label="产业类型" options="{{productType.options}}" value="{{productType.value}}" bindchange="onDropProductTypeChange" data-id="productType"/>
+        </t-dropdown-menu>
+      </view> -->
+    </view>
+  </t-sticky>
+  <view class="policyContent">
+    <view wx:if="{{ policyClassify.value == '1' }}" class="policy_checkwrap">
+      <t-radio label="申报中" checked="{{ radioStatus }}" bind:change="onRadioChange"/>
+    </view>
+    <view class="policy_cards {{ index == 0 && policyClassify.value == '1' ? 'policy_hascheck_cards' : '' }}" wx:for="{{policyData}}" wx:key="index">
+      <view bindtap="toMatchDetail" data-policyid="{{item.policyId}}">
+        <view style="{{(cardTypeMap[item.policyClassify] == 0 || item.deadlineDay == null || item.deadlineDay > 15) ? 'display: none' : ''}}" class="policy_cards_title {{cardTypeMap[item.policyClassify] == 1 && item.deadlineDay <= 15 ? item.deadlineDay <= 5 ? 'red_title' : 'orange_title' : ''}}">
+          <text class="iconfont icon-daojishi margin_iconfont" style="font-size: 38rpx;"></text>倒计时：<text class="title_num {{cardTypeMap[item.policyClassify] == 1 && item.deadlineDay <= 15 ? item.deadlineDay <= 5 ? 'red_num' : 'orange_num' : ''}}">{{item.deadlineDay}}</text>天
+        </view>
+        <view class="policy_cards_content">{{item.policyTitle}}<text class="cards_content_label {{cardTypeMap[item.policyClassify] == 1 ? 'green_label' : 'blue_label'}}">{{item.policyClassify}}</text></view>
+        <view class="policy_cards_time">
+          <text class="iconfont icon-daojishi margin_iconfont"></text>
+          <text>{{item.publicityTime}}</text>
+        </view>
+        <view class="policy_cards_author">
+          <text class="iconfont icon-didian margin_iconfont"></text>
+          <text>{{item.publicityOrgCode}}</text>
+        </view>
+      </view>
+    </view>
+    <t-divider wx:if="{{ policyData.length > 0 }}" content="{{nomore ? '已经到底啦' : '上拉加载更多' }}" />
+    <view wx:else class="has_nodata">
+      <image class="nodata_img" src="/assets/imgs/nodata.png" mode=""/>
+      <view>暂无数据</view>
+    </view>
+    <view class="empty"></view>
+    <!-- <t-loading theme="spinner" size="40rpx" text="加载中" layout="vertical" class="wrapper" /> -->
+  </view>
+  <tabbars></tabbars>
+</view>

@@ -1,0 +1,84 @@
+<!--pages/subpages/pages/unbindList/unbindList.wxml-->
+<view class="unbindList" style="margin-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px - 80rpx);">
+  <public-title titleClass="unbindList_title_class" showback="true" isShare="{{isShare}}" title="解绑进度查询"></public-title>
+  <view class="unbindList_content">
+    <view wx:for="{{ unbindData }}" wx:key="index" class="unbindList_cards_wraper">
+      <view class="unbindList_cards" bindtap="handleShow" data-id="{{ item.id }}">
+        <view class="unbindList_cards_titlewrap">
+          <view class="unbindList_cards_entlabel">解绑企业</view>
+          <view class="unbindList_cards_entinfo">
+            <view class="unbindList_cards_entavatar">{{ item.entName[0] }}</view>
+            <view>{{ item.entName }}</view>
+          </view>
+        </view>
+        <view class="unbindList_cards_infos">
+          <view>联系人</view>
+          <view class="unbindList_infos_fonts">{{ item.name }}</view>
+        </view>
+        <view class="unbindList_cards_infos">
+          <view>联系电话</view>
+          <view class="unbindList_infos_fonts">{{ item.phone }}</view>
+        </view>
+        <view class="unbindList_cards_infos">
+          <view>申请时间</view>
+          <view class="unbindList_infos_fonts">{{ item.createTime }}</view>
+        </view>
+        <view class="unbindList_cards_infos">
+          <view>解绑状态</view>
+          <view class="unbind_status {{statusMap[item.applyStatus].class}}">{{statusMap[item.applyStatus].label}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <t-divider wx:if="{{ unbindData.length > 0 }}" content="{{nomore ? '已经到底啦' : '上拉加载更多' }}" />
+  <view wx:else class="has_nodata">
+    <image class="nodata_img" src="/assets/imgs/nodata.png" mode=""/>
+    <view>暂无数据</view>
+  </view>
+  <view class="empty"></view>
+  <!-- 弹出层 -->
+  <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="center" close-on-overlay-click="{{false}}">
+    <view class="unbindTipsWraper">
+      <view class="unbindTipsWraper_title">
+        <view>提示</view>
+        <image class="unbindTipsWraper_title_close" bindtap="handleClose" src="../../assets/unbind_close.png" mode=""/>
+      </view>
+    </view>
+    <view class="unbindTipsWraper_content">
+      <view class="unbindTipsWraper_content_progress">
+        <view class="unbindTipsWraper_content_label">当前进度</view>
+        <view>
+          <view class="unbind_status {{statusMap[unbindInfo.applyStatus].class}}">{{statusMap[unbindInfo.applyStatus].label}}</view>
+          <view wx:if="{{ unbindInfo.applyStatus == '1' }}" class="unbindTipsWraper_content_progressdesc">工作人员已接收，待处理解绑</view>
+        </view>
+      </view>
+      <view wx:if="{{ unbindInfo.applyStatus == '3' }}" class="unbindTipsWraper_content_reason">
+        <view class="unbindTipsWraper_content_label">驳回原因</view>
+        <view class="unbindTipsWraper_content_reasonwraper">
+          <!-- <view class="unbindTipsWraper_content_reasondesc {{ isExpend ? 'reasondesc_expend' : '' }}">
+            <view class="reason_open" bindtap="changeExpend"><text class="reason_open_icon {{ isExpend ? 'close_icon' : '' }}"></text>{{ isExpend ? '收起' : '展开' }}</view>
+            {{ unbindInfo.reason }}
+          </view> -->
+          <view class="unbindTipsWraper_content_reasondescnew {{ isExpend ? 'reasondesc_expend' : '' }}">{{ unbindInfo.reason }}</view>
+          <view class="reason_open_new" bindtap="changeExpend"><text class="reason_open_icon {{ isExpend ? 'close_icon' : '' }}"></text>{{ isExpend ? '收起' : '展开' }}</view>
+        </view>
+      </view>
+      <view class="unbindTipsWraper_content_infos">
+        <view class="unbindTipsWraper_content_infos_item">
+          <text class="infos_label">联系人：</text>{{ unbindInfo.name }}
+        </view>
+        <view class="unbindTipsWraper_content_infos_item">
+          <text class="infos_label">联系电话：</text>{{ unbindInfo.phone }}
+        </view>
+        <view class="unbindTipsWraper_content_infos_item">
+          <text class="infos_label">营业执照：</text>
+          <view>
+            <image class="infos_imgs" src="{{ unbindInfo.sourceLink }}" mode="aspectFill" bindtap="previewImg">
+            </image>
+          </view>
+        </view>
+      </view>
+      <button class="unbindTipsWraper_content_close" bindtap="handleClose">返回</button>
+    </view>
+  </t-popup>
+</view>

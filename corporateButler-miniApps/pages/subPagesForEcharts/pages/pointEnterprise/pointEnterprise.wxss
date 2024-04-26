@@ -1,0 +1,123 @@
+/* pages/subPagesForEcharts/pages/pointEnterprise/pointEnterprise.wxss */
+.pointEnterprise {
+  background: #f5f6fa;
+}
+.pointEnterprise_title_class {
+  background: #fff!important;
+}
+.pointEnterprise_wraper {
+  padding: 40rpx 40rpx 80rpx;
+}
+/* 管家卡片 */
+.steward_info_cards {
+  padding: 60rpx 0rpx;
+  background: linear-gradient(99.22deg, rgba(0, 101, 255, 0.69) 11.48%, rgba(39, 125, 255, 0.69) 99.94%);
+  border-radius: 20rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.steward_info_avatar {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 50%;
+}
+.steward_info_avatars {
+  width: 130rpx;
+  height: 130rpx;
+  line-height: 130rpx;
+  text-align: center;
+  border: 6rpx solid #fff;
+  border-radius: 50%;
+  font-size: 50rpx;
+  color: #fff;
+}
+.steward_infos {
+  padding: 0 20rpx;
+  color: #fff;
+  font-weight: 400;
+  font-size: 28rpx;
+  text-align: left;
+}
+.infowrap_infos {
+  display: flex;
+  margin-bottom: 20rpx;
+}
+.infos_name {
+  font-weight: 700;
+  font-size: 36rpx;
+  margin-right: 30rpx;
+}
+.infowrap_tagwrap {
+  display: flex;
+  align-items: center;
+}
+.infos_tagswrap {
+  position: relative;
+  margin-right: -20rpx;
+  width: 50rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  background-color: #fff;
+  border-radius: 50%;
+  color: #3B8DFF;
+  text-align: center;
+}
+.infos_fontwrap {
+  font-size: 24rpx;
+  padding: 2rpx 12rpx 2rpx 24rpx;
+  background-color: #fff;
+  color: #3B8DFF;
+  border-radius: 12rpx;
+}
+/* 企业卡片 */
+.enterprise_card {
+  padding: 40rpx;
+  margin-top: 30rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  font-weight: 700;
+  font-size: 28rpx;
+}
+.enterprise_card_title {
+  margin-bottom: 20rpx;
+}
+.enterprise_card_code {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #999;
+  margin-bottom: 40rpx;
+}
+.enterprise_card_btns {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.enterprise_card_btnitem {
+  padding: 20rpx 50rpx;
+  color: #448CF8;
+  background: #F4F9FF;
+  border-radius: 20rpx;
+}
+/* 底部空元素 */
+.empty {
+  padding-bottom: calc(env(safe-area-inset-bottom) / 2);
+}
+.has_nodata {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(153, 153, 153, 0.60);
+  font-family: PingFang SC;
+  font-size: 28rpx;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 6rpx;
+  padding: 40rpx 0;
+}
+.nodata_img {
+  width: 300rpx;
+  height: 300rpx;
+}

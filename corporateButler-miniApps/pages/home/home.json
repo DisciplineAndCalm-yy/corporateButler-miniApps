@@ -1,0 +1,10 @@
+{
+  "usingComponents": {
+    "t-avatar": "tdesign-miniprogram/avatar/avatar",
+    "t-icon": "tdesign-miniprogram/icon/icon",
+    "t-row": "tdesign-miniprogram/row/row",
+    "t-col": "tdesign-miniprogram/col/col",
+    "t-popup": "tdesign-miniprogram/popup/popup",
+    "t-divider": "tdesign-miniprogram/divider/divider"
+  }
+}

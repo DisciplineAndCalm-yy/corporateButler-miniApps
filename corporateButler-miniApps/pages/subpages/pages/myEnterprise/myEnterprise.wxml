@@ -1,0 +1,31 @@
+<!--pages/subpages/pages/myEnterprise/myEnterprise.wxml-->
+<view class="myEnterprise" style="margin-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px - 80rpx);">
+  <public-title titleClass="myEnterprise_title_class" showback="true" title="我的企业"></public-title>
+  <view class="myEnterprise_content">
+    <view class="myEnterprise_wraper" wx:for="{{entList}}" wx:key="index">
+      <view class="myEnterprise_entinfo">
+        <view class="myEnterprise_entinfo_icons">{{ item.entName[0] }}</view>
+        <view class="myEnterprise_entinfo_entlabel">
+          <view class="myEnterprise_entinfo_entname">{{ item.entName }}</view>
+          <view class="myEnterprise_entinfo_entcode">统一社会信用代码：<text class="myEnterprise_entinfo_code"></text>{{ item.creditCode }}</view>
+        </view>
+      </view>
+      <view class="myEnterprise_entbtns">
+        <view class="myEnterprise_entbtns_delete" bindtap="toDeleteEnt" data-entid="{{ item.id }}">移除企业</view>
+        <view bindtap="toAddPerson" data-entid="{{ item.id }}" data-item="{{ item }}">添加权限</view>
+        <view bindtap="toAddEnt" data-isComplete="true" data-entcode="{{ item.creditCode }}">完善企业</view>
+      </view>
+    </view>
+  </view>
+  <view class="bottom_btnswraper">
+    <view class="bottom_myEnterprise_remove" bindtap="toUnbind">查看解绑进度</view>
+    <view class="bottom_myEnterprise_addbtn" bindtap="toAddEnt"><text class="iconfont icon-a-add myEnterprise_addicons"></text>添加企业</view>
+  </view>
+  <!-- <view class="myEnterprise_addbtns" bindtap="toAddEnt"><text class="iconfont icon-a-add myEnterprise_addicons"></text>添加企业</view> -->
+  <t-divider wx:if="{{ entList.length > 0 }}" content="{{nomore ? '已经到底啦' : '上拉加载更多' }}" />
+  <view wx:else class="has_nodata">
+    <image class="nodata_img" src="/assets/imgs/nodata.png" mode=""/>
+    <view>暂无数据</view>
+  </view>
+  <view class="empty"></view>
+</view>

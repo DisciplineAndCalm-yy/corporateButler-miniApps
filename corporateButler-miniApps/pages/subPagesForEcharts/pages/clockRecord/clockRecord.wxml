@@ -1,0 +1,70 @@
+<!--pages/subPagesForEcharts/pages/clockRecord/clockRecord.wxml-->
+<view class="clockRecord" style="margin-top: {{ menuHeight + menuTop + 10 }}px; height: calc(100vh - {{ menuHeight + menuTop + 10 }}px - 80rpx);">
+  <public-title titleClass="store_title_class" showback="true" title="打卡记录"></public-title>
+  <!-- 顶部搜索 -->
+  <view class="clockRecord_filterwrap">
+    <view>打卡日期</view>
+		<view bindtap="openSeachPopup">
+			<text>{{ startDate }} - {{ endDate }}</text>
+			<text class="iconfont icon-a-filter search_clock"></text>
+		</view>
+  </view>
+  <!-- 内容 -->
+  <view class="clockRecord_contentwrap" style="min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px - 240rpx);">
+    <view wx:for="{{ recordList }}" wx:key="index" class="clockRecord_contentwrap_cards">
+      <view class="card_title">
+				<text class="label_color">打卡企业</text>
+				<text>{{ item.entName }}</text>
+			</view>
+			<view class="card_split_line"></view>
+			<view class="card_title">
+				<text class="label_color">打卡时间</text>
+				<text>{{ item.createTime }}</text>
+			</view>
+			<view class="card_split_line"></view>
+			<view class="card_imgwrap">
+				<text class="label_color">拍照记录</text>
+				<image class="card_img" src="{{ item.imgSrc }}" data-imgsrc="{{ item.imgSrc }}" mode="aspectFill" bindtap="previewImg"></image>
+			</view>
+			<view class="card_split_line"></view>
+			<view class="card_eles">
+				<text class="label_color">记录说明</text>
+				<view class="card_eles_desc">{{ item.content }}</view>
+			</view>
+			<!-- <view class="card_split_line"></view>
+			<view class="card_eles">
+				<text class="label_color">打卡位置</text>
+				<view class="card_eles_desc">{{ item.latitude }}</view>
+			</view> -->
+    </view>
+    <t-divider wx:if="{{ recordList.length > 0 }}" content="{{nomore ? '已经到底啦' : '上拉加载更多' }}" />
+    <view wx:else class="has_nodata">
+      <image class="nodata_img" src="/assets/imgs/nodata.png" mode=""/>
+      <view>暂无数据</view>
+    </view>
+    <view class="empty"></view>
+  </view>
+  <!-- 弹出层 -->
+	<t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="bottom" close-on-overlay-click="{{false}}">
+		<view class="clock_popup_wrap" style="height: calc(100vh - {{ menuHeight + menuTop + 10 }}px - 240rpx);">
+			<view class="clock_popup_iconwrap"><text class="iconfont icon-a-x clock_popup_icon" bindtap="closeSearchPopup"></text></view>
+			<view class="clock_popup_label">打卡日期</view>
+			<view class="clock_popup_lastdate">
+				<view class="clock_popup_lastdate_item {{ lastDateIndex == 0 ? 'active_item' : '' }}" bindtap="changeLastDate" data-index="0">近一周</view>
+				<view class="clock_popup_lastdate_item {{ lastDateIndex == 1 ? 'active_item' : '' }}" bindtap="changeLastDate" data-index="1">近一月</view>
+				<view class="clock_popup_lastdate_item {{ lastDateIndex == 2 ? 'active_item' : '' }}" bindtap="changeLastDate" data-index="2">近半年</view>
+			</view>
+			<view class="clock_popup_label">自定义</view>
+			<view class="clock_popup_custom">
+				<picker class="complete_enterprise_info_item_picker" mode="date" value="{{ searchStartDate }}" end="{{ searchEndDate }}" bindchange="bindCustomStartDateChange">
+					<view class="custom_item">{{ searchStartDate }}</view>
+				</picker>
+				 - 
+				<picker class="complete_enterprise_info_item_picker" mode="date" value="{{ searchEndDate }}" start="{{ searchStartDate }}" bindchange="bindCustomEndDateChange">
+					<view class="custom_item">{{ searchEndDate }}</view>
+				</picker>
+			</view>
+			<view class="clock_popup_btn" bindtap="cofirmSearchClock">确认</view>
+		</view>
+  </t-popup>
+</view>

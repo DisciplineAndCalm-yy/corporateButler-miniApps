@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "public-title": "/publicTitle/publicTitle",
+    "popup": "../popup/popup"
+  }
+}

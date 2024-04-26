@@ -1,0 +1,8 @@
+{
+    "component": true,
+    "usingComponents": {
+      "public-title": "/publicTitle/publicTitle",
+      "t-divider": "tdesign-miniprogram/divider/divider",
+      "t-sticky": "tdesign-miniprogram/sticky/sticky"
+    }
+  }

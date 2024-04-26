@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "tabbars": "../../component/tabbar/index",
+    "t-popup": "tdesign-miniprogram/popup/popup"
+  }
+}

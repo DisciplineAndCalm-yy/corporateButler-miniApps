@@ -1,0 +1,17 @@
+<!--pages/subpages/pages/noApply/noApply.wxml-->
+<view class="noApplyList" style="margin-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px - 80rpx);">
+  <public-title titleClass="noApplyList_title_class" showback="true" title="免申即享"></public-title>
+  <view class="noApplyList_wraper">
+    <view class="noApplyList_cardwraper">
+      <view class="noApplyList_carditem" wx:for="{{ noApplyList }}" wx:key="index" bindtap="previewDoc" data-src="{{ item.sourceLink }}">
+        <p class="noApplyList_carditem_name">{{ item.policyTitle }}</p>
+      </view>
+    </view>
+  </view>
+  <t-divider wx:if="{{ noApplyList.length > 0 }}" content="{{nomore ? '已经到底啦' : '上拉加载更多' }}" />
+  <view wx:else class="has_nodata">
+    <image class="nodata_img" src="/assets/imgs/nodata.png" mode=""/>
+    <view>暂无数据</view>
+  </view>
+  <view class="empty"></view>
+</view>

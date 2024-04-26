@@ -1,0 +1,53 @@
+<!--pages/subPagesForLeader/pages/projectProvince/projectProvince.wxml-->
+<view class="projectProvince" style="margin-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px);">
+  <public-title titleClass="matchDetail_title" title="省市县重点项目" showback="true"></public-title>
+	<view class="province_searchbox">
+		<view class="province_searchbox_labelwrap" bindtap="openShowDetail" data-desc="按照项目计划开始日期统计。">
+			<view class="titles_split"></view>数据统计维度<text class="iconfont icon-ldwen titles_icons"></text>
+		</view>
+		<view class="province_searchbox_timewrap">
+			<picker mode="date" value="{{ startDate }}" end="{{ toDay }}" bindchange="bindStartDateChange">{{ startDate }}
+			</picker>
+			<view class="province_timewraper_time_desc">至</view>
+			<picker mode="date" value="{{ endDate }}" end="{{ toDay }}" bindchange="bindEndDateChange">{{ endDate }}
+			</picker>
+			<view class="province_searchbox_timeicon"></view>
+		</view>
+	</view>
+	<!-- 金额模块 -->
+	<view class="province_moneywrap">
+		<view wx:for="{{ totalMoneyList }}" wx:key="index" class="province_moneywrap_item  {{ totalColorMap[item.ssKeyFlag] }}">
+			{{ item.ssKeyFlagName }}
+			<text><text class="province_moneywrap_item_num">{{ item.planTotalInvestment }}</text>万元</text>
+			<text><text class="province_moneywrap_item_num">{{ item.projectNum }}</text>个</text>
+		</view>
+	</view>
+	<!-- 省市县维度 -->
+	<view class="province_wraper">
+		<view wx:for="{{ allList }}" wx:for-item="els" wx:for-index="eleIndex" wx:key="elsIndex" class="province_itembox">
+			<view class="province_itembox_label">
+				<view class="province_itembox_title"><view class="titles_split"></view>{{ els.ssKeyFlagName }}</view>
+				<view bindtap="toShowList" data-type="{{ els.ssKeyFlag }}">查看清单</view>
+			</view>
+			<view wx:for="{{ els.keyProjectPhaseStaticsWxVoList }}" wx:key="index" class="province_itembox_progressbox">
+				<view class="province_progress_itemtop">
+					<view class="province_progress_itemtop_flex">{{ item.phaseName }}</view>
+					<view class="province_progress_itemtop_flex">{{ item.projectPhaseNum }} / {{ els.projectNum }}</view>
+					<view class="province_progress_itemtop_flexs">{{ item.expectTotalInvestment }} 万元</view>
+				</view>
+				<view class="province_progress_items {{ progressPercentMap[els.ssKeyFlag] }}">
+					<progress percent="{{ item.percent }}" active stroke-width="8" font-size="12" show-info border-radius="50" activeColor="{{ progressActiveMap[els.ssKeyFlag] }}" backgroundColor="{{ progressColorMap[els.ssKeyFlag] }}"/>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="empty"></view>
+	
+  <!-- 弹窗 -->
+  <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="center" close-on-overlay-click="{{false}}">
+    <view class="detail_wraper">
+      <view class="detail_text">{{ detailName }}</view>
+    </view>
+    <button class="detail_btn" bindtap="closeShowmore">关闭</button>
+  </t-popup>
+</view>

@@ -1,0 +1,70 @@
+<!--pages/mine/mine.wxml-->
+<view class="container" style="margin-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px)">
+  <public-title titleClass="message_title_class" title="疑难解答/诉求反馈流程查询" showback="true"></public-title>
+    <t-sticky offset-top="{{ menuHeight + menuTop + 10 }}">
+      <view class="filter-wrapper">
+        <view class="search-wrapper">
+          <image src="../../assets/search.png" alt="" />
+            <!-- bindinput="handleSearch" -->
+          <input
+            type="text"
+            placeholder="搜索"
+            adjust-position="true"
+            data-tag="item"
+            confirm-type='search'
+            bindconfirm="search"
+            value="{{params.item}}"
+          />
+        </view>
+        <view class="status-tab-wrapper">
+          <view
+            wx:for="{{appealTitle}}"
+            wx:key="index"
+            data-index="{{item.value}}"
+            data-tag="state"
+            class="{{params.state == item.value ? 'active' : ''}} status-tab-item"
+            bindtap="changeStatusTabl"
+          >
+            <view class="status-name">{{item.name}}</view>
+            <view class="status-number">({{item.count}})</view>
+          </view>
+        </view>
+      </view>
+    </t-sticky>
+    <view class="order-list-wrapper">
+      <view
+        class="order-item-wrapper"
+        wx:for="{{appealList}}"
+        wx:key="index"
+        data-id="{{item}}"
+        bindtap="goDetail"
+      >
+      <view class="basic-info">
+          <view class="info">
+            <view class="info-time">
+              <view>
+                <span class="info-answer info-type" wx:if="{{item.type == '疑难解答'}}">疑难解答</span>
+                <span class="info-question info-type" wx:if="{{item.type == '问题反馈'}}">诉求反馈</span>
+                <span class="createTime">{{ item.createTime }}</span>
+              </view>
+              <view 
+                wx:if="{{params.state == 3 && !item.evaluateScore && item.state !== 5}}" 
+                class="info-evaluate"
+                data-item="{{item}}"
+                catchtap="onEvaluate">
+                待评价
+              </view>
+            </view>
+             <view class="info-title">{{ index + 1 }}.{{ item.content }}</view>
+          </view>
+      </view>
+      </view>
+      <t-divider content="{{nomore ? '已经到底啦' : '上拉加载更多' }}" />
+    </view>
+    <dialog 
+      bind:clickDialog="clickDialog"
+      isShow="{{isShow}}"
+      appealId="{{appealId}}"
+      title="{{dialogTitle}}">
+    </dialog>
+</view>

@@ -1,0 +1,109 @@
+/* pages/subPagesForLeader/pages/detailIOther/detailIOther.wxss */
+.detailIOther {
+  overflow: hidden;
+  background: #f5f6fa;
+}
+.detailIOther_title_class {
+  background: #fff!important;
+}
+/* 项目信息 */
+.detailIOther_info_content {
+	margin: 30rpx 40rpx;
+	border-radius: 20rpx;
+	background: #FFF;
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 24rpx;
+	font-style: normal;
+	font-weight: 400;
+}
+.info_status {
+	padding: 20rpx 40rpx 0;
+	text-align: right;
+	color: #187FFF;
+	font-weight: 700;
+}
+.info_label {
+	padding: 20rpx 0;
+	text-align: center;
+	font-size: 28rpx;
+	font-weight: 700;
+	border-bottom: 1px solid #E9E9E9;
+}
+.info_message {
+	padding: 20rpx 40rpx;
+}
+.info_message view {
+	margin: 10rpx 0;
+}
+/* 项目数值 */
+.splitline {
+	width: 8rpx;
+	height: 46rpx;
+	background: #0F7CEE;
+	border-radius: 0px 24rpx 24rpx 0px;
+	margin: 0 30rpx 0 -2rpx;
+}
+.detailIOther_project_content {
+	padding: 0 40rpx;
+}
+.project_item_wraper {
+	margin-top: 30rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 80rpx;
+	border-radius: 20rpx;
+	background: #FFF;
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 24rpx;
+	font-style: normal;
+	font-weight: 700;
+	line-height: normal;
+}
+.project_item_label {
+	display: flex;
+	align-items: center;
+}
+.project_item_font {
+	font-size: 28rpx;
+	color: #187FFF;
+	padding-right: 40rpx;
+}
+.desc_top {
+	border-radius: 20rpx 20rpx 0 0;
+	border-bottom: 1px solid #E9E9E9;
+}
+.project_item_desc {
+	padding: 20rpx 40rpx;
+	background: #FFF;
+	border-radius: 0 0 20rpx 20rpx;
+	color: #666;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 24rpx;
+	font-style: normal;
+	font-weight: 400;
+}
+/* 底部空元素 */
+.empty {
+  padding-bottom: calc(env(safe-area-inset-bottom) / 2);
+}
+.has_nodata {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(153, 153, 153, 0.60);
+  font-family: PingFang SC;
+  font-size: 28rpx;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 6rpx;
+  padding: 40rpx 0;
+}
+.nodata_img {
+  width: 300rpx;
+  height: 300rpx;
+}

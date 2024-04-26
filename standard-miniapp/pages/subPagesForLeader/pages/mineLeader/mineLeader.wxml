@@ -1,0 +1,30 @@
+<!--pages/subPagesForLeader/pages/mineLeader/mineLeader.wxml-->
+<view class="mineLeader" style="min-height: 100vh;">
+  <view class="leader_top" style="padding-top: {{ menuTop }}px;">
+    <view class="leader_top_title" style="height: {{ menuHeight }}px; line-height: {{ menuHeight }}px;">我的</view>
+    <view class="leader_top_box">
+      <view class="leader_top_avatarwrap">
+        <view class="leader_top_avatar">{{ userInfo.realname[0] }}</view>{{ userInfo.realname }}
+      </view>
+      <view class="leader_top_loginout" bindtap="toLoginOut">退出登录</view>
+    </view>
+  <view class="mineLeader_contentcard">
+    <view class="contentcard_item" bindtap="toEnterpriseTable">
+      <text class="iconfont icon-ldbiao item_icons"></text>
+      <view class="contentcard_item_label">企业关联项目报表分析</view>
+      <view class="contentcard_item_icon"></view>
+    </view>
+    <view class="contentcard_item" bindtap="toSuperviseProject">
+      <text class="iconfont icon-ld-project item_icons"></text>
+      <view class="contentcard_item_label">项目督办</view>
+      <view class="contentcard_item_icon"></view>
+    </view>
+    <view class="contentcard_item" bindtap="toMyAccont">
+      <text class="iconfont icon-a-accont item_icons"></text>
+      <view class="contentcard_item_label">账号管理</view>
+      <view class="contentcard_item_icon"></view>
+    </view>
+  </view>
+  </view>
+  <tabbars></tabbars>
+</view>

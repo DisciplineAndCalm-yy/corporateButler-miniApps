@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "t-divider": "tdesign-miniprogram/divider/divider",
+    "public-title": "/publicTitle/publicTitle",
+    "t-popup": "tdesign-miniprogram/popup/popup"
+  },
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 100
+}

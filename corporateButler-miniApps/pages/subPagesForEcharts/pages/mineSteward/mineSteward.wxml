@@ -1,0 +1,56 @@
+<!--pages/subPagesForEcharts/pages/mineSteward/mineSteward.wxml-->
+<view class="mineSteward">
+  <view class="mineSteward_topwrap">
+    <image class="mineSteward_topwrap_imgs" src="../../assets/mine_steward_bg.png"/>
+    <view class="mineSteward_infowrap" style="padding-top: {{ menuTop }}px;">
+      <view class="mineSteward_infowrap_title" style="height: {{ menuHeight }}px; line-height: {{ menuHeight }}px;">我的</view>
+      <view class="mineSteward_infowrap_infos">
+        <!-- <image class="mineSteward_infowrap_avatar" src="../../assets/home_project_card.png" mode=""/> -->
+        <view class="mineSteward_infowrap_avatars">{{ userInfo.realname[0] }}</view>
+        <view class="mineSteward_infowrap_infocard">
+          <view class="infowrap_infos">
+            <view class="infos_name">{{ userInfo.realname }}</view>
+            <view class="infowrap_tagwrap">
+              <view class="infos_tagswrap"><text class="iconfont icon-a-manager"></text></view>
+              <view class="infos_fontwrap">{{ userInfo.roleList[0].roleName }}</view>
+            </view>
+          </view>
+          <view>服务企业数量：{{ userInfo.entNum }}家</view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="mineSteward_contentcard">
+    <view class="contentcard_item" bindtap="toMyEnterprise">
+      <text class="iconfont icon-a-myent item_icons"></text>
+      <view class="contentcard_item_label">我的挂点企业</view>
+      <view class="contentcard_item_icon"></view>
+    </view>
+    <view class="contentcard_item" bindtap="toEnterpriseBeg">
+      <text class="iconfont icon-a-beg item_icons"></text>
+      <view class="contentcard_item_label">挂点企业诉求</view>
+      <view class="contentcard_item_icon"></view>
+    </view>
+    <!-- <view class="contentcard_item" bindtap="toMyProject">
+      <text class="iconfont icon-Group item_icons"></text>
+      <view class="contentcard_item_label">挂点企业项目</view>
+      <view class="contentcard_item_icon"></view>
+    </view> -->
+    <view class="contentcard_item" bindtap="toMyClock">
+      <text class="iconfont icon-a-clock item_icons"></text>
+      <view class="contentcard_item_label">挂点企业打卡</view>
+      <view class="contentcard_item_icon"></view>
+    </view>
+    <view class="contentcard_item" bindtap="toMyAccont">
+      <text class="iconfont icon-a-accont item_icons"></text>
+      <view class="contentcard_item_label">账号管理</view>
+      <view class="contentcard_item_icon"></view>
+    </view>
+    <view class="contentcard_item" bindtap="toLoginOut">
+      <text class="iconfont icon-a-out item_icons"></text>
+      <view class="contentcard_item_label">退出登录</view>
+      <view class="contentcard_item_icon"></view>
+    </view>
+  </view>
+  <tabbars></tabbars>
+</view>

@@ -1,0 +1,152 @@
+<!--pages/subPagesForLeader/pages/projectThree/projectThree.wxml-->
+<view class="projectThree" style="margin-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px);">
+  <public-title titleClass="matchDetail_title" title="三个一批类项目" showback="true"></public-title>
+	<view class="projectThree_content">
+		<!-- 顶部搜索 -->
+		<view class="province_searchbox">
+			<view class="province_searchbox_labelwrap" bindtap="openShowDetail" data-desc="按照项目计划开始日期统计。">
+				<view class="titles_split"></view>数据统计维度<text class="iconfont icon-ldwen titles_icons"></text>
+			</view>
+			<view class="province_searchbox_timewrap">
+				<picker mode="date" value="{{ startDate }}" end="{{ toDay }}" bindchange="bindStartDateChange">{{ startDate }}
+				</picker>
+				<view class="province_timewraper_time_desc">至</view>
+				<picker mode="date" value="{{ endDate }}" end="{{ toDay }}" bindchange="bindEndDateChange">{{ endDate }}
+				</picker>
+				<view class="province_searchbox_timeicon"></view>
+			</view>
+		</view>
+		<!-- 阶段-横向滚动 -->
+		<scroll-view scroll-x  class="phase_wrap">
+			<view wx:for="{{ phaseList }}" wx:key="index" class="phase_item {{ phaseIndex == index ? 'phase_active' : '' }}" bindtap="handlePhase" data-idx="{{index}}" data-phasevalue="{{ item.value }}">第<text class="phase_item_nums">{{ item.value }}</text>期</view>
+		</scroll-view>
+		<!-- 折线图 -->
+		<view class="linecharts_wrap">
+			<ec-canvas id="echart_line" canvas-id="echart_line" ec="{{ec}}"></ec-canvas>
+		</view>
+		<!-- 项目信息 -->
+		<view class="project_infowrap">
+			<view class="project_infos">
+				<view class="project_info_item">
+					<view class="project_info_nums">{{ projectInfoData.signNum || 0 }}</view>签约一批（个）
+				</view>
+				<view class="project_info_item">
+					<view class="project_info_nums">{{ projectInfoData.startNum || 0 }}</view>开工一批（个）
+				</view>
+				<view class="project_info_item">
+					<view class="project_info_nums">{{ projectInfoData.completionNum || 0 }}</view>投产一批（个）
+				</view>
+			</view>
+			<view class="project_infos">
+				<view class="project_info_item">
+					<view class="project_info_nums">{{ projectInfoData.preparationWorkPhaseNum || 0 }}</view>签约个数
+				</view>
+				<view class="project_info_item">
+					<view class="project_info_nums">{{ projectInfoData.startWorkPhaseNum || 0 }}</view>开工个数
+				</view>
+				<view class="project_info_item">
+					<view class="project_info_nums">{{ projectInfoData.endWorkingPhaseNum || 0 }}</view>竣工个数
+				</view>
+				<view class="project_info_item">
+					<view class="project_info_nums">{{ projectInfoData.completionPhaseNum || 0 }}</view>投产个数
+				</view>
+				<view class="project_info_item">
+					<view class="project_info_nums">{{ projectInfoData.achieveEffectPhaseNum || 0 }}</view>达效个数
+				</view>
+			</view>
+			<view class="project_infos">
+				<view class="project_info_item">
+					<view class="project_info_nums">{{ projectInfoData.signStartWorkPercentage || '0%' }}</view>签约一批-开工率
+				</view>
+				<view class="project_info_item">
+					<view class="project_info_nums">{{ projectInfoData.startCompletionPercentage || '0%' }}</view>开工一批-投产率
+				</view>
+				<view class="project_info_item">
+					<view class="project_info_nums">{{ projectInfoData.completionAchieveEffectPercentage || '0%' }}</view>投产一批-达效率
+				</view>
+			</view>
+		</view>
+		<!-- 进展环形图 -->
+		<view class="ringchart_wrap">
+			<view class="progress_wrap_title">
+				<view class="titles_split"></view>项目进展
+			</view>
+			<view class="ringchart_infoswrap">
+				<view class="ringchart_infos">
+					<view class="ringchart_infos_item">
+						<view class="ringinfo_item_left">
+							<view class="ringinfo_icon"></view>在建（已开工）
+						</view>
+						<view class="ringinfo_item_right">
+							<text class="ringinfo_nums">{{ projectInfoData.startWorkPhaseNum || 0 }}</text>个
+						</view>
+					</view>
+					<view class="ringchart_infos_item">
+						<view class="ringinfo_item_left">
+							<view class="ringinfo_icon ringinfo_bg_green"></view>竣工
+						</view>
+						<view class="ringinfo_item_right">
+							<text class="ringinfo_nums ringinfo_color_green">{{ projectInfoData.endWorkingPhaseNum || 0 }}</text>个
+						</view>
+					</view>
+					<view class="ringchart_infos_item">
+						<view class="ringinfo_item_left">
+							<view class="ringinfo_icon ringinfo_bg_orange"></view>达效
+						</view>
+						<view class="ringinfo_item_right">
+							<text class="ringinfo_nums ringinfo_color_orange">{{ projectInfoData.achieveEffectPhaseNum || 0 }}</text>个
+						</view>
+					</view>
+				</view>
+				<view class="ringchart_chart">
+					<ec-canvas id="echart_ring" canvas-id="echart_ring" ec="{{ec1}}"></ec-canvas>
+				</view>
+			</view>
+		</view>
+		<!-- 清单进度条 -->
+		<view class="progress_wrap">
+			<view class="progress_wrap_title">
+				<view class="titles_split"></view>项目数据
+			</view>
+			<view class="progress_datas">
+				<view class="progress_items" bindtap="handleJumpStore" data-type="1">
+					<view class="progress_label">签约一批</view>
+					<view class="progress_infos">
+						<text>完成投资率：{{ projectProgessData.signPercent || 0 }}%</text>
+						<text>{{ projectProgessData.signPlanTotalInvestment || 0 }} 万元</text>
+					</view>
+					<view class="progress_progress">
+						<progress percent="{{ projectProgessData.signPercent || 0 }}" active stroke-width="8" border-radius="50" activeColor="#187FFF" backgroundColor="DCECFF"/>
+					</view>
+					<view class="progress_icon"></view>
+				</view>
+			</view>
+			<view class="progress_datas">
+				<view class="progress_items" bindtap="handleJumpStore" data-type="2">
+					<view class="progress_label">开工一批</view>
+					<view class="progress_infos">
+						<text>完成投资率：{{ projectProgessData.startPercent || 0 }}%</text>
+						<text>{{ projectProgessData.startPlanTotalInvestment || 0 }} 万元</text>
+					</view>
+					<view class="progress_progress">
+						<progress percent="{{ projectProgessData.startPercent || 0 }}" active stroke-width="8" border-radius="50" activeColor="#187FFF" backgroundColor="DCECFF"/>
+					</view>
+					<view class="progress_icon"></view>
+				</view>
+			</view>
+			<view class="progress_datas">
+				<view class="progress_items" bindtap="handleJumpStore" data-type="3">
+					<view class="progress_label">投产一批</view>
+					<view class="progress_infos">
+						<text>完成投资率：{{ projectProgessData.completionPercent || 0 }}%</text>
+						<text>{{ projectProgessData.completionPlanTotalInvestment || 0 }} 万元</text>
+					</view>
+					<view class="progress_progress">
+						<progress percent="{{ projectProgessData.completionPercent || 0 }}" active stroke-width="8" border-radius="50" activeColor="#187FFF" backgroundColor="DCECFF"/>
+					</view>
+					<view class="progress_icon"></view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

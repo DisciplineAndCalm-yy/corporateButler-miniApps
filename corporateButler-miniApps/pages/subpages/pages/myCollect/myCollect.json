@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "public-title": "/publicTitle/publicTitle",
+    "t-check-tag": "tdesign-miniprogram/check-tag/check-tag",
+    "t-divider": "tdesign-miniprogram/divider/divider"
+  },
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 100
+}

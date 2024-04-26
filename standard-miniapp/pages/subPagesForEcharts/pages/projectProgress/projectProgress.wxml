@@ -1,0 +1,65 @@
+<!--pages/subPagesForEcharts/pages/projectProgress/projectProgress.wxml-->
+<view class="projectProgress" style="padding-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px);">
+  <public-title titleClass="projectProgress_title_class" title="项目工期追踪" showback="true"></public-title>
+	<view class="project_content">
+		<view class="project_infowrap">
+			<view class="project_titles"><text class="iconfont icon-xiaobiaoti project_subtitle"></text>{{ projectInfo.proName }}</view>
+			<view class="project_infos">
+				<view class="project_infos_item">
+					<text class="project_infositem_label">项目编码：</text>
+					<text class="project_infositem">{{ projectInfo.id }}</text>
+				</view>
+				<view class="project_infos_item">
+					<text class="project_infositem_label">项目分包领导：</text>
+					<text class="project_infositem">{{ projectInfo.subpackageLeaderName }}</text>
+				</view>
+				<view class="project_infos_item">
+					<text class="project_infositem_label">项目负责人：</text>
+					<text class="project_infositem">{{ projectInfo.projectLeaderName }}</text>
+				</view>
+				<view class="project_infos_item">
+					<text class="project_infositem_label">项目分类：</text>
+					<!-- <text wx:if="{{ projectInfo.ssKeyFlag != '' }}" class="project_info_tag">省、市重点项目</text>
+					<text wx:if="{{ projectInfo.sgypFlag == 1 }}" class="project_info_tag orange_tag">三个一批</text> -->
+					<text wx:for="{{ projectInfo.projectTag }}" wx:key="index" class="project_info_tag">{{ item }}</text>
+				</view>
+			</view>
+		</view>
+		<view class="project_progress_title"><view class="project_progress_subtitle"></view>项目工期</view>
+		<view wx:for="{{ projectList }}" wx:key="index" class="project_progress_card">
+			<view class="progress_card_title">
+				<view>任务节点：{{ item.projectNode }}</view>
+				<view wx:if="{{ item.completion == 1 }}" class="progress_card_status">已完成</view>
+				<view wx:else class="progress_card_status status_notcomplate">未完成</view>
+			</view>
+			<view class="progress_card_info">
+				<view class="progress_card_infoitem">
+					<view class="progress_infoitem_label">具体时间：</view>
+					<view>{{ item.startTime }} 至 {{ item.endTime }}</view>
+				</view>
+				<view class="progress_card_infoitem">
+					<view class="progress_infoitem_label">当前状态：</view>
+					<view>
+						{{ item.projectAlertName }}
+						<text wx:if="{{ item.supervisionIdList }}" bindtap="toShowSupervise" data-pid="{{ projectInfo.id }}" data-list="{{ item.supervisionIdList }}">（有督办消息，<text class="blue_font">点击查看</text>）</text>
+					</view>
+				</view>
+				<view class="progress_card_infoitem">
+					<view class="progress_infoitem_label">阶段内容：</view>
+					<view>{{ item.content }}</view>
+				</view>
+				<!-- <view class="progress_card_infoitem">
+					<view class="progress_infoitem_label">证明材料：</view>
+					<view>暂无</view>
+				</view> -->
+				<view wx:if="{{ item.completion == 0 }}" bindtap="toComplate" data-id="{{ item.id }}" class="progress_tocomplate">设置完成</view>
+			</view>
+		</view>
+	</view>
+	<t-divider wx:if="{{ projectList.length > 0 }}" content="{{ nomore ? '已经到底啦' : '上拉加载更多' }}" />
+	<view wx:else class="has_nodata">
+		<image class="nodata_img" src="/assets/imgs/nodata.png" mode=""/>
+		<view>暂无数据</view>
+	</view>
+	<view class="empty"></view>
+</view>

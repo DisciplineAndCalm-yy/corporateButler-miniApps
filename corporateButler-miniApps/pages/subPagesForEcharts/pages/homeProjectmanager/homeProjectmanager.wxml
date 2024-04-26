@@ -1,0 +1,73 @@
+<!--pages/subPagesForEcharts/pages/homeProjectmanager/homeProjectmanager.wxml-->
+<view class="homeProjectmanager">
+  <view class="homeProjectmanager_topwrap">
+    <view class="homeProjectmanager_topwrap_title" style="padding-top: {{ menuTop }}px;">首页</view>
+    <image class="homeProjectmanager_topwrap_imgs" src="../../assets/home_steward_card.png" mode=""/>
+  </view>
+  <view class="homeProjectmanager_contentwrap">
+    <view class="content_cards">
+      <view class="content_card_title">
+        <image class="content_card_img" src="../../assets/projecthome_title_card.png" mode=""/>
+        <view class="content_card_title_font">项目数量统计</view>
+      </view>
+      <view class="cards_wrap">
+        <view class="projectnum_wrap">
+          <view class="projectnum_wrap_total">
+            <view class="projectnum_total_iconwrap"><text class="iconfont icon-a-phome-icon projectnum_icon"></text></view>
+            <view class="projectnum_total_numwrap">
+              <view class="projectnum_total_num">{{ projectInfo.projectNum }}</view>
+              <view>项目总数（个）</view>
+            </view>
+          </view>
+          <view class="projectnum_wrap_plan">
+            <view class="projectnum_plan">
+              <view><text class="projectnum_numfont">{{ projectInfo.curyearPlanTotalInvestment }}</text></view>
+              <view>计划总投资（亿元）</view>
+            </view>
+            <view class="projectnum_sum">
+              <view><text class="projectnum_numfont">{{ projectInfo.curyearTotalInvestment }}</text></view>
+              <view>累计当前完成投资（亿元）</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <view class="content_cards">
+      <view class="content_card_title">
+        <image class="content_card_img" src="../../assets/projecthome_title_card.png" mode=""/>
+        <view class="content_card_title_font">项目投资金额进展</view>
+        <picker bindchange="bindPickerChange" value="{{ projectNameIndex }}" range="{{ projectNameList }}">
+          <view class="money_changewrap">
+            <text class="iconfont icon-a-change change_icon"></text>{{ projectNameList[projectNameIndex] }}
+          </view>
+        </picker>
+      </view>
+      <view class="cards_wrap">
+        <view class="projectmoney_chartswrap">
+          <ec-canvas id="moneyCharts" canvas-id="moneyCharts" ec="{{moneyec}}"></ec-canvas>
+        </view>
+        <view class="project_money_desc"><text class="iconfont icon-daojishi money_icon"></text>数据更新时间：{{ dataDate }}</view>
+      </view>
+    </view>
+    <view class="content_cards">
+      <view class="content_card_title">
+        <image class="content_card_img" src="../../assets/projecthome_title_card.png" mode=""/>
+        <view class="content_card_title_font">项目跟进情况</view>
+      </view>
+      <view class="cards_wrap">
+        <view class="project_flow">
+          <view class="project_flow_item">
+            <view class="project_flow_item_desc"><text class="project_flow_item_numfont"><text class="project_flow_item_font">{{ projectInfo.curWeekPromotionNum }}</text> / {{ projectInfo.projectNum }}</text>个</view>
+            <view>本周跟进项目数</view>
+          </view>
+          <view class="project_flow_splitline"></view>
+          <view class="project_flow_item">
+            <view class="project_flow_item_desc"><text class="project_flow_item_font">{{ projectInfo.curMonthPromotionNum }}</text>次</view>
+            <view>本月跟进次数</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <tabbars></tabbars>
+</view>

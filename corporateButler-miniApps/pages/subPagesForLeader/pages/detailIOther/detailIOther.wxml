@@ -1,0 +1,60 @@
+<!--pages/subPagesForLeader/pages/detailIOther/detailIOther.wxml-->
+<view class="detailIOther" style="margin-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px);">
+  <public-title titleClass="detailIOther_title_class" title="{{ activeTitle }}" showback="true"></public-title>
+	<view class="detailIOther_info_content">
+		<view wx:if="{{ type == 2 }}" class="info_status">{{ projectInfo.startWorkName }}</view>
+		<view class="info_label">{{ projectInfo.proName }}</view>
+		<view class="info_message">
+			<view wx:if="{{ type == 2 }}">日常监管直接责任单位：{{ projectInfo.responsibilityUnit }}</view>
+			<view>项目更新时间：{{ projectInfo.updateTime }}</view>
+		</view>
+	</view>
+
+	<view wx:if="{{ type == 2 }}" class="detailIOther_project_content">
+		<view class="project_item_wraper">
+			<view class="project_item_label">
+				<view class="splitline"></view>总投资（万元）
+			</view>
+			<view class="project_item_font">{{ projectInfo.totalInvest }}</view>
+		</view>
+		<view class="project_item_wraper">
+			<view class="project_item_label">
+				<view class="splitline"></view>中央预算类投资累计下达（万元）
+			</view>
+			<view class="project_item_font">{{ projectInfo.investAccumulate }}</view>
+		</view>
+		<view class="project_item_wraper">
+			<view class="project_item_label">
+				<view class="splitline"></view>中央预算类投资本次下达（万元）
+			</view>
+			<view class="project_item_font">{{ projectInfo.investCurrent }}</view>
+		</view>
+		<view class="project_item_wraper desc_top">
+			<view class="project_item_label">
+				<view class="splitline"></view>进展情况及下一步工作安排
+			</view>
+		</view>
+		<view class="project_item_desc">{{ projectInfo.workScheduling }}</view>
+	</view>
+	
+	<view wx:if="{{ type == 3 }}" class="detailIOther_project_content">
+		<view class="project_item_wraper">
+			<view class="project_item_label">
+				<view class="splitline"></view>项目总投资（亿元）
+			</view>
+			<view class="project_item_font">{{ projectInfo.totalInvest }}</view>
+		</view>
+		<view class="project_item_wraper desc_top">
+			<view class="project_item_label">
+				<view class="splitline"></view>专项债需求
+			</view>
+		</view>
+		<view class="project_item_desc">{{ projectInfo.demand }}</view>
+	</view>
+
+	<view wx:if="{{ !projectInfo }}" class="has_nodata">
+		<image class="nodata_img" src="/assets/imgs/nodata.png" mode=""/>
+		<view>暂无数据</view>
+	</view>
+	<view class="empty"></view>
+</view>

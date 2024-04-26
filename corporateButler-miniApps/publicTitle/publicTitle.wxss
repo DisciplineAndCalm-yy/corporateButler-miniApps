@@ -1,0 +1,37 @@
+/* publicTitle/publicTitle.wxss */
+.publicTitle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding-bottom: 10px;
+  z-index: 99;
+  /* text-align: center; */
+  /* background-color: #f5f7fa; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.backlast_wraper {
+  position: absolute;
+  left: 20rpx;
+  width: 100rpx;
+  display: inline-block;
+  line-height: 32rpx;
+}
+.backlast {
+  display: inline-block;
+  width: 30rpx;
+  height: 30rpx;
+}
+.backlast::after{
+  content: '';
+  width: 16rpx;
+  height: 16rpx;
+  position: absolute;
+  left: 0;
+  border-left: 4rpx solid #000;
+  border-bottom: 4rpx solid #000;
+  -webkit-transform: translate(0, 0) rotate(45deg);
+  transform: translate(0, 0) rotate(45deg);
+}

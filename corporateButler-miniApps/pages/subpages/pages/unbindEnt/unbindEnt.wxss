@@ -1,0 +1,102 @@
+/* pages/subpages/pages/unbindEnt/unbindEnt.wxss */
+.unbindEnt {
+  background: #F5F6FA;
+}
+.unbindEnt_title_class {
+  background-color: #fff;
+}
+.unbindEnt_content {
+  width: calc(100vw - 80rpx);
+  padding: 40rpx;
+}
+.form_infos {
+  color: #333;
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-style: normal;
+  font-weight: 400;
+  padding: 0 20rpx 30rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+}
+.form_infos_tips {
+  padding: 30rpx 10rpx;
+  color: red;
+}
+.form_infos_tips_icon {
+  margin-right: 10rpx;
+}
+.form_infos_item {
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 20rpx;
+  align-items: center;
+  border-bottom: 1px solid #F2F2F2;
+}
+.form_infos_items {
+  display: flex;
+  justify-content: space-between;
+  padding: 30rpx 20rpx;
+}
+.form_infos_input {
+  text-align: right;
+}
+.form_infos_desc {
+  text-align: center;
+  color: #ccc;
+  font-size: 24rpx;
+}
+
+.image_frame {
+  position: relative;
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 20rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+.image_frame_img {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 20rpx;
+}
+.image_frame_icon {
+  position: absolute;
+  width: 50rpx;
+  height: 50rpx;
+  top: -14rpx;
+  right: -14rpx;
+}
+.upload_pic {
+  width: 180rpx;
+  height: 180rpx;
+  border: 4rpx dashed #999;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 28rpx;
+  letter-spacing: -0.3px;
+  color: #999;
+  margin-bottom: 20rpx;
+}
+.camera_icon {
+  font-size: 42rpx;
+  margin-bottom: 16rpx;
+}
+
+.form_btn {
+  margin-top: 200rpx;
+  width: 80vw;
+  height: 90rpx;
+  line-height: 90rpx;
+  border-radius: 20rpx;
+  background: #3F74F6;
+  color: #FFF;
+  font-size: 28rpx;
+  font-family: PingFang SC;
+  font-style: normal;
+  font-weight: 700;
+}

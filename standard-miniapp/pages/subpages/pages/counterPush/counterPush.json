@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "t-divider": "tdesign-miniprogram/divider/divider"
+  },
+  "enablePullDownRefresh": true,
+  "onReachBottomDistance": 100
+}

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "t-progress": "tdesign-miniprogram/progress/progress",
+    "ec-canvas": "../../component/ec-canvas/ec-canvas"
+  }
+}

@@ -1,0 +1,706 @@
+/* pages/subpages/pages/policyMatchDetail/policyMatchDetail.wxss */
+.policyMatchDetail {
+  padding-bottom: 40rpx;
+  width: 100%;
+  background-color: #f5f6fa;
+  position: relative;
+}
+.matchDetail_title {
+  background-color: #fff;
+}
+.policyMatchDetail .topbox {
+  position: relative;
+  height: 40vh;
+  background: linear-gradient(180deg, #325DFF 0%, #6081FF 70.11%, rgba(95, 126, 244, 0) 94.32%);
+  border-radius: 0px;
+  color: #fff;
+}
+.policyMatchDetail .topbox .imgs {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+.top_content {
+  position: relative;
+  z-index: 2;
+  padding: 40rpx 40rpx 0;
+}
+.top_content .policy_detail_iconbox {
+  display: flex;
+  justify-content: space-between;
+}
+.policy_detail_iconbox .policy_detail_iconimg {
+  width: 200rpx;
+  height: 50rpx;
+}
+.policy_detail_icons {
+  display: flex;
+  height: 54rpx;
+  align-items: center;
+}
+.policy_detail_icons .item_iconfont {
+  font-size: 48rpx;
+}
+.share_btn {
+  border: none;
+  visibility: hidden;
+  display: inline-block;
+  padding: 0;
+  background: none;
+}
+.item_icon_collect {
+  color: #FCBB3C;
+}
+.item_icon_ml {
+  visibility: visible;
+  color: #fff;
+  margin-left: 20rpx;
+}
+.top_content .policy_detail_icondesc {
+  margin: 40rpx 0 60rpx;
+  font-weight: 400;
+  font-size: 25rpx;
+  color: #D5E7F7;
+}
+/* 内容 */
+.policy_detail_content {
+  margin: 0 40rpx;
+  margin-top: calc(220rpx - 40vh);
+  position: relative;
+  z-index: 2;
+}
+.policy_detail_content .policy_detail_content_title {
+  background: #FFFFFF;
+  border-radius: 40rpx;
+  padding: 40rpx 40rpx 30rpx;
+}
+.policy_detail_content .policy_detail_content_matchdetail {
+  margin-top: 20rpx;
+  background: #FFFFFF;
+  border-radius: 40rpx;
+}
+.policy_detail_content .policy_detail_content_message {
+  margin-top: 20rpx;
+  background: #FFFFFF;
+  border-radius: 40rpx;
+}
+
+.policy_match_score {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  padding-bottom: 20rpx;
+  border-bottom: 1px solid #EEEEEE;
+}
+.policy_match_score .scoreimg {
+  width: 90rpx;
+  height: 90rpx;
+}
+.policy_detail_title {
+  color: #333;
+  font-weight: 600;
+  font-size: 32rpx;
+  margin-bottom: 20rpx;
+}
+.policy_detail_desc {
+  color: #333;
+  font-weight: 400;
+  font-size: 28rpx;
+  margin-bottom: 20rpx;
+}
+.policy_detail_labelitem {
+  display: inline-block;
+  font-weight: 400;
+  font-size: 24rpx;
+  margin: 10rpx;
+  padding: 6rpx 20rpx;
+  text-align: center;
+  color: #FF5207;
+  background-color: #FFCD9E;
+  opacity: 0.6;
+  border-radius: 6rpx;
+}
+.policy_leave_css {
+  color: #FF5207;
+  background-color: #FFCD9E;
+}
+.policy_type_css {
+  color: #BC7100;
+  background-color: #FFE794;
+}
+.production_type_css {
+  color: #FF1607;
+  background-color: #FFBDAE;
+}
+.push_type_css {
+  color: #2A9421;
+  background-color: #D8FFD4;
+}
+.industry_info_css {
+  color: #0878A9;
+  background-color:  #BDEFFF;
+}
+.policy_object_css {
+  color: #3C4C9F;
+  background-color: #C9D2FF;
+}
+.policy_theme_css {
+  color: #AE328D;
+  background-color: #FFE1F7;
+}
+.policy_matchdetail_title {
+  display: flex;
+  align-items: center;
+  height: 100rpx;
+  line-height: 100rpx;
+  font-weight: 600;
+  font-size: 32rpx;
+  color: #333;
+}
+.policy_matchdetail_title .policy_matchdetail_targe {
+  width: 8rpx;
+  height: 46rpx;
+  background: #0F7CEE;
+  border-radius: 0px 24rpx 24rpx 0px;
+  margin: 0 30rpx 0 -2rpx;
+}
+
+.matchdetail_wrap {
+  padding: 0 40rpx;
+  /* border-bottom: 1px solid #EEEEEE; */
+}
+.matchdetail_wrap_title {
+  display: inline-block;
+  color: #167FFF;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-size: 29rpx;
+  padding: 10rpx 14rpx;
+  font-style: normal;
+  font-weight: 400;
+  background-color: #ECF4FF;
+}
+.matchdetail_wrap_subtitle {
+  display: inline-block;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-size: 29rpx;
+  padding: 10rpx 0rpx;
+  font-style: normal;
+  font-weight: 600;
+}
+.policy_matchdetail_elements_wrap {
+  display: flex;
+  align-items: center;
+}
+.policy_matchdetail_elements {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16rpx 0;
+  font-size: 28rpx;
+  border-bottom: 1px solid #EEEEEE;
+}
+.policy_matchdetail_elements .matchdetail_elements_left {
+  color: #333;
+  font-weight: 400;
+  font-size: 28rpx;
+  display: flex;
+}
+.matchdetail_elements_left_icon {
+  margin-right: 6rpx;
+  font-size: 34rpx;
+  color: #43AE11;
+}
+.matchdetail_elements_left_icons {
+  margin-right: 6rpx;
+  font-size: 34rpx;
+  color: #FF4444;
+}
+.policy_matchdetail_elements .matchdetail_elements_right {
+  min-width: 80rpx;
+  /* color: #666; */
+  font-weight: 400;
+  font-size: 24rpx;
+  color: #167FFF;
+}
+.matchdetail_elements_right_icon {
+  font-size: 28rpx;
+}
+
+.policy_matchdetail_conditions_wrap {
+  /* display: flex; */
+  justify-content: center;
+  /* padding: 20rpx 40rpx;
+  border-radius: 14px;
+  background: #EFF6FF; */
+  padding-left: 40rpx;
+  padding-bottom: 20rpx;
+}
+.policy_matchdetail_conditions {
+  /* display: inline-block; */
+  font-size: 28rpx;
+  font-style: normal;
+  font-weight: 400;
+}
+.policy_matchdetail_conditions_andwrap {
+  margin: 10rpx 0;
+  display: flex;
+  align-items: center;
+}
+.policy_matchdetail_conditions_and {
+  color: #fff;
+  width: 42rpx;
+  height: 42rpx;
+  line-height: 42rpx;
+  text-align: center;
+  margin: 0 20rpx;
+  background-color: #167FFF;
+  border-radius: 50%;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-size: 26rpx;
+  font-style: normal;
+  font-weight: 700;
+}
+.policy_matchdetail_conditions_splitline {
+  flex: 1;
+  height: 1px;
+  background-color: #80B9FF;
+}
+.policy_matchdetail_conditions_popupfont {
+  display: flex;
+  align-items: center;
+  color: #167FFF;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-size: 28rpx;
+  font-style: normal;
+  font-weight: 400;
+}
+.policy_matchdetail_conditions_popup_overfont {
+  width: 130rpx;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.policy_matchdetail_conditions_popup_undelintfont {
+  text-decoration-line: underline;
+}
+
+.relation_popup_wrap {
+  width: 70vw;
+  height: 40vh;
+  overflow: scroll;
+  padding: 40rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+}
+.relation_popup_title {
+  font-weight: bolder;
+  font-size: 28rpx;
+  color: #333;
+  position: relative;
+  margin-bottom: 30rpx;
+}
+.relation_popup_title_triangle {
+  position: absolute;
+  top: 18rpx;
+  transform: translate(-110%, -50%);
+  font-size: 22rpx;
+  color: #0F7CEE;
+}
+.relation_popup_card {
+  border-top: 1px solid #eee;
+  padding: 20rpx 0;
+  color: #333;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-size: 26rpx;
+  font-style: normal;
+  font-weight: 400;
+}
+
+.matchdetail_estimate_wrap {
+  padding: 0 0rpx 30rpx;
+}
+.matchdetail_estimate_title {
+  margin: 20rpx 0;
+  color: #333;
+  font-weight: bolder;
+  font-size: 28rpx;
+}
+.matchdetail_estimate_desc {
+  color: #999;
+  font-weight: 400;
+  font-size: 26rpx;
+}
+
+.detail_message_title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.detail_message_title .detail_message_title_item {
+  color: #999;
+  font-weight: 400;
+  font-size: 28rpx;
+  padding: 20rpx 0rpx;
+  margin: 0 20rpx;
+}
+.detail_message_title .detail_message_title_active {
+  color: #0F7CEE;
+  font-weight: 700;
+  border-bottom: 4rpx solid #0F7CEE;
+}
+
+.detail_message_content {
+  padding: 40rpx;
+  /* border-top: 1px solid  #EEEEEE; */
+}
+.message_content_el_title {
+  color: #333;
+  font-size: 28rpx;
+  font-weight: 700;
+}
+.message_title_icon {
+  font-size: 26rpx;
+  margin-right: 10rpx;
+  color: #0F7CEE;
+}
+.message_content_el_rule {
+  margin-top: 30rpx;
+  display: flex;
+  justify-content: space-between;
+  color: #333;
+  font-weight: 600;
+  font-size: 28rpx;
+}
+.message_content_el_rule .message_content_el_rule_name {
+  word-break: keep-all;
+  margin-right: 10rpx;
+  color: #999;
+  font-weight: 400;
+}
+.message_content_el_textlabel {
+  margin: 20rpx auto;
+  color: #333;
+  text-align: center;
+  font-weight: 600;
+  font-size: 28rpx;
+}
+.message_content_el_textarea {
+  word-break: break-all;
+  color: #999;
+  font-weight: 400;
+  font-size: 26rpx;
+}
+.message_content_folderwrap {
+  margin-top: 30rpx;
+}
+.message_content_folderwrap_nofolder {
+  text-align: center;
+  color: #999;
+  font-weight: 400;
+  font-size: 26rpx;
+}
+
+.annex_wrap {
+  display: flex;
+  align-items: center;
+  margin: 20rpx 0;
+  padding-left: 40rpx;
+}
+.annexicon {
+  width: 24rpx;
+  height: 27rpx;
+}
+.annexicon_name {
+  width: 100%;
+  word-break: break-all;
+  margin-left: 10rpx;
+  color: #333;
+  font-weight: 400;
+  font-size: 26rpx;
+}
+.bluefont {
+  color: #325DFF;
+}
+/* 申报详情 */
+.detail_wrap {
+  padding-bottom: 30rpx;
+}
+.detail_split_line {
+  border-top: 1px solid #eee;
+}
+.detail_title {
+  color: #0F7CEE;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-size: 28rpx;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  background: none;
+  padding: 20rpx 0;
+}
+.detaid_subtitle {
+  color: #333;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-size: 28rpx;
+  font-style: normal;
+  font-weight: 600;
+  position: relative;
+  padding-left: 20rpx;
+}
+.detaid_subtitle_iconfont {
+  position: absolute;
+  top: 28rpx;
+  transform: translate(-110%, -50%);
+  font-size: 22rpx;
+  color: #0F7CEE;
+}
+.detail_conditions_wrap {
+  padding-left: 0;
+  padding-bottom: 0;
+}
+.detail_matchdetail_elements {
+  color: #999;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-size: 28rpx;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  border: none;
+}
+.detail_matchdetail_elements_wrap {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.detail_matchdetail_elements_left {
+  max-width: 75%;
+  color: #999;
+}
+.detail_matchdetail_elements_right {
+  max-width: 75%;
+  color: #333;
+}
+.detail_estimate_wrap {
+  border-radius: 20rpx;
+  background: #ECF4FF;
+  padding: 20rpx;
+}
+.detail_estimate_title {
+  color: #7CBCFF;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-size: 28rpx;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.3px;
+  margin: 0 0 20rpx 0;
+}
+.detail_estimate_desc {
+  color: #7CBCFF;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-size: 28rpx;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.3px;
+}
+/* 新事实依据css */
+.matchdetail_estimate_desc_newcss {
+  color: #999;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-size: 28rpx;
+  font-style: normal;
+  font-weight: 400;
+  letter-spacing: -0.3px;
+  width: 100%;
+  display: flex;
+}
+.unbindTipsWraper_content_reasondesc {
+  text-align: justify;
+  word-break: break-all;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.unbindTipsWraper_content_reasondesc::before {
+  float: right;
+  content: '';
+  width: 0px;
+  height: calc(100% - 30rpx);
+}
+.unbindTipsWraper_content_reasondesc::after {
+  content: '';
+  position: absolute;
+  width: 0px;
+  height: calc(100% - 30rpx);
+}
+.unbindTipsWraper_content_reasondescnew {
+  text-align: justify;
+  word-break: break-all;
+  overflow: hidden;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+.reasondesc_expend {
+  display: inline-block;
+  max-height: none;
+}
+.reason_open {
+  float: right;
+  clear: both;
+  color: #3F74F6;
+  font-size: 24rpx;
+  font-style: normal;
+  font-weight: 400;
+  width: 50rpx;
+  padding-left: 50rpx;
+  height: 30rpx;
+  position: relative;
+}
+.reason_open_new {
+  word-break: keep-all;
+  float: right;
+  clear: both;
+  color: #3F74F6;
+  font-size: 24rpx;
+  font-style: normal;
+  font-weight: 400;
+  width: 50rpx;
+  padding-left: 50rpx;
+  height: 30rpx;
+  position: relative;
+}
+.reason_open_icon {
+  position: absolute;
+  width: 14rpx;
+  height: 14rpx;
+  right: 60rpx;
+  bottom: 10rpx;
+  border-left: 3rpx solid #3F74F6;
+  border-bottom: 3rpx solid #3F74F6;
+  -webkit-transform: translate(0, 0) rotate(-45deg);
+  transform: translate(0, 0) rotate(-45deg);
+}
+.close_icon {
+  bottom: 5rpx;
+  -webkit-transform: translate(0, 0) rotate(-225deg);
+  transform: translate(0, 0) rotate(-225deg);
+}
+/* 弹出层 */
+.popup_wrap {
+  padding: 20rpx 40rpx;
+  width: 80vw;
+  max-height: 50vh;
+  overflow-y: scroll;
+  padding-bottom: 140rpx;
+}
+.popup_wrap .popup_inputwrap {
+  padding: 20rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #ededed;
+}
+.popup_inputwrap .popup_label {
+  /* width: 80%; */
+  color: #999;
+  font-weight: 400;
+  font-size: 28rpx;
+}
+.popup_inputwrap .popup_input {
+  color: #333;
+  text-align: right;
+  font-size: 28rpx;
+}
+.popup_picker {
+  color: #333;
+  text-align: right;
+  font-size: 28rpx;
+}
+.tags_label {
+  margin-bottom: 20rpx;
+}
+.entinfo_popup_card {
+  display: inline-block;
+  margin: 10rpx 10rpx;
+}
+.org_surper_list {
+  margin-top: 10rpx;
+}
+.popup_btns {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  padding: 20rpx 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #fff;
+}
+.popup_btns button {
+  width: 160rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 28rpx;
+  background-color: #f9f9f9;
+}
+.popup_btns button:last-child {
+  color: #fff;
+  background-color: #325DFF;
+  opacity: .6;
+}
+
+.copy_wraper {
+  width: 80vw;
+  padding: 40rpx;
+}
+.copy_title {
+  text-align: center;
+  font-size: 30rpx;
+  font-weight: 700;
+}
+.copy_tips {
+  margin: 20rpx 0 20rpx;
+  font-size: 26rpx;
+  padding-left: 20rpx;
+}
+.copy_tips_icon {
+  display: inline-block;
+  margin: 16rpx 10rpx 0rpx 0;
+  width: 40rpx;
+  height: 40rpx;
+  line-height: 40rpx;
+  background-color: #0F7CEE;
+  border-radius: 50%;
+  color: #fff;
+  text-align: center;
+}
+.copy_content {
+  word-break: break-all;
+  color: #999;
+}
+.copy_btnwraper {
+  margin-top: 40rpx;
+  display: flex;
+}
+.copy_btns {
+  width: 200rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  text-align: center;
+  font-size: 26rpx;
+}

@@ -1,0 +1,178 @@
+/* pages/subPagesForEcharts/pages/projectInterview/projectInterview.wxss */
+.projectInterview {
+  background-color: #f3f5fa;
+  padding-bottom: calc(env(safe-area-inset-bottom) / 2);
+}
+.projectInterview_title_class {
+  background-color: #fff;
+}
+.contentwrap {
+  padding: 40rpx;
+}
+/* 项目信息 */
+.project_info {
+  padding: 30rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  font-size: 26rpx;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-style: normal;
+  letter-spacing: -0.3px;
+  font-weight: 400;
+  color: #666;
+}
+.project_info_title {
+  font-size: 28rpx;
+  font-weight: bolder;
+  color: #333;
+  margin-bottom: 30rpx;
+}
+.project_info_content {
+  margin-top: 20rpx;
+}
+.project_info_content_font {
+  color: #333;
+  font-weight: bolder;
+}
+.project_info_tags {
+  display: flex;
+  margin: 30rpx 0;
+}
+.info_tag {
+  font-weight: 400;
+  font-size: 24rpx;
+  letter-spacing: -0.3px;
+  color: #3F74F6;
+  background: #E3EBFF;
+  border-radius: 30rpx;
+  padding: 6rpx 20rpx;
+}
+.info_tag:not(:first-child) {
+  margin-left: 20rpx;
+}
+.project_info_toproject {
+  margin-top: 30rpx;
+  padding: 20rpx 0;
+  display: flex;
+  justify-content: flex-end;
+}
+.project_info_toproject_btn {
+  padding: 16rpx 40rpx;
+  color: #fff;
+  border-radius: 100rpx;
+  background: #3F74F6;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-size: 26rpx;
+  font-style: normal;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+}
+
+.interview_title {
+  margin: 30rpx 0 20rpx;
+  font-weight: 600;
+  font-size: 32rpx;
+  letter-spacing: -0.3px;
+  color: #333;
+}
+
+.interview_wraper {
+  padding: 30rpx;
+  background-color: #fff;
+  border-radius: 20rpx;
+  font-weight: 400;
+  font-size: 28rpx;
+  letter-spacing: -0.3px;
+  color: #333;
+}
+.mustfill_icon {
+  color: #FF0000;
+}
+.interview_desc_input {
+  padding: 20rpx 20rpx;
+  border-bottom: 1px solid #e9e9e9;
+}
+.interview_desc_textarea {
+  width: calc(100% - 40rpx);
+  height: 130rpx;
+  font-size: 26rpx;
+  font-family: Alibaba PuHuiTi 2.0;
+  font-style: normal;
+  margin: 20rpx 0;
+  padding: 12rpx 20rpx;
+  border: 1px solid #C9C9C9;
+  border-radius: 20rpx;
+}
+
+.interview_time {
+  margin-top: 30rpx;
+  padding-bottom: 30rpx;
+  border-bottom: 1px solid #e9e9e9;
+}
+.interview_time_picker {
+  float: right;
+  color: #333;
+  /* font-weight: bolder; */
+}
+.icon-calendar {
+  color: #3F74F6;
+  margin-left: 16rpx;
+}
+.interview_material {
+  margin-top: 30rpx;
+}
+.interview_material_upload {
+  margin-top: 30rpx;
+  display: flex;
+  flex-wrap: wrap;
+}
+.image_frame {
+  position: relative;
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 20rpx;
+  margin-right: 20rpx;
+  margin-bottom: 20rpx;
+}
+.image_frame_img {
+  width: 180rpx;
+  height: 180rpx;
+  border-radius: 20rpx;
+}
+.image_frame_icon {
+  position: absolute;
+  width: 50rpx;
+  height: 50rpx;
+  top: -14rpx;
+  right: -14rpx;
+}
+.upload_pic {
+  width: 180rpx;
+  height: 180rpx;
+  border: 4rpx dashed #999;
+  border-radius: 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 28rpx;
+  letter-spacing: -0.3px;
+  color: #999;
+  margin-bottom: 20rpx;
+}
+.camera_icon {
+  font-size: 42rpx;
+  margin-bottom: 16rpx;
+}
+
+.save_btn {
+  margin-top: 30rpx;
+  margin-bottom: 20rpx;
+  padding: 10rpx 0;
+  font-weight: 700;
+  font-size: 28rpx;
+  color: #fff;
+  background: #187FFF;
+  border-radius: 20rpx;
+}

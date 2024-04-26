@@ -1,0 +1,162 @@
+/* pages/subPagesForLeader/pages/projectCentre/projectCentre.wxss */
+.projectCentre {
+  background: #f5f6fa;
+}
+/* 头部背景容器 */
+.projectCentre_topbox {
+	height: 540rpx;
+	background: linear-gradient(180deg, #325DFF 0%, #6081FF 70.11%, rgba(95, 126, 244, 0.00) 94.32%);
+}
+/* 页面标题 */
+.projectCentre_titles {
+	color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.backlast_wraper {
+  position: absolute;
+  left: 20rpx;
+  width: 100rpx;
+  display: inline-block;
+  line-height: 32rpx;
+}
+.backlast {
+  display: inline-block;
+  width: 30rpx;
+  height: 30rpx;
+}
+.backlast::after{
+  content: '';
+  width: 16rpx;
+  height: 16rpx;
+  position: absolute;
+  left: 0;
+  border-left: 4rpx solid #fff;
+  border-bottom: 4rpx solid #fff;
+  -webkit-transform: translate(0, 0) rotate(45deg);
+  transform: translate(0, 0) rotate(45deg);
+}
+/* 头部信息 */
+.projectCentre_topinfos {
+	padding: 30rpx 40rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.projectCentre_topinfos_item {
+	flex: 1;
+	padding: 20rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 110rpx;
+	border-radius: 20rpx;
+	background: #FFF;
+}
+.projectCentre_topinfos_item:first-child {
+	margin-right: 40rpx;
+}
+.topinfos_item_left {
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 28rpx;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+}
+.topinfos_item_left_fonts {
+	color: #187FFF;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 24rpx;
+	margin-bottom: 10rpx;
+}
+.topinfos_item_left_nums {
+	font-size: 32rpx;
+	font-weight: 700;
+	margin-right: 6rpx;
+}
+.topinfos_item_right {
+	width: 72rpx;
+	height: 72rpx;
+	line-height: 72rpx;
+	text-align: center;
+	background-color: #E5F0FF;
+	border-radius: 50%;
+}
+.topinfos_bg {
+	background-color: #E6FFE5;
+}
+.topinfos_icon {
+	font-size: 36rpx;
+	color: #187FFF;
+}
+.infos_green {
+	color: #13CA03;
+}
+/* 内容容器 */
+.projectCentre_content {
+	position: relative;
+	padding: 0 40rpx;
+}
+.projectCentre_content_box {
+	height: 325rpx;
+	border-radius: 20rpx;
+	background: #FFF;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.projectCentre_content_circleProgress {
+	text-align: center;
+}
+.projectCentre_content_circleProgress_desc {
+	margin-top: 20rpx;
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 28rpx;
+	font-style: normal;
+	font-weight: 400;
+}
+.projectCentre_content_circleProgress .t-progress__canvas--circle {
+	width: 160rpx!important;
+	height: 160rpx!important;
+}
+.projectCentre_content_circleProgress .t-progress__canvas--inner {
+	width: 120rpx!important;
+	height: 120rpx!important;
+}
+.projectCentre_content_circleProgress .t-progress__info text{
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 30rpx;
+	font-style: normal;
+	font-weight: 700;
+}
+.projectCentre_content_other {
+	margin: 30rpx 40rpx 0;
+	height: 200rpx;
+	border-radius: 20rpx;
+	background: #FFF;
+	display: flex;
+	align-items: center;
+}
+.projectCentre_piewrap {
+	width: 160rpx;
+	height: 160rpx;
+}
+.projectCentre_piedesc {
+	margin-left: 30rpx;
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 28rpx;
+	font-style: normal;
+	font-weight: 400;
+}
+.projectCentre_piedesc_numbers {
+	display: inline-block;
+	margin: 8rpx 20rpx;
+	color: #187FFF;
+	font-size: 40rpx;
+	font-weight: 700;
+}

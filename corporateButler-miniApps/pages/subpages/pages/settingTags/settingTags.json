@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "public-title": "/publicTitle/publicTitle",
+    "t-check-tag": "tdesign-miniprogram/check-tag/check-tag"
+  }
+}

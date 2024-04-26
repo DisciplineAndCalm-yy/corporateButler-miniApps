@@ -1,0 +1,435 @@
+/* pages/subPagesForLeader/pages/publicProjectStore/publicProjectStore.wxss */
+.publicProjectStore {
+  overflow: hidden;
+  background: #f5f6fa;
+}
+.store_title_class {
+  background: #fff!important;
+}
+/* 顶部菜单 */
+.publicProjectStore_topmenu {}
+/* 搜索 */
+.searchBox_wrap {
+	padding: 0 40rpx 40rpx;
+	background: #fff;
+}
+.searchBox {
+	padding: 14rpx 20rpx;
+	border-radius: 10rpx;
+	background: #F5F6FA;
+	color: #999;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 26rpx;
+	font-style: normal;
+	font-weight: 400;
+	letter-spacing: -0.3px;
+	display: flex;
+	align-items: center;
+}
+.search_icon {
+	font-size: 42rpx;
+	margin-right: 10rpx;
+}
+/* 分类菜单 */
+.menulist_wrap {
+	padding: 30rpx 40rpx 20rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	color: #333;
+	text-align: center;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 28rpx;
+	font-style: normal;
+	font-weight: 400;
+	letter-spacing: -0.3px;
+}
+.menu_item {
+	flex: 1;
+	padding-bottom: 14rpx;
+}
+.active_menu {
+	color: #187FFF;
+	font-weight: 700;
+	border-bottom: 4px solid #187FFF;
+	border-radius: 0 0 4rpx 4rpx;
+}
+.menu_item_icon {
+	margin-left: 20rpx;
+	color: #187FFF;
+	font-size: 32rpx;
+}
+/* 时间筛选 */
+.project_timesearch {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 0rpx 40rpx 30rpx;
+	height: 80rpx;
+	border-radius: 20rpx;
+	background: #FFF;
+}
+.project_timesearch_labelwrap {
+	display: flex;
+	align-items: center;
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 28rpx;
+	font-style: normal;
+	font-weight: 700;
+}
+.project_timesearch_timewrap {
+	position: relative;
+	display: flex;
+	align-items: center;
+	padding-right: 40rpx;
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 24rpx;
+	font-style: normal;
+	font-weight: 400;
+}
+.enterpriseProject_timewraper_time_desc {
+	padding: 0 20rpx;
+}
+.project_timesearch_timeicon {
+  content: '';
+  width: 12rpx;
+  height: 12rpx;
+	position: absolute;
+	top: 50%;
+  right: 20rpx;
+  border-left: 3rpx solid #000;
+  border-bottom: 3rpx solid #000;
+  -webkit-transform: translate(0, -50%) rotate(225deg);
+  transform: translate(0, -50%) rotate(225deg);
+}
+.supervise_popup_titles_split {
+	width: 8rpx;
+	height: 46rpx;
+	background: #0F7CEE;
+	border-radius: 0px 24rpx 24rpx 0px;
+	margin: 0 30rpx 0 -2rpx;
+}
+/* 中央预算搜索 */
+.project_center_searchwrap {
+	padding: 0rpx 40rpx 30rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 28rpx;
+	font-style: normal;
+	font-weight: 400;
+	line-height: normal;
+	letter-spacing: -0.3px;
+}
+.project_center_searchitem {
+	width: 140rpx;
+	height: 80rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	border-radius: 20rpx;
+	background-color: #FFF;
+}
+.center_actives {
+	color: #fff;
+	background-color: #187FFF;
+}
+/* 项目信息 */
+.projectinfo_wrap {
+	margin: 0 40rpx;
+	border-radius: 20rpx;
+	background: #FFF;
+	padding: 20rpx 0;
+}
+.project_info {
+	margin-top: 20rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 24rpx;
+	font-style: normal;
+	font-weight: 400;
+}
+.project_info_item {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+.project_info_num {
+	color: #187FFF;
+	font-size: 28rpx;
+	font-weight: 700;
+	margin-bottom: 10rpx;
+}
+/* 项目统计 */
+.projecttotal_wrap {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin: 0rpx 40rpx 30rpx;
+	height: 80rpx;
+	border-radius: 20rpx;
+	background: #FFF;
+}
+.projecttotal_nums {
+	color: #187FFF;
+	font-size: 28rpx;
+	font-weight: 700;
+	margin-left: 10rpx;
+}
+/* 项目内容 */
+.project_content {
+	padding: 40rpx;
+}
+.project_itembox {
+	border-radius: 20rpx;
+	background: #FFF;
+}
+.project_itembox:not(:first-child) {
+	margin-top: 30rpx;
+}
+.project_item_top {
+	padding: 40rpx;
+	display: flex;
+	align-items: center;
+}
+.project_avatar {
+	width: 140rpx;
+	height: 140rpx;
+	flex-shrink: 0;
+	border-radius: 3rpx;
+	opacity: 0.8;
+	background: #DDE7FF;
+	margin-right: 40rpx;
+}
+.project_infos {
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 24rpx;
+	font-style: normal;
+	font-weight: 400;
+}
+.project_label {
+	color: #333;
+	font-size: 28rpx;
+	font-weight: 700;
+	margin-bottom: 20rpx;
+}
+.project_supervise_tags {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: flex-start;
+	color: #1571F6;
+	letter-spacing: -0.3px;
+}
+.project_supervise_tagitem {
+	padding: 6rpx 12rpx;
+	border-radius: 6rpx;
+	opacity: 0.8;
+	background: #D5E1FF;
+	margin-bottom: 20rpx;
+}
+.project_supervise_tagitem:not(:last-child) {
+	margin-right: 20rpx;
+}
+.project_item_bottom {
+	padding: 20rpx 40rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-top: 1px solid #E9E9E9;
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 24rpx;
+	font-style: normal;
+	font-weight: 400;
+}
+.project_bottom_item {
+	display: flex;
+	align-items: center;
+}
+.project_people_icon {
+	color: #187FFF;
+	font-size: 32rpx;
+	margin-right: 10rpx;
+}
+.project_phase_icon {
+	width: 16rpx;
+	height: 16rpx;
+	border-radius: 50%;
+	margin-right: 14rpx;
+	background-color: #fff;
+}
+.project_iconcolor_green {
+	background-color: #95f204;
+}
+.project_iconcolor_yellow {
+	background-color: #E2D247;
+}
+.project_iconcolor_orange {
+	background-color: #FA6625;
+}
+.project_iconcolor_red {
+	background-color: #d6001b;
+}
+.project_iconcolor_deepgreen {
+	background-color: #649613;
+}
+/* 详细搜索固定资产 */
+.project_allwrap {
+	padding: 30rpx 0;
+	border-radius: 20rpx;
+	background: #FFF;
+}
+.project_allwrap .project_item_bottom {
+	border-top: none;
+	border-bottom: 1px solid #E9E9E9;
+}
+.project_allwrap .project_itembox:not(:first-child) {
+	margin-top: 0rpx;
+}
+.project_allwrap .project_itembox:last-child .project_item_bottom {
+	border: none;
+}
+/* 中央预算 */
+.pt0 {
+	padding-top: 0;
+}
+.project_centeritem {
+	padding: 30rpx 0;
+	border-radius: 20rpx;
+	background: #FFF;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-style: normal;
+}
+.project_centeritem:not(:first-child) {
+	margin-top: 30rpx;
+}
+.project_centeritem_top {
+	padding: 10rpx 30rpx 20rpx;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	border-bottom: 1px solid #E9E9E9;
+}
+.project_centeritem_label {
+	color: #333;
+	font-size: 28rpx;
+	font-weight: 700;
+}
+.project_centeritem_type {
+	color: #666;
+	font-size: 24rpx;
+	font-weight: 700;
+}
+.centertype_blue {
+	color: #187FFF;
+}
+.centertype_green {
+	color: #13CA03;
+}
+.project_centeritem_bottom {
+	padding: 20rpx 30rpx 0;
+	color: #333;
+	font-size: 24rpx;
+	font-weight: 400;
+}
+.project_centeritem_bottom view {
+	padding: 4rpx 0;
+}
+/* 专项债 */
+/* .project_specialitem {} */
+/* 弹窗 */
+.moresearch_wrap {
+	width: calc(90vw - 60rpx);
+	border-radius: 20rpx;
+	background-color: #F5F6FA;
+	padding: 40rpx 30rpx;
+	display: flex;
+}
+.moresearch_left {
+	padding-right: 30rpx;
+}
+.moresearch_searchtype {
+	width: 186rpx;
+	height: 80rpx;
+	line-height: 80rpx;
+	text-align: center;
+	border-radius: 20rpx;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 24rpx;
+	font-style: normal;
+	font-weight: 400;
+	color: #333;
+	background: #FFF;
+}
+.moresearch_searchtype:not(:first-child) {
+	margin-top: 30rpx;
+}
+.searchType_active {
+	color: #fff;
+	background: #187FFF;
+}
+.moresearch_right {
+	width: 100%;
+	border-radius: 20rpx;
+	background: #FFF;
+}
+.moresearch_inputwrap {
+	margin: 30rpx;
+	padding: 12rpx 14rpx;
+	display: flex;
+	border-radius: 10rpx;
+	background: #F5F6FA;
+	color: #333;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 26rpx;
+	font-style: normal;
+	font-weight: 400;
+	letter-spacing: -0.3px;
+}
+.moresearch_content {
+	height: calc(100% - 120rpx);
+	overflow-y: scroll;
+	padding: 0 30rpx;
+	color: #187FFF;
+	font-family: Alibaba PuHuiTi 2.0;
+	font-size: 26rpx;
+	font-style: normal;
+	font-weight: 400;
+	letter-spacing: -0.3px;
+	border-top: 1px solid #E9E9E9;
+}
+.moresearch_item {
+	padding: 20rpx;
+}
+/* 底部空元素 */
+.empty {
+  padding-bottom: calc(env(safe-area-inset-bottom) / 2 + 60px);
+}
+.has_nodata {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(153, 153, 153, 0.60);
+  font-family: PingFang SC;
+  font-size: 28rpx;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: 6rpx;
+  padding: 40rpx 0;
+}
+.nodata_img {
+  width: 300rpx;
+  height: 300rpx;
+}

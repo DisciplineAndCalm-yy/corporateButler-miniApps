@@ -1,0 +1,386 @@
+<!--pages/subPagesForLeader/pages/homeLeader/homeLeader.wxml-->
+<view class="homeLeader" style="min-height: 100vh;">
+  <view class="leader_top" style="padding-top: {{ menuTop }}px;">
+    <view class="leader_top_title" style="height: {{ menuHeight }}px; line-height: {{ menuHeight }}px;">首页</view>
+    <view class="leader_top_box">
+      <view class="leader_top_items">
+        <text class="leader_top_items_numbers">{{ rankData[0].cotegoryData || '--' }}</text>
+        <text>{{ rankData[0].cotegoryName || '--' }}</text>
+      </view>
+      <view class="leader_top_splitline"></view>
+      <view class="leader_top_items">
+        <text class="leader_top_items_numbers green_number">{{ rankData[1].cotegoryData || '--' }}</text>
+        <text>{{ rankData[1].cotegoryName || '--' }}</text>
+      </view>
+      <view class="leader_top_splitline"></view>
+      <view class="leader_top_items">
+        <text class="leader_top_items_numbers orange_number">{{ rankData[2].cotegoryData || '--' }}</text>
+        <text>{{ rankData[2].cotegoryName || '--' }}</text>
+      </view>
+    </view>
+  </view>
+  <view class="leader_content_wraper">
+    <view class="content_topmenu_wraper">
+      <view class="content_topmenu {{ topMenuIndex == 1 ? 'active_menu' : ''}}" bindtap="changeTopMenu" data-menuindex="1">重大项目</view>
+      <view class="content_topmenu {{ topMenuIndex == 2 ? 'active_menu' : ''}}" bindtap="changeTopMenu" data-menuindex="2">企业诉求</view>
+      <view class="content_topmenu {{ topMenuIndex == 3 ? 'active_menu' : ''}}" bindtap="changeTopMenu" data-menuindex="3">惠企政策</view>
+    </view>
+    <!-- 重大项目 -->
+    <view wx:if="{{ topMenuIndex == 1 }}">
+      <!-- 项目统管 -->
+      <view class="public_wraper">
+        <view class="public_title">        
+          <view class="public_title_icon"></view>项目统管
+        </view>
+        <!-- <view class="public_title_time">数据更新时间：{{ toptDate }}</view> -->
+      </view>
+      <view class="public_timewraper">
+        <view class="public_timewraper_label" bindtap="openShowDetail" data-desc="按照项目计划开始日期统计。"><text class="iconfont icon-ldwen timewrap_moreicon"></text>数据统计维度</view>
+        <view class="public_timewraper_time">
+          <picker class="{{ activeDate == 1 ? 'active_date' : '' }}" mode="date" value="{{pmStartDate}}" end="{{toDay}}" bindchange="bindpmStartDateChange" >{{ pmStartDate }}
+          </picker>
+          <view class="public_timewraper_time_desc">至</view>
+          <picker mode="date" value="{{pmEndDate}}" end="{{toDay}}" bindchange="bindpmEndDateChange">{{ pmEndDate }}
+          </picker>
+          <view class="public_timewraper_timeicon"></view>
+        </view>
+      </view>
+      <scroll-view scroll-x class="leader_projectManage_wraper">
+        <view wx:for="{{ pmDatas }}" wx:key="index" bindtap="toSwitchProject" data-type="{{ item.type }}" class="leader_project_item {{ bgColorList[item.type - 1] }}">
+          <view class="leader_prjectitem_wrap">
+            <view class="leader_prjectitem_left">
+              {{ item.typeName }}（万元）
+              <view class="leader_prjectitem_left_number">¥ {{ item.totalInvest }}</view>
+              项目数（个）：{{ item.num }}
+            </view>
+            <view class="leader_prjectitem_right"><text class="iconfont icon-ld-project ld_prjecticon {{ colorList[item.type - 1] }}"></text></view>
+          </view>
+        </view>
+      </scroll-view>
+      <!-- 省市县重点项目调度中心 -->
+      <view class="public_wraper">
+        <view class="public_title">        
+          <view class="public_title_icon"></view>省市县重点项目调度中心
+        </view>
+      </view>
+      <!-- <view class="leader_province_desc">省市县重点项目一站式调度服务中心</view> -->
+      <view class="leader_province_wraper">
+        <view class="leader_province_itembox" bindtap="toProvince" data-provincetpye="1">
+          <view class="leader_province_item">省</view>
+          <view class="leader_province_label">省级重点项目</view>
+        </view>
+        <view class="leader_province_itembox" bindtap="toProvince" data-provincetpye="2">
+          <view class="leader_province_item province_orangeitem">市</view>
+          <view class="leader_province_label">市级重点项目</view>
+        </view>
+        <view class="leader_province_itembox" bindtap="toProvince" data-provincetpye="3">
+          <view class="leader_province_item province_greenitem">县</view>
+          <view class="leader_province_label">县级重点项目</view>
+        </view>
+      </view>
+      <!-- 项目进展统一调度 -->
+      <view class="public_wraper">
+        <view class="public_title">        
+          <view class="public_title_icon"></view>项目进展统一调度
+        </view>
+        <!-- <view class="public_title_time">数据更新时间：{{ toppDate }}</view> -->
+      </view>
+      <view class="public_timewraper">
+        <view class="public_timewraper_label" bindtap="openShowDetail" data-desc="按照项目计划开始日期统计。"><text class="iconfont icon-ldwen timewrap_moreicon"></text>数据统计维度</view>
+        <view class="public_timewraper_time">
+          <picker mode="date" value="{{ppStartDate}}" end="{{toDay}}" bindchange="bindppStartDateChange">{{ ppStartDate }}
+          </picker>
+          <view class="public_timewraper_time_desc">至</view>
+          <picker mode="date" value="{{ppEndDate}}" end="{{toDay}}" bindchange="bindppEndDateChange">{{ ppEndDate }}
+          </picker>
+          <view class="public_timewraper_timeicon"></view>
+        </view>
+      </view>
+      <view class="leader_progress_wraper">
+        <view wx:for="{{ ppDatas }}" wx:key="index" class="leader_progress_itembox {{ bgColorList[item.phase - 1] }}" bindtap="handleJumpStore" data-type="{{ item.phase }}">
+          <view class="leader_progress_itemleft">
+            <view class="leader_progress_itemleft_fonts"><text class="leader_progress_itemleft_nums">{{ item.num }}</text>个</view>
+            {{ item.totalInvest }} 万
+          </view>
+          <view class="leader_progress_itemright {{ ppDeepColorList[item.phase - 1] }}">
+            <text class="iconfont {{ ppIconList[item.phase - 1] }} leader_progressicon"></text>
+            <view>{{ item.phaseName }}</view>
+          </view>
+        </view>
+      </view>
+      <!-- 项目督办 -->
+      <view class="public_wraper">
+        <view class="public_title">        
+          <view class="public_title_icon"></view>项目督办
+        </view>
+        <view class="public_title_subtitle" bindtap="toSuperviseRecord">督办记录 >></view>
+      </view>
+      <view class="leader_project_supervise_wrapers">
+        <view wx:for="{{ superviseList }}" wx:key="index" class="leader_project_supervise">
+          <view class="leader_project_supervise_top">
+            <view class="project_supervise_label">{{ item.proName }}</view>
+            <view class="project_supervise_tags">
+              <view wx:for="{{ item.projectTag }}" wx:for-item="tagsitem" wx:for-index="tagsidx" wx:key="tagsidx" class="project_supervise_tagitem">{{ tagsitem }}</view>
+            </view>
+          </view>
+          <view class="project_supervise_progress">
+            <view class="project_supervise_progresswraper">
+              <view class="project_supervise_progress_icon {{ superviseProgressMap[item.projectAlert] }}"></view>
+              {{ item.projectAlertName }}
+            </view>
+            <view>{{ item.phaseName }}</view>
+          </view>
+          <view class="leader_project_supervise_bottom">
+            <view bindtap="openSupervisePopup" data-pid="{{ item.id }}">一键督办</view>
+            <view class="project_supervise_splitline"></view>
+            <view bindtap="toLookProgression" data-id="{{ item.id }}">查看进展</view>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{moreSupervise}}" class="leader_project_supervise_more" bindtap="toShowMore">点击查看更多</view>
+    </view>
+    <!-- 企业诉求 -->
+    <view wx:if="{{ topMenuIndex == 2 }}">
+      <view class="policy_totals beg_totals">
+        <view class="policy_totals_item">
+          <image class="policy_totals_imgs" src="../../assets/blue_card.png" mode=""/>
+          <view class="policy_totals_box">
+            <view class="policy_totals_numbers">{{ begTotals.troubleAverageTime }} 天</view>
+            <view>疑难解答<view>平均处理事项时间</view></view>
+          </view>
+        </view>
+        <view class="policy_totals_item">
+          <image class="policy_totals_imgs" src="../../assets/orange_card.png" mode=""/>
+          <view class="policy_totals_box">
+            <view class="policy_totals_numbers">{{ begTotals.enterpriseSatisfaction }}%</view>
+            <view>企业满意度</view>
+          </view>
+        </view>
+        <view class="policy_totals_item">
+          <image class="policy_totals_imgs" src="../../assets/green_card.png" mode=""/>
+          <view class="policy_totals_box">
+            <view class="policy_totals_numbers">{{ begTotals.problemAverageTime }} 天</view>
+            <view>诉求反馈<view>平均处理事项时间</view></view>
+          </view>
+        </view>
+      </view>
+      <!-- 企业诉求-事项处理统计 -->
+      <view class="public_wraper">
+        <view class="public_title">        
+          <view class="public_title_icon"></view>事项处理统计
+        </view>
+      </view>
+      <view class="beg_things">
+        <view class="beg_things_menus">
+          <view class="beg_things_menuitem {{ begThingsIndex == 1 ? 'active_begmenu1' : '' }}" bindtap="changeBegThingsMenu" data-index="1">疑难解答</view>
+          <view class="{{ begThingsIndex == 1 ? 'beg_left' : 'beg_right' }}"></view>
+          <view class="beg_things_menuitem  {{ begThingsIndex == 2 ? 'active_begmenu2' : '' }}" bindtap="changeBegThingsMenu" data-index="2">诉求反馈</view>
+        </view>
+        <view class="beg_things_wrap">
+          <view class="beg_things_progressitem">
+            待处理
+            <view class="beg_things_progress">
+              <progress percent="{{ (begThingsTotal.pendingProcessing / begThingsTotal.count) * 100 || 0 }}" active stroke-width="5" border-radius="50" activeColor="#0C77FB" backgroundColor="#DCECFF" />
+            </view>
+            <text class="beg_things_progress_numbers">{{ begThingsTotal.pendingProcessing || 0 }} 件</text>
+          </view>
+          <view class="beg_things_progressitem">
+            处理中
+            <view class="beg_things_progress">
+              <progress percent="{{ (begThingsTotal.processing / begThingsTotal.count) * 100 || 0 }}" active stroke-width="5" border-radius="50" activeColor="#FA7F4D" backgroundColor="#FFE5E5" />
+            </view>
+            <text class="beg_things_progress_numbers">{{ begThingsTotal.processing || 0 }} 件</text>
+          </view>
+          <view class="beg_things_progressitem">
+            已完成
+            <view class="beg_things_progress">
+              <progress percent="{{ (begThingsTotal.completed / begThingsTotal.count) * 100 || 0 }}" active stroke-width="5" border-radius="50" activeColor="#E2D247" backgroundColor="#FFF1D7" />
+            </view>
+            <text class="beg_things_progress_numbers">{{ begThingsTotal.completed || 0 }} 件</text>
+          </view>
+        </view>
+      </view>
+      <!-- 企业诉求-服务管家统计 -->
+      <view class="public_wraper">
+        <view class="public_title">        
+          <view class="public_title_icon"></view>服务管家统计
+        </view>
+      </view>
+      <view class="beg_steward">
+        <view class="beg_steward_item">
+          <view class="beg_steward_iconwrap"><text class="iconfont icon-ld-enterprise beg_steward_icon"></text></view>
+          <view class="beg_steward_itembox">
+            <view class="beg_steward_itembox_number">{{ stewardTotalData.entNum || 0 }}</view>
+            <view>企业总数</view>
+          </view>
+          <view class="leader_top_splitline"></view>
+          <view class="beg_steward_itembox">
+            <view class="beg_steward_itembox_number">{{ stewardTotalData.bindMangerEntNum || 0 }}</view>
+            <view>配备管家企业数</view>
+          </view>
+          <view class="leader_top_splitline"></view>
+          <view class="beg_steward_itembox">
+            <view class="beg_steward_itembox_number">{{ stewardTotalData.serviceRate || 0 }}</view>
+            <view>服务覆盖率</view>
+          </view>
+        </view>
+        <view class="beg_steward_item">
+          <view class="beg_steward_iconwrap steward_green_bg"><text class="iconfont icon-ld-guanjia beg_steward_icon"></text></view>
+          <view class="beg_steward_itembox">
+            <view class="beg_steward_itembox_number steward_green">{{ stewardTotalData.mangerNum || 0 }}</view>
+            <view>管家数量</view>
+          </view>
+          <view class="leader_top_splitline"></view>
+          <view class="beg_steward_itembox">
+            <view class="beg_steward_itembox_number steward_green">{{ stewardTotalData.monthRecordNum || 0 }}</view>
+            <view>本月管家走访</view>
+          </view>
+          <view class="leader_top_splitline"></view>
+          <view class="beg_steward_itembox">
+            <view class="beg_steward_itembox_number steward_green">{{ stewardTotalData.yearRecordNum || 0 }}</view>
+            <view>年度走访</view>
+          </view>
+        </view>
+      </view>
+      <!-- 企业诉求-事项投诉类型排行 -->
+      <view class="public_wraper">
+        <view class="public_title">        
+          <view class="public_title_icon"></view>事项投诉类型排行
+        </view>
+      </view>
+      <view class="beg_things">
+        <view class="beg_things_menus">
+          <view class="beg_things_menuitem {{ begComplainIndex == 0 ? 'active_begmenu1' : '' }}" bindtap="changeBegComplainMenu" data-index="0">疑难解答</view>
+          <view class="{{ begComplainIndex == 0 ? 'beg_left' : 'beg_right' }}"></view>
+          <view class="beg_things_menuitem  {{ begComplainIndex == 1 ? 'active_begmenu2' : '' }}" bindtap="changeBegComplainMenu" data-index="1">诉求反馈</view>
+        </view>
+        <view class="beg_things_wrap complain_wrap">
+          <view class="complain_wrap_overflow">
+            <view wx:for="{{ begComplainData }}" wx:key="index" class="complain_item">
+              <view class="complain_rankwrap {{ bgColorList[index%4] }}" bindtap="openShowDetail" data-desc="{{ item.name }}">
+                <view class="complain_ranks">
+                  <text class="complain_ranks_numbers {{ colorList[index%4] }}">{{ item.value }}</text>
+                </view>
+              </view>
+              <view class="complain_ranks_label">{{ item.name }}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <!-- 企业诉求-各部门评价排名 -->
+      <view class="public_wraper">
+        <view class="public_title">        
+          <view class="public_title_icon"></view>各部门评价排名
+        </view>
+      </view>
+      <view class="beg_depart">
+        <view wx:for="{{ departRankList }}" wx:key="index" class="beg_depart_item">
+          <view class="beg_depart_ranks">
+            <view wx:if="{{ item.rank > 3 }}" class="depart_ranks_nocup">{{ item.rank }}</view>
+            <view wx:else class="depart_ranks_cup">
+              <text class="iconfont icon-cup {{ rankIconList[item.rank] }}"></text>
+              <text class="rank_numbers">{{ item.rank }}</text>
+            </view>
+          </view>
+          <view class="beg_depart_progress">
+            <view class="beg_depart_progress_label">{{ item.departName }}</view>
+            <!-- <progress percent="97.7" active stroke-width="8" show-info border-radius="50" activeColor="#0C77FB" backgroundColor="#DCECFF" /> -->
+          </view>
+          <view class="beg_depart_score">{{ item.srcoe }} 分</view>
+        </view>
+      </view>
+    </view>
+    <!-- 惠企政策 -->
+    <view wx:if="{{ topMenuIndex == 3 }}">
+      <!-- 惠企政策-政策统计 -->
+      <view class="public_wraper">
+        <view class="public_title">        
+          <view class="public_title_icon"></view>政策统计
+        </view>
+      </view>
+      <view class="policy_totals">
+        <view class="policy_totals_item">
+          <image class="policy_totals_imgs" src="../../assets/blue_card.png" mode=""/>
+          <view class="policy_totals_box">
+            <view class="policy_totals_numbers">{{ policyTotal.policyReleaseCount }}</view>
+            <view>累计发布</view>
+          </view>
+        </view>
+        <view class="policy_totals_item">
+          <image class="policy_totals_imgs" src="../../assets/orange_card.png" mode=""/>
+          <view class="policy_totals_box">
+            <view class="policy_totals_numbers">{{ policyTotal.policyPushCount }}</view>
+            <view>本月推送</view>
+          </view>
+        </view>
+        <view class="policy_totals_item">
+          <image class="policy_totals_imgs" src="../../assets/green_card.png" mode=""/>
+          <view class="policy_totals_box">
+            <view class="policy_totals_numbers">{{ policyTotal.entCount }}</view>
+            <view>本月政策匹配企业</view>
+          </view>
+        </view>
+      </view>
+      <!-- 惠企政策-政策订阅 -->
+      <view class="public_wraper">
+        <view class="public_title">        
+          <view class="public_title_icon"></view>政策订阅
+        </view>
+      </view>
+      <view class="policy_setting">
+        <view class="policy_tagwrap">
+          <view wx:for="{{ policyTagList }}" wx:key="index" class="policy_tag">
+            <image class="policy_tag_hot" src="../../assets/hot_tag.png" mode=""/>
+            <text>{{ item.name }}</text>
+          </view>
+        </view>
+        <view class="policy_tolist" bindtap="toPolicyStore">查看政策列表</view>
+      </view>
+    </view>
+  </view>
+  <tabbars></tabbars>
+  
+  <!-- 弹窗 -->
+  <t-popup visible="{{visible}}" bind:visible-change="onVisibleChange" placement="center" close-on-overlay-click="{{false}}">
+    <view class="detail_wraper">
+      <view class="detail_text">{{ detailName }}</view>
+    </view>
+    <button class="detail_btn" bindtap="closeShowmore">关闭</button>
+  </t-popup>
+  <!-- 督办弹窗 -->
+  <t-popup visible="{{ superviseVisible }}" bind:visible-change="onSuperviseVisibleChange" placement="bottom">
+    <view class="supervise_popup_wraper">
+      <view class="supervise_popup_titles">
+        <view class="supervise_popup_titleswraper">
+          <view class="supervise_popup_titles_split"></view>提示
+        </view>
+        <view class="supervise_popup_close" bindtap="closeSupervisePopup">关闭</view>
+      </view>
+      <view class="supervise_popup_splitline"></view>
+      <view class="supervise_popup_content">
+        <view class="supervise_popup_label">督办项目</view>
+        <view class="supervise_popup_infos">{{ superviseInfo.projectName }}</view>
+        <view class="supervise_popup_label">督办项目负责人</view>
+        <view class="supervise_popup_infos">{{ superviseInfo.projectLeaderName }}({{ superviseInfo.projectLeaderDepart }})</view>
+        <view class="supervise_popup_label">联系电话</view>
+        <view class="supervise_popup_infos">
+          {{ superviseInfo.projectLeaderTel }}
+          <view class="supervise_popup_callphone" bindtap="toCallPhone" data-phonenum="{{ superviseInfo.projectLeaderTel }}"><text class="iconfont icon-a-callphone supervise_popup_callphoneicon"></text>拨打</view>
+        </view>
+        <view class="supervise_popup_label">督办项目分包领导</view>
+        <view class="supervise_popup_infos">{{ superviseInfo.subpackageLeaderName }}({{ superviseInfo.subpackageDepart }})</view>
+        <view class="supervise_popup_label">联系电话</view>
+        <view class="supervise_popup_infos">
+          {{ superviseInfo.subpackageLeaderTel }}
+          <view class="supervise_popup_callphone" bindtap="toCallPhone" data-phonenum="{{ superviseInfo.subpackageLeaderTel }}"><text class="iconfont icon-a-callphone supervise_popup_callphoneicon"></text>拨打</view>
+        </view>
+        <view class="supervise_popup_label">督办内容</view>
+        <form bindsubmit="toPushSupervise">
+          <!-- <textarea class="supervise_popup_textarea" name="textarea" value="{{ superviseInfo.content }}" type="text" placeholder="请输入" maxlength="-1" 	adjust-position="false" bindfocus="focusText" bindblur="blurText" /> -->
+          <textarea class="supervise_popup_textarea" name="textarea" value="{{ superviseInfo.content }}" type="text" placeholder="请输入" maxlength="-1" cursor-spacing="10" adjust-position adjust-keyboard-to="bottom" />
+          <button class="supervise_popup_btn" style="margin-bottom: {{ activeHeight }}px;" form-type="submit">立即发送</button>
+        </form>
+      </view>
+    </view>
+  </t-popup>
+</view>

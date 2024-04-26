@@ -1,0 +1,110 @@
+<view class="container" style="margin-top: {{ menuHeight + menuTop + 10 }}px; min-height: calc(100vh - {{ menuHeight + menuTop + 10 }}px - 48rpx)">
+    <public-title title="诉求反馈"></public-title>
+    <view class="form-content">
+        <form bindsubmit="formSubmit">
+            <view class="form-item">
+                <view class="label">
+                    <span class="required">*</span>
+                    <span class="label-name">主要内容：</span>
+                </view>
+                <view class="content">
+                    <view class="input-wrapper">
+                    <input 
+                        type="text"
+                        placeholder="请输入"
+                        name="item" />
+                    </view>
+                </view>
+            </view>
+            <view class="form-item">
+            <view class="label">
+                <span class="required">*</span>
+                <span class="label-name">内容描述：</span>
+            </view>
+            <view class="content">
+                <view class="text">
+                <view class="textarea-wrapper">
+                    <textarea
+                        placeholder="请输入具体内容"
+                        name="content"
+                        bindinput="inputs"
+                        maxlength="255"
+                        >
+                    </textarea>
+                </view>
+                <view class="textarea-content-length">{{currentContentLength}}/255</view>
+                </view>
+            </view>
+            </view>
+            <view class="form-item">
+                <view class="label">
+                    <span class="label-name">联系人：</span>
+                </view>
+                <view class="content">
+                    <view class="input-wrapper">
+                    <input 
+                        type="text" 
+                        placeholder="请输入" 
+                        name="contact" />
+                    </view>
+                </view>
+            </view>
+            <view class="form-item">
+                <view class="label">
+                    <span class="label-name">联系方式：</span>
+                </view>
+                <view class="content">
+                    <view class="input-wrapper">
+                    <input
+                        type="text"
+                        placeholder="请输入"
+                        name="phoneNumber"
+                    />
+                    </view>
+                </view>
+            </view>
+            <view class="form-item uploader">
+                <view class="label">
+                    <span class="label-name">证明材料：</span>
+                    <!-- <span class="desc">(支持jpeg、jpg、pdf、doc、docx格式类型)</span> -->
+                </view>
+                <view class="upload-wrapper">
+                    <view class="wrap" wx:for="{{fileList}}" wx:key='index'>
+                        <!-- data-path="{{file.path}}" -->
+                        <view
+                            class="upload-item img"
+                            wx-if="{{item.type === 'img'}}"
+                            :key="item.path"
+                            data-index="{{index}}"
+                            catchtap="handleOpenFile"
+                        >
+                            <view class="img-box">
+                                <image class="show-image" src="{{item.path}}" mode="widthFix" />
+                            </view>
+                            <p class="name">材料证明{{ index + 1 }}</p>
+                        </view>
+                        <view
+                            class="upload-item file"
+                            wx-if="{{item.type === 'file'}}"
+                            :key="file.path"
+                            data-index="{{index}}"
+                            catchtap="handleOpenFile"
+                            >
+                            <view class="file-box">
+                                <image class="show-image" src="../../assets/file-icon.png" alt="" />
+                            </view>
+                            <p class="name">材料证明({{ index + 1 }})</p>
+                        </view>
+                        <image class="delete-image" data-index="{{index}}" bindtap="handleDel" src="../../assets/delete_image.png" />
+                    </view>
+                    <view class="upload-push-item" bindtap="handleShowUploadAction"></view>
+                </view>
+            </view>
+            <view class="btns">
+                <view class="confirm">
+                    <button class="confirm-span" loading="{{loading}}" form-type="submit">提交</button>
+                </view>
+            </view>
+        </form>
+    </view>
+</view>
